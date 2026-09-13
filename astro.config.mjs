@@ -20,5 +20,5 @@ export default defineConfig({
     },
   },
 
-  site: "https://tu-url.vercel.app",
+  site: "https://portfolionew-nine-nu.vercel.app",
 });
