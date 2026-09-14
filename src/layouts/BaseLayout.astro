@@ -1,5 +1,10 @@
 ---
+import en from "../messages/en/navbar.json";
+import es from "../messages/es/navbar.json";
+import Footer from "../components/Footer.astro";
+
 const { lang, messages, noindex = false } = Astro.props;
+const navMessages = lang === "es" ? es : en;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -78,5 +83,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <slot />
+    <Footer lang={lang} navLinks={navMessages.links} />
   </body>
 </html>

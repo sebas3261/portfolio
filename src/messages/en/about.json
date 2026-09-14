@@ -6,15 +6,69 @@
   "ogImageAlt": "Sebastian Sanchez — About",
   "eyebrow": "About",
   "heading": "Building software with calm systems thinking.",
-  "intro": "I am Sebastian Sanchez, a software engineer focused on backend systems, web applications, and mobile products that are clear to use and maintain.",
-  "sections": [
-    {
-      "title": "What I care about",
-      "body": "Clean architecture, reliable APIs, practical user experiences, and codebases that remain pleasant to evolve."
-    },
-    {
-      "title": "How I work",
-      "body": "I like understanding the product context first, then shaping solutions that balance speed, quality, and long-term maintainability."
-    }
-  ]
+  "intro": "I'm Sebastian Sanchez, a software engineer based in Colombia. I work across backend, web, and mobile — focused on systems that are reliable, easy to evolve, and actually solve the problem.",
+  "bio": "I started programming seriously around 2021, drawn to the idea that software can make things work better for real people. Since then I've built products across the full stack — from Spring Boot APIs and relational databases to React Native apps and Next.js frontends. I care about understanding the product context before writing a line, and I care even more about leaving the codebase in a better shape than I found it.",
+  "focus": {
+    "title": "What I focus on",
+    "items": [
+      {
+        "title": "Backend systems",
+        "body": "REST APIs, service architecture, database design. I like building things that scale gracefully and fail predictably."
+      },
+      {
+        "title": "Web development",
+        "body": "From Next.js and Astro to plain TypeScript. I care about fast, accessible, and maintainable frontends."
+      },
+      {
+        "title": "Mobile",
+        "body": "React Native for cross-platform products. I focus on the connection between mobile UX and the systems behind it."
+      },
+      {
+        "title": "Architecture",
+        "body": "Clean separation, clear boundaries, honest tradeoffs. I try to make complexity manageable, not hidden."
+      }
+    ]
+  },
+  "stack": {
+    "title": "Stack",
+    "categories": [
+      {
+        "name": "Backend",
+        "items": ["Java", "Spring Boot", "Node.js", "PostgreSQL", "REST APIs"]
+      },
+      {
+        "name": "Frontend",
+        "items": ["TypeScript", "React", "Next.js", "Astro", "Tailwind CSS"]
+      },
+      {
+        "name": "Mobile",
+        "items": ["React Native", "Expo"]
+      },
+      {
+        "name": "Infrastructure",
+        "items": ["AWS", "Docker", "Git", "Vercel"]
+      }
+    ]
+  },
+  "values": {
+    "title": "How I work",
+    "items": [
+      {
+        "title": "Understand first",
+        "body": "I want to know what the product needs to do before deciding how to build it."
+      },
+      {
+        "title": "Ship, then improve",
+        "body": "Working software beats perfect plans. I'd rather put something real in front of users and iterate."
+      },
+      {
+        "title": "Keep it maintainable",
+        "body": "Code is read far more than it's written. Clarity and consistency matter a lot to me."
+      }
+    ]
+  },
+  "cta": {
+    "projects": "See my projects",
+    "contact": "Get in touch"
+  }
 }

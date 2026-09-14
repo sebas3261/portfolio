@@ -77,5 +77,80 @@
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
       }
     ]
+  },
+  "projectsPreview": {
+    "eyebrow": "Proyectos destacados",
+    "heading": "Trabajo seleccionado",
+    "intro": "Productos que he construido, usados por personas reales.",
+    "cta": "Ver todos los proyectos",
+    "items": [
+      {
+        "name": "CourtRank",
+        "type": "Mobile + Backend",
+        "description": "Plataforma para clubes de pádel. Gestión de jugadores, clubes, reservas y experiencias competitivas.",
+        "stack": ["Java", "Spring Boot", "PostgreSQL", "React Native", "TypeScript"],
+        "stat": { "value": "18+", "label": "usuarios activos" },
+        "cta": "Ver caso de estudio",
+        "url": "https://getcourtrank.com",
+        "image": null
+      },
+      {
+        "name": "PlayZone VIP",
+        "type": "Web / Frontend",
+        "description": "Experiencia web para una marca de entretenimiento. Enfocada en rendimiento, SEO y conversión.",
+        "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
+        "stat": null,
+        "cta": "Ver proyecto",
+        "url": "https://playzonevip.com",
+        "image": null
+      },
+      {
+        "name": "mvnx",
+        "type": "Herramienta para developers",
+        "description": "Herramienta para simplificar flujos de trabajo con Maven. Open source y construida para la comunidad.",
+        "stack": ["Java", "Shell", "Maven", "Open Source"],
+        "stat": null,
+        "cta": "Ver en GitHub",
+        "url": null,
+        "image": null
+      }
+    ]
+  },
+  "expertise": {
+    "eyebrow": "Expertise",
+    "heading": "Con qué trabajo",
+    "intro": "Un toolkit balanceado para construir, desplegar y escalar productos.",
+    "categories": [
+      {
+        "name": "Backend",
+        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"]
+      },
+      {
+        "name": "Frontend",
+        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"]
+      },
+      {
+        "name": "Ingeniería",
+        "items": ["Arquitectura Hexagonal", "DDD", "CI/CD", "AWS", "Linux", "Git"]
+      }
+    ]
+  },
+  "aboutPreview": {
+    "eyebrow": "Sobre mí",
+    "heading": "Ingeniero de software con mentalidad de producto.",
+    "bio": "Soy Sebastian, un ingeniero de software apasionado por construir productos útiles, escalables y bien hechos. Disfruto resolver problemas reales, aprender nuevas tecnologías y convertir ideas en soluciones que funcionan.",
+    "bullets": [
+      { "icon": "location", "text": "Basado en Colombia" },
+      { "icon": "remote",   "text": "Abierto a oportunidades remotas" },
+      { "icon": "learning", "text": "Aprendizaje continuo" },
+      { "icon": "hobby",    "text": "Deportes, tecnología y buen café" }
+    ],
+    "cta": "Más sobre mí"
+  },
+  "closing": {
+    "eyebrow": "Hablemos",
+    "heading": "¿Tienes un proyecto u oportunidad en mente?",
+    "description": "Siempre estoy dispuesto a discutir nuevas ideas, proyectos interesantes o colaboraciones potenciales.",
+    "cta": "Escribeme"
   }
 }

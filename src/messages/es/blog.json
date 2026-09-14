@@ -1,11 +1,15 @@
 {
   "title": "Blog | Sebastian Sanchez",
-  "description": "Notas y artículos de Sebastian Sanchez sobre ingeniería de software, sistemas, arquitectura y desarrollo de producto.",
+  "description": "Notas y escritura de Sebastian Sanchez sobre ingeniería de software, sistemas, arquitectura y desarrollo de producto.",
   "ogTitle": "Blog | Sebastian Sanchez",
   "ogDescription": "Notas sobre ingeniería de software, sistemas, arquitectura y desarrollo de producto.",
   "ogImageAlt": "Sebastian Sanchez — Blog",
   "eyebrow": "Blog",
   "heading": "Notas desde el taller.",
   "intro": "Ensayos cortos, notas técnicas e ideas sobre construir software con intención.",
-  "emptyState": "Pronto habrá contenido escrito."
+  "emptyState": {
+    "title": "El primer post está siendo escrito.",
+    "body": "Estoy armando notas sobre cosas que estoy aprendiendo y construyendo — decisiones de arquitectura, tradeoffs, cosas que me sorprendieron. Estará aquí pronto.",
+    "topics": ["Diseño de sistemas", "Arquitectura de APIs", "React Native", "Código limpio", "Pensamiento de producto"]
+  }
 }

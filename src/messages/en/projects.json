@@ -5,7 +5,30 @@
   "ogDescription": "Selected software projects across backend systems, web applications, and mobile products.",
   "ogImageAlt": "Sebastian Sanchez — Projects",
   "eyebrow": "Projects",
-  "heading": "Selected work and experiments.",
-  "intro": "A place for products, technical explorations, and systems I have built or shaped.",
-  "emptyState": "Project case studies are coming soon."
+  "heading": "Things I'm building.",
+  "intro": "Real products, real constraints. Case studies and writeups are on the way.",
+  "inProgress": {
+    "label": "In progress",
+    "items": [
+      {
+        "name": "CourtRank",
+        "type": "Mobile + Backend",
+        "description": "Platform for padel clubs — reservations, player rankings, and club admin workflows.",
+        "stack": ["React Native", "Spring Boot", "PostgreSQL"],
+        "status": "In progress"
+      },
+      {
+        "name": "MVNEX",
+        "type": "Systems / C++",
+        "description": "A lower-level systems project focused on performance, data structures, and implementation depth.",
+        "stack": ["C++"],
+        "status": "Case study soon"
+      }
+    ]
+  },
+  "emptyState": {
+    "title": "Case studies coming.",
+    "body": "I'm working on proper writeups for each project — the decisions made, the tradeoffs, what worked and what didn't. Check back soon.",
+    "cta": "Get in touch"
+  }
 }

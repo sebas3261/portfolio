@@ -1,20 +1,74 @@
 {
   "title": "Sobre mí | Sebastian Sanchez",
-  "description": "Conoce más sobre Sebastian Sanchez, ingeniero informático enfocado en sistemas backend, aplicaciones web, productos móviles y arquitectura mantenible.",
+  "description": "Conoce más sobre Sebastian Sanchez, ingeniero de software enfocado en sistemas backend, aplicaciones web, productos móviles y arquitectura mantenible.",
   "ogTitle": "Sobre mí | Sebastian Sanchez",
-  "ogDescription": "Ingeniero informático enfocado en sistemas escalables, arquitectura limpia e ingeniería de producto.",
+  "ogDescription": "Ingeniero de software enfocado en sistemas escalables, arquitectura limpia e ingeniería de producto cuidadosa.",
   "ogImageAlt": "Sebastian Sanchez — Sobre mí",
   "eyebrow": "Sobre mí",
-  "heading": "Construyendo software con pensamiento claro de sistemas.",
-  "intro": "Soy Sebastian Sanchez, ingeniero informático enfocado en sistemas backend, aplicaciones web y productos móviles claros de usar y mantener.",
-  "sections": [
-    {
-      "title": "Lo que me importa",
-      "body": "Arquitectura limpia, APIs confiables, experiencias de usuario prácticas y codebases que sigan siendo agradables de evolucionar."
-    },
-    {
-      "title": "Cómo trabajo",
-      "body": "Me gusta entender primero el contexto del producto y luego crear soluciones que equilibren velocidad, calidad y mantenibilidad."
-    }
-  ]
+  "heading": "Construyendo software con pensamiento de sistemas.",
+  "intro": "Soy Sebastian Sanchez, ingeniero de software basado en Colombia. Trabajo entre backend, web y mobile — enfocado en sistemas confiables, fáciles de evolucionar y que realmente resuelven el problema.",
+  "bio": "Empecé a programar en serio alrededor de 2021, atraído por la idea de que el software puede hacer que las cosas funcionen mejor para personas reales. Desde entonces he construido productos a lo largo del stack completo — desde APIs con Spring Boot y bases de datos relacionales hasta apps con React Native y frontends con Next.js. Me importa entender el contexto del producto antes de escribir una línea, y me importa aún más dejar el codebase en mejor estado del que lo encontré.",
+  "focus": {
+    "title": "En qué me enfoco",
+    "items": [
+      {
+        "title": "Sistemas backend",
+        "body": "APIs REST, arquitectura de servicios, diseño de bases de datos. Me gusta construir cosas que escalen bien y fallen de forma predecible."
+      },
+      {
+        "title": "Desarrollo web",
+        "body": "Desde Next.js y Astro hasta TypeScript plano. Me importan los frontends rápidos, accesibles y mantenibles."
+      },
+      {
+        "title": "Mobile",
+        "body": "React Native para productos multiplataforma. Me enfoco en la conexión entre el UX móvil y los sistemas detrás."
+      },
+      {
+        "title": "Arquitectura",
+        "body": "Separación limpia, límites claros, tradeoffs honestos. Intento hacer la complejidad manejable, no esconderla."
+      }
+    ]
+  },
+  "stack": {
+    "title": "Stack",
+    "categories": [
+      {
+        "name": "Backend",
+        "items": ["Java", "Spring Boot", "Node.js", "PostgreSQL", "REST APIs"]
+      },
+      {
+        "name": "Frontend",
+        "items": ["TypeScript", "React", "Next.js", "Astro", "Tailwind CSS"]
+      },
+      {
+        "name": "Mobile",
+        "items": ["React Native", "Expo"]
+      },
+      {
+        "name": "Infraestructura",
+        "items": ["AWS", "Docker", "Git", "Vercel"]
+      }
+    ]
+  },
+  "values": {
+    "title": "Cómo trabajo",
+    "items": [
+      {
+        "title": "Entender primero",
+        "body": "Quiero saber qué necesita hacer el producto antes de decidir cómo construirlo."
+      },
+      {
+        "title": "Lanzar, luego mejorar",
+        "body": "El software que funciona supera a los planes perfectos. Prefiero poner algo real frente a usuarios e iterar."
+      },
+      {
+        "title": "Mantenible por diseño",
+        "body": "El código se lee mucho más de lo que se escribe. La claridad y la consistencia me importan mucho."
+      }
+    ]
+  },
+  "cta": {
+    "projects": "Ver mis proyectos",
+    "contact": "Escribeme"
+  }
 }

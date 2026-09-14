@@ -7,5 +7,9 @@
   "eyebrow": "Blog",
   "heading": "Notes from the workbench.",
   "intro": "Short essays, technical notes, and ideas about building software with intention.",
-  "emptyState": "Writing is coming soon."
+  "emptyState": {
+    "title": "First post is being written.",
+    "body": "I'm putting together notes on things I'm learning and building — architecture decisions, tradeoffs, things that surprised me. It'll be here soon.",
+    "topics": ["Systems design", "API architecture", "React Native", "Clean code", "Product thinking"]
+  }
 }
