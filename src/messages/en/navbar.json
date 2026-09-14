@@ -1,0 +1,22 @@
+{
+  "brandHomeLabel": "Sebastian Sanchez - Home",
+  "mainNavigationLabel": "Main navigation",
+  "mobileNavigationLabel": "Mobile navigation",
+  "navigationMenuLabel": "Navigation menu",
+  "switchToDark": "Switch to dark mode",
+  "switchToLight": "Switch to light mode",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "languageCode": "EN",
+  "languages": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "links": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "blog": "Blog"
+  },
+  "cta": "Let's talk"
+}

@@ -2,5 +2,17 @@
   "title": "Page not found | Sebastian Sanchez",
   "description": "The page you are looking for does not exist or has moved.",
   "heading": "Page not found",
-  "backHome": "Back to home"
+  "eyebrow": "404 / ROUTE_MISSING",
+  "terminal": {
+    "prompt": "portfolio",
+    "command": "curl -i",
+    "status": "HTTP/2 404",
+    "contentType": "content-type: application/json",
+    "response": {
+      "error": "route_not_found",
+      "message": "Try a stable entry point instead."
+    }
+  },
+  "backHome": "Back to home",
+  "viewProjects": "View projects"
 }

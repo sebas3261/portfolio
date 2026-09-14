@@ -1,0 +1,20 @@
+{
+  "title": "About | Sebastian Sanchez",
+  "description": "Learn more about Sebastian Sanchez, a software engineer focused on backend systems, web applications, mobile products, and maintainable architecture.",
+  "ogTitle": "About | Sebastian Sanchez",
+  "ogDescription": "Software engineer focused on scalable systems, clean architecture, and thoughtful product engineering.",
+  "ogImageAlt": "Sebastian Sanchez — About",
+  "eyebrow": "About",
+  "heading": "Building software with calm systems thinking.",
+  "intro": "I am Sebastian Sanchez, a software engineer focused on backend systems, web applications, and mobile products that are clear to use and maintain.",
+  "sections": [
+    {
+      "title": "What I care about",
+      "body": "Clean architecture, reliable APIs, practical user experiences, and codebases that remain pleasant to evolve."
+    },
+    {
+      "title": "How I work",
+      "body": "I like understanding the product context first, then shaping solutions that balance speed, quality, and long-term maintainability."
+    }
+  ]
+}

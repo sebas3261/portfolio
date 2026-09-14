@@ -4,20 +4,54 @@ import { MorphIcon } from "morphicons/react";
 
 interface Props {
   lang: string;
-  switchToDark: string;
-  switchToLight: string;
-  openMenu: string;
-  closeMenu: string;
+  currentPath: string;
+  variant?: "default" | "heroDark";
+  messages: {
+    brandHomeLabel: string;
+    mainNavigationLabel: string;
+    mobileNavigationLabel: string;
+    navigationMenuLabel: string;
+    switchToDark: string;
+    switchToLight: string;
+    openMenu: string;
+    closeMenu: string;
+    languageCode: string;
+    languages: {
+      en: string;
+      es: string;
+    };
+    links: {
+      home: string;
+      projects: string;
+      about: string;
+      blog: string;
+    };
+    cta: string;
+  };
 }
 
 type Theme = "light" | "dark";
 
-export default function NavBar({ lang, switchToDark, switchToLight, openMenu: openLabel, closeMenu: closeLabel }: Props) {
-  const isEnglish = lang === "en";
+function getLocalizedPath(currentPath: string, targetLang: "en" | "es") {
+  const normalizedPath = currentPath.startsWith("/") ? currentPath : `/${currentPath}`;
+
+  if (normalizedPath === "/") {
+    return `/${targetLang}/`;
+  }
+
+  if (/^\/(en|es)(\/|$)/.test(normalizedPath)) {
+    return normalizedPath.replace(/^\/(en|es)(?=\/|$)/, `/${targetLang}`);
+  }
+
+  return `/${targetLang}${normalizedPath}`;
+}
+
+export default function NavBar({ lang, currentPath, messages, variant = "default" }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [suppressNavHover, setSuppressNavHover] = useState(true);
   const lastScrollY = useRef(0);
   const SCROLL_THRESHOLD = 10;
 
@@ -85,13 +119,16 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
   }, []);
 
   const dark = theme === "dark";
+  const overDarkHero = variant === "heroDark" && !scrolled && !menuOpen;
 
   const navLinks = [
-    { href: `/${lang}/`, label: isEnglish ? "Home" : "Inicio" },
-    { href: `/${lang}/projects/`, label: isEnglish ? "Projects" : "Proyectos" },
-    { href: `/${lang}/about/`, label: isEnglish ? "About" : "Sobre mí" },
-    { href: `/${lang}/blog/`, label: "Blog" },
+    { href: `/${lang}/`, label: messages.links.home },
+    { href: `/${lang}/projects/`, label: messages.links.projects },
+    { href: `/${lang}/about/`, label: messages.links.about },
+    { href: `/${lang}/blog/`, label: messages.links.blog },
   ];
+  const englishHref = getLocalizedPath(currentPath, "en");
+  const spanishHref = getLocalizedPath(currentPath, "es");
 
   return (
     <>
@@ -118,7 +155,7 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
           {/* Logo */}
           <a
             href={`/${lang}/`}
-            aria-label="Sebastian Sanchez - Home"
+            aria-label={messages.brandHomeLabel}
             className="shrink-0"
           >
             <img
@@ -126,18 +163,24 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
               alt="Sebastian Sanchez"
               width="40"
               height="40"
-              className={`select-none sm:size-11 ${dark ? "invert" : ""}`}
+              className={`select-none sm:size-11 ${dark || overDarkHero ? "invert" : ""}`}
               draggable={false}
             />
           </a>
 
           {/* Nav desktop */}
           <nav
-            aria-label="Main navigation"
-            className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 text-sm font-medium text-zinc-600 md:flex dark:text-zinc-300"
+            aria-label={messages.mainNavigationLabel}
+            onMouseLeave={() => setSuppressNavHover(false)}
+            className={`absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 text-sm font-medium md:flex ${overDarkHero ? "text-zinc-200" : "text-zinc-600 dark:text-zinc-300"}`}
           >
           {navLinks.map(({ href, label }) => (
-              <a key={href} href={href} className="relative text-zinc-600 transition-colors hover:text-zinc-950 after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-zinc-950 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 dark:text-zinc-300 dark:hover:text-white dark:after:bg-white">
+              <a
+                key={href}
+                href={href}
+                onMouseEnter={() => setSuppressNavHover(false)}
+                className={`relative transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:transition-transform after:duration-300 ${overDarkHero ? "text-zinc-200 hover:text-white after:bg-white" : "text-zinc-600 hover:text-zinc-950 after:bg-zinc-950 dark:text-zinc-300 dark:hover:text-white dark:after:bg-white"} ${suppressNavHover ? "" : "hover:after:origin-left hover:after:scale-x-100"}`}
+              >
                 {label}
               </a>
             ))}
@@ -150,9 +193,9 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
               <button
                 type="button"
                 onClick={toggleTheme}
-                aria-label={dark ? switchToLight : switchToDark}
-                title={dark ? switchToLight : switchToDark}
-                className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                aria-label={dark ? messages.switchToLight : messages.switchToDark}
+                title={dark ? messages.switchToLight : messages.switchToDark}
+                className={`inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors ${overDarkHero ? "text-zinc-200 hover:bg-white/10" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"}`}
               >
                 <MorphIcon icon={dark ? Sun : Moon} size={20} reducedMotion="user" />
               </button>
@@ -161,12 +204,12 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
             {/* Language */}
             <div className={`transition-opacity duration-200 ${menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
               <details className="group relative select-none">
-                <summary className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800">
-                  {isEnglish ? "EN" : "ES"}
+                <summary className={`flex size-11 cursor-pointer list-none items-center justify-center rounded-full text-xs font-medium transition-colors ${overDarkHero ? "text-zinc-200 hover:bg-white/10" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"}`}>
+                  {messages.languageCode}
                 </summary>
                 <div className="absolute right-0 top-full z-50 mt-3 min-w-36 rounded-xl border border-zinc-200 bg-white p-1.5 shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
-                  <a href="/en/" lang="en" className="block rounded-lg px-3 py-2 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800">English</a>
-                  <a href="/es/" lang="es" className="block rounded-lg px-3 py-2 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800">Español</a>
+                  <a href={englishHref} lang="en" className="block rounded-lg px-3 py-2 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800">{messages.languages.en}</a>
+                  <a href={spanishHref} lang="es" className="block rounded-lg px-3 py-2 text-sm text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800">{messages.languages.es}</a>
                 </div>
               </details>
             </div>
@@ -174,19 +217,19 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
             {/* CTA desktop */}
             <a
               href={`/${lang}/contact/`}
-              className={`ml-1 hidden select-none rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-zinc-800 md:inline-flex dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white ${menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+              className={`ml-1 hidden select-none rounded-full px-5 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5 md:inline-flex ${overDarkHero ? "bg-white text-zinc-950 hover:bg-zinc-100" : "bg-zinc-950 text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white"} ${menuOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}
             >
-              {isEnglish ? "Let's talk" : "Hablemos"}
+              {messages.cta}
             </a>
 
             {/* Menu toggle mobile */}
             <button
               type="button"
               onClick={() => setMenuOpen((o) => !o)}
-              aria-label={menuOpen ? closeLabel : openLabel}
+              aria-label={menuOpen ? messages.closeMenu : messages.openMenu}
               aria-expanded={menuOpen}
               aria-controls="fullscreen-menu"
-              className="ml-1 flex size-11 items-center justify-center text-zinc-600 transition-colors md:hidden dark:text-zinc-300"
+              className={`ml-1 flex size-11 items-center justify-center transition-colors md:hidden ${overDarkHero ? "text-zinc-200" : "text-zinc-600 dark:text-zinc-300"}`}
             >
               <MorphIcon icon={menuOpen ? X : Menu} size={20} reducedMotion="user" />
             </button>
@@ -199,11 +242,11 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
         id="fullscreen-menu"
         role="dialog"
         aria-modal="true"
-        aria-label={isEnglish ? "Navigation menu" : "Menú de navegación"}
+        aria-label={messages.navigationMenuLabel}
         className={`fixed inset-0 z-40 flex flex-col bg-white transition-transform duration-500 ease-in-out md:hidden dark:bg-zinc-950 ${menuOpen ? "translate-y-0" : "-translate-y-full pointer-events-none"}`}
       >
         <nav
-          aria-label="Mobile navigation"
+          aria-label={messages.mobileNavigationLabel}
           className="flex flex-col items-start gap-1 px-8 pt-24"
         >
           {navLinks.map(({ href, label }) => (
@@ -224,7 +267,7 @@ export default function NavBar({ lang, switchToDark, switchToLight, openMenu: op
             onClick={() => setMenuOpen(false)}
             className="flex w-full items-center justify-center rounded-2xl bg-zinc-950 py-4 text-base font-semibold text-white transition-colors hover:bg-zinc-800 active:scale-95 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
-            {isEnglish ? "Let's talk" : "Hablemos"}
+            {messages.cta}
           </a>
         </div>
       </div>

@@ -2,5 +2,17 @@
   "title": "Página no encontrada | Sebastian Sanchez",
   "description": "La página que buscas no existe o ha cambiado de dirección.",
   "heading": "Página no encontrada",
-  "backHome": "Volver al inicio"
+  "eyebrow": "404 / RUTA_NO_ENCONTRADA",
+  "terminal": {
+    "prompt": "portfolio",
+    "command": "curl -i",
+    "status": "HTTP/2 404",
+    "contentType": "content-type: application/json",
+    "response": {
+      "error": "ruta_no_encontrada",
+      "message": "Prueba con una entrada estable."
+    }
+  },
+  "backHome": "Volver al inicio",
+  "viewProjects": "Ver proyectos"
 }

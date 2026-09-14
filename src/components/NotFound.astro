@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "./NavBar.astro";
 import en from "../messages/en/404.json";
 import es from "../messages/es/404.json";
 
@@ -10,20 +11,69 @@ interface Props {
 
 const { lang } = Astro.props;
 const messages = lang === "es" ? es : en;
+const requestedUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <BaseLayout lang={lang} messages={messages} noindex>
-  <main class="grid min-h-screen place-items-center bg-white px-6 py-16 text-center text-neutral-950">
-    <div class="max-w-lg">
-      <p class="text-8xl font-bold tracking-tight">404</p>
-      <h1 class="mt-6 text-3xl font-semibold">{messages.heading}</h1>
-      <p class="mt-4 text-lg text-neutral-600">{messages.description}</p>
-      <a
-        href={`/${lang}/`}
-        class="mt-8 inline-block rounded-lg bg-neutral-950 px-6 py-3 font-medium text-white hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950"
-      >
-        {messages.backHome}
-      </a>
+  <NavBar lang={lang} />
+
+  <main class="relative min-h-screen overflow-hidden bg-white px-6 py-24 text-neutral-950 dark:bg-zinc-950 dark:text-white">
+    <div class="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 select-none text-[34vw] font-bold leading-none tracking-tight text-zinc-950/[0.03] dark:text-white/[0.04]">
+      404
+    </div>
+
+    <div class="relative mx-auto grid min-h-[calc(100vh-12rem)] max-w-6xl items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+      <section class="py-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
+          {messages.eyebrow}
+        </p>
+        <h1 class="mt-5 text-6xl font-bold tracking-tight sm:text-8xl">404</h1>
+        <h2 class="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+          {messages.heading}
+        </h2>
+        <p class="mt-4 max-w-xl text-lg leading-8 text-neutral-600 dark:text-zinc-400">
+          {messages.description}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={`/${lang}/`}
+            class="inline-flex items-center justify-center rounded-lg bg-neutral-950 px-6 py-3 font-medium text-white transition-colors hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
+          >
+            {messages.backHome}
+          </a>
+          <a
+            href={`/${lang}/projects/`}
+            class="inline-flex items-center justify-center rounded-lg border border-zinc-200 px-6 py-3 font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950 dark:border-zinc-800 dark:text-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:focus-visible:outline-white"
+          >
+            {messages.viewProjects}
+          </a>
+        </div>
+      </section>
+
+      <aside class="relative overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 text-zinc-100 shadow-2xl shadow-zinc-950/10 dark:border-zinc-800 dark:bg-black">
+        <div class="flex h-10 items-center gap-2 border-b border-white/10 px-4">
+          <span class="size-3 rounded-full bg-red-400"></span>
+          <span class="size-3 rounded-full bg-yellow-300"></span>
+          <span class="size-3 rounded-full bg-emerald-400"></span>
+        </div>
+        <div class="relative space-y-5 p-5 font-mono text-sm">
+          <p class="break-words leading-6">
+            <span class="text-emerald-300">{messages.terminal.prompt}</span>
+            <span class="text-zinc-500">:$</span>
+            <span> {messages.terminal.command}</span>
+            <span class="text-sky-300"> {requestedUrl}</span>
+          </p>
+          <div class="space-y-2 text-zinc-300">
+            <p class="text-red-300">{messages.terminal.status}</p>
+            <p class="text-zinc-500">{messages.terminal.contentType}</p>
+            <pre class="overflow-x-auto rounded border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-zinc-300"><code>{`{
+  "error": "${messages.terminal.response.error}",
+  "message": "${messages.terminal.response.message}"
+}`}</code></pre>
+          </div>
+        </div>
+      </aside>
     </div>
   </main>
 </BaseLayout>

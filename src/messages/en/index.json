@@ -4,5 +4,78 @@
   "ogTitle": "Sebastian Sanchez | Software Engineer",
   "ogDescription": "Building scalable backend systems, web applications, and mobile products.",
   "ogImageAlt": "Sebastian Sanchez — Software Engineer",
-  "heading": "Sebas"
+  "hero": {
+    "eyebrow": "Software Engineer",
+    "heading": "I build software for real products, real users, and real problems.",
+    "description": "I design and build scalable backend systems, modern web applications, and mobile experiences with clean architecture.",
+    "primaryCta": "View my work",
+    "secondaryCta": "Read about me",
+    "proof": ["Real products.", "Real users.", "Real impact."],
+    "techLabel": "Trusted technologies",
+    "scrollLabel": "Scroll",
+    "location": "Based in Colombia",
+    "availability": "Available remotely",
+    "technologies": [
+      {
+        "name": "Java",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+      },
+      {
+        "name": "Spring Boot",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+      },
+      {
+        "name": "React",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      },
+      {
+        "name": "React Native",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      },
+      {
+        "name": "Next.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+      },
+      {
+        "name": "Astro",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg"
+      },
+      {
+        "name": "PostgreSQL",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+      },
+      {
+        "name": "AWS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+      },
+      {
+        "name": "C++",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+      },
+      {
+        "name": "Git",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+      },
+      {
+        "name": "Docker",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+      },
+      {
+        "name": "Node.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+      },
+      {
+        "name": "Vercel",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
+      }
+    ]
+  }
 }

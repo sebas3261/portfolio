@@ -1,0 +1,22 @@
+{
+  "brandHomeLabel": "Sebastian Sanchez - Inicio",
+  "mainNavigationLabel": "Navegación principal",
+  "mobileNavigationLabel": "Navegación móvil",
+  "navigationMenuLabel": "Menú de navegación",
+  "switchToDark": "Activar modo oscuro",
+  "switchToLight": "Activar modo claro",
+  "openMenu": "Abrir menú",
+  "closeMenu": "Cerrar menú",
+  "languageCode": "ES",
+  "languages": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "links": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "blog": "Blog"
+  },
+  "cta": "Hablemos"
+}

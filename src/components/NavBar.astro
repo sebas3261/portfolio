@@ -1,15 +1,17 @@
 ---
 import NavBarReact from "./NavBar";
+import en from "../messages/en/navbar.json";
+import es from "../messages/es/navbar.json";
 
-const { lang = "en" } = Astro.props;
-const isEnglish = lang === "en";
+const { lang = "en", variant = "default" } = Astro.props;
+const messages = lang === "es" ? es : en;
+const currentPath = Astro.url.pathname;
 ---
 
 <NavBarReact
   client:load
   lang={lang}
-  switchToDark={isEnglish ? "Switch to dark mode" : "Cambiar a modo oscuro"}
-  switchToLight={isEnglish ? "Switch to light mode" : "Cambiar a modo claro"}
-  openMenu={isEnglish ? "Open menu" : "Abrir menú"}
-  closeMenu={isEnglish ? "Close menu" : "Cerrar menú"}
+  messages={messages}
+  currentPath={currentPath}
+  variant={variant}
 />

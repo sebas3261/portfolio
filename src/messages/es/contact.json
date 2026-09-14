@@ -1,0 +1,18 @@
+{
+  "title": "Contacto | Sebastian Sanchez",
+  "description": "Ponte en contacto con Sebastian Sanchez para proyectos de ingeniería de software, sistemas backend, aplicaciones web y desarrollo de producto.",
+  "ogTitle": "Contacto | Sebastian Sanchez",
+  "ogDescription": "Hablemos sobre ingeniería de software, sistemas backend, aplicaciones web y desarrollo de producto.",
+  "ogImageAlt": "Sebastian Sanchez — Contacto",
+  "eyebrow": "Contacto",
+  "heading": "Construyamos algo que valga la pena mantener.",
+  "intro": "¿Tienes un proyecto, rol o problema técnico en mente? Envíame una nota y te responderé.",
+  "emailLabel": "Email",
+  "email": "hello@sebastian3261.com",
+  "availability": "Abierto a proyectos de ingeniería de software y colaboraciones enfocadas en producto.",
+  "linksLabel": "También en",
+  "links": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}

@@ -1,0 +1,36 @@
+---
+import "../../styles/global.css";
+import en from "../../messages/en/projects.json";
+import es from "../../messages/es/projects.json";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/NavBar.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+const lang = Astro.params.lang === "es" ? "es" : "en";
+const messages = lang === "es" ? es : en;
+---
+
+<BaseLayout lang={lang} messages={messages}>
+  <NavBar lang={lang} />
+
+  <main class="min-h-screen bg-white px-6 py-32 text-zinc-950 dark:bg-zinc-950 dark:text-white">
+    <section class="mx-auto max-w-5xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
+        {messages.eyebrow}
+      </p>
+      <h1 class="mt-5 max-w-3xl text-5xl font-bold tracking-tight sm:text-7xl">
+        {messages.heading}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+        {messages.intro}
+      </p>
+
+      <div class="mt-14 rounded-lg border border-dashed border-zinc-300 p-10 text-center dark:border-zinc-700">
+        <p class="text-zinc-500 dark:text-zinc-400">{messages.emptyState}</p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,20 @@
+{
+  "title": "Sobre mí | Sebastian Sanchez",
+  "description": "Conoce más sobre Sebastian Sanchez, ingeniero informático enfocado en sistemas backend, aplicaciones web, productos móviles y arquitectura mantenible.",
+  "ogTitle": "Sobre mí | Sebastian Sanchez",
+  "ogDescription": "Ingeniero informático enfocado en sistemas escalables, arquitectura limpia e ingeniería de producto.",
+  "ogImageAlt": "Sebastian Sanchez — Sobre mí",
+  "eyebrow": "Sobre mí",
+  "heading": "Construyendo software con pensamiento claro de sistemas.",
+  "intro": "Soy Sebastian Sanchez, ingeniero informático enfocado en sistemas backend, aplicaciones web y productos móviles claros de usar y mantener.",
+  "sections": [
+    {
+      "title": "Lo que me importa",
+      "body": "Arquitectura limpia, APIs confiables, experiencias de usuario prácticas y codebases que sigan siendo agradables de evolucionar."
+    },
+    {
+      "title": "Cómo trabajo",
+      "body": "Me gusta entender primero el contexto del producto y luego crear soluciones que equilibren velocidad, calidad y mantenibilidad."
+    }
+  ]
+}

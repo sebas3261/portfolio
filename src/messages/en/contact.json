@@ -1,0 +1,18 @@
+{
+  "title": "Contact | Sebastian Sanchez",
+  "description": "Get in touch with Sebastian Sanchez for software engineering, backend systems, web applications, and product development work.",
+  "ogTitle": "Contact | Sebastian Sanchez",
+  "ogDescription": "Reach out to talk about software engineering, backend systems, web applications, and product development.",
+  "ogImageAlt": "Sebastian Sanchez — Contact",
+  "eyebrow": "Contact",
+  "heading": "Let's build something worth maintaining.",
+  "intro": "Have a project, role, or technical problem in mind? Send me a note and I will get back to you.",
+  "emailLabel": "Email",
+  "email": "hello@sebastian3261.com",
+  "availability": "Open to software engineering projects and product-focused collaborations.",
+  "linksLabel": "Elsewhere",
+  "links": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}
