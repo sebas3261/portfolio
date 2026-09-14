@@ -26,8 +26,10 @@ const heroTechnologies = [
     <video
       id="hero-video"
       class="absolute inset-0 z-10 h-full w-full object-cover opacity-70"
+      autoplay
       muted
       playsinline
+      webkit-playsinline
       preload="auto"
     >
       <source src={heroVideo} type="video/mp4" />
@@ -115,6 +117,7 @@ const heroTechnologies = [
     const START_TIME = 0.8;
     let ticking = false;
     let targetTime = START_TIME;
+    let primed = false;
 
     function updateTargetTime() {
       if (!hero || !heroVideo || !Number.isFinite(heroVideo.duration)) return;
@@ -147,11 +150,31 @@ const heroTechnologies = [
       });
     }
 
+    async function primeHeroVideo() {
+      if (!heroVideo || primed) return;
+
+      primed = true;
+      heroVideo.muted = true;
+      heroVideo.currentTime = START_TIME;
+
+      try {
+        await heroVideo.play();
+        heroVideo.pause();
+        heroVideo.currentTime = targetTime;
+      } catch {
+        heroVideo.currentTime = START_TIME;
+      }
+
+      requestSync();
+    }
+
     heroVideo?.pause();
     if (heroVideo) {
       heroVideo.currentTime = START_TIME;
     }
     heroVideo?.addEventListener("loadedmetadata", requestSync);
+    heroVideo?.addEventListener("loadeddata", primeHeroVideo, { once: true });
+    heroVideo?.addEventListener("canplay", primeHeroVideo, { once: true });
     window.addEventListener("scroll", requestSync, { passive: true });
     window.addEventListener("resize", requestSync);
   </script>
