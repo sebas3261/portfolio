@@ -1,0 +1,8 @@
+---
+import NotFound from "../components/NotFound.astro";
+
+// In development, use the missing URL's language. The static fallback builds in English.
+const lang = Astro.url.pathname.split("/")[1] === "es" ? "es" : "en";
+---
+
+<NotFound lang={lang} />

@@ -1,0 +1,15 @@
+---
+import NavBarReact from "./NavBar";
+
+const { lang = "en" } = Astro.props;
+const isEnglish = lang === "en";
+---
+
+<NavBarReact
+  client:load
+  lang={lang}
+  switchToDark={isEnglish ? "Switch to dark mode" : "Cambiar a modo oscuro"}
+  switchToLight={isEnglish ? "Switch to light mode" : "Cambiar a modo claro"}
+  openMenu={isEnglish ? "Open menu" : "Abrir menú"}
+  closeMenu={isEnglish ? "Close menu" : "Cerrar menú"}
+/>

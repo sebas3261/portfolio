@@ -4,9 +4,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !/\/404\/?$/.test(new URL(page).pathname),
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()]
@@ -20,5 +27,5 @@ export default defineConfig({
     },
   },
 
-  site: "https://portfolionew-nine-nu.vercel.app",
+  site: "https://sebas3261.com",
 });

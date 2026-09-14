@@ -1,0 +1,11 @@
+---
+import NotFound from "../../components/NotFound.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+const lang = Astro.params.lang === "es" ? "es" : "en";
+---
+
+<NotFound lang={lang} />

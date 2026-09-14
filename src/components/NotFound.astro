@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import en from "../messages/en/404.json";
+import es from "../messages/es/404.json";
+
+interface Props {
+  lang: "en" | "es";
+}
+
+const { lang } = Astro.props;
+const messages = lang === "es" ? es : en;
+---
+
+<BaseLayout lang={lang} messages={messages} noindex>
+  <main class="grid min-h-screen place-items-center bg-white px-6 py-16 text-center text-neutral-950">
+    <div class="max-w-lg">
+      <p class="text-8xl font-bold tracking-tight">404</p>
+      <h1 class="mt-6 text-3xl font-semibold">{messages.heading}</h1>
+      <p class="mt-4 text-lg text-neutral-600">{messages.description}</p>
+      <a
+        href={`/${lang}/`}
+        class="mt-8 inline-block rounded-lg bg-neutral-950 px-6 py-3 font-medium text-white hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950"
+      >
+        {messages.backHome}
+      </a>
+    </div>
+  </main>
+</BaseLayout>
