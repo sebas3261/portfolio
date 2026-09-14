@@ -1,0 +1,81 @@
+{
+  "title": "PlayZone VIP | Sebastian Sanchez",
+  "description": "Case study for PlayZone VIP, a client web application built and deployed with Next.js, TypeScript, and responsive design.",
+  "ogTitle": "PlayZone VIP | Sebastian Sanchez",
+  "ogDescription": "A production client web application built with Next.js, TypeScript, JavaScript, HTML, and CSS.",
+  "ogImageAlt": "PlayZone VIP — Case study",
+  "back": "Back to projects",
+  "eyebrow": "Freelance project",
+  "icon": "https://www.playzonevip.com/favicon.ico",
+  "name": "PlayZone VIP",
+  "headline": "A production website for turning a brand idea into a usable experience.",
+  "summary": "PlayZone VIP was a freelance project where the challenge was not just building an interface, but turning business requirements into a clear, responsive, production-ready web experience.",
+  "meta": [
+    { "label": "Role", "value": "Frontend / Deploy" },
+    { "label": "Status", "value": "Production" },
+    { "label": "Type", "value": "Freelance client" }
+  ],
+  "links": [
+    { "label": "View web", "url": "https://www.playzonevip.com/" }
+  ],
+  "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+  "overviewLabel": "Overview",
+  "problem": {
+    "title": "The problem",
+    "body": "The client needed a web presence that communicated the brand, worked well on mobile, and could be deployed without becoming hard to maintain.",
+    "points": [
+      "Turn business requirements into a concrete interface.",
+      "Keep the experience clear across desktop and mobile.",
+      "Ship to production with a simple foundation that could evolve."
+    ]
+  },
+  "role": {
+    "title": "My role",
+    "body": "I handled frontend development, responsive adaptation, project structure, and deployment. It was an end-to-end execution job: understand what the client needed, build it, and leave it running in production.",
+    "items": ["Frontend", "Responsive design", "TypeScript", "UI implementation", "Deploy", "Production adjustments"]
+  },
+  "sections": [
+    {
+      "title": "Goal",
+      "body": "Translate a business need into a website that felt direct, navigable, and ready for real users.",
+      "points": [
+        "Define a clear visual structure.",
+        "Prioritize simple navigation and scannable content.",
+        "Avoid unnecessary complexity to keep the project agile."
+      ]
+    },
+    {
+      "title": "Execution",
+      "body": "I built the interface with Next.js and TypeScript, taking care of structure, styling, mobile adaptation, and deployment. The focus was keeping the product understandable, stable, and easy to adjust.",
+      "points": [
+        "Organized components and styles to make changes easier.",
+        "Responsive design for different screen sizes.",
+        "Visual detail review before moving to production.",
+        "Final deployment and follow-up adjustments based on client needs."
+      ]
+    },
+    {
+      "title": "Challenges",
+      "body": "In a freelance project, the technical challenge is mixed with communication, timing, and practical decisions. The goal was to ship something polished without overdesigning it.",
+      "points": [
+        "Balance delivery speed with maintainability.",
+        "Make visual and technical decisions with incomplete information.",
+        "Keep scope controlled enough to reach production."
+      ]
+    },
+    {
+      "title": "Learning",
+      "body": "This project reinforced the importance of communicating tradeoffs clearly, moving with real constraints, and closing the loop all the way to production.",
+      "points": [
+        "A project is not done when it compiles; it is done when it is published and serves its goal.",
+        "Simple structure is often better than heavy architecture for a client website.",
+        "Responsive design is not an extra; it is central to the experience."
+      ]
+    }
+  ],
+  "highlights": ["Client project", "Responsive design", "Production", "Maintainable frontend"],
+  "next": {
+    "title": "Next",
+    "body": "Polish the case study with real screenshots, visual decisions, and a more detailed read of the deployment process."
+  }
+}

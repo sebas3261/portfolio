@@ -1,0 +1,82 @@
+{
+  "title": "MVNEX | Sebastian Sanchez",
+  "description": "Caso de estudio de MVNEX, proyecto de sistemas en C++ enfocado en rendimiento, estructuras de datos y profundidad de implementación.",
+  "ogTitle": "MVNEX | Sebastian Sanchez",
+  "ogDescription": "Proyecto de sistemas en C++ enfocado en rendimiento, estructuras de datos y profundidad técnica.",
+  "ogImageAlt": "MVNEX — Caso de estudio",
+  "back": "Volver a proyectos",
+  "eyebrow": "Proyecto de sistemas",
+  "name": "MVNEX",
+  "headline": "Un proyecto para bajar de nivel, pensar en performance y fortalecer fundamentos.",
+  "summary": "MVNEX es un proyecto en C++ orientado a practicar estructuras de datos, algoritmos, rendimiento y diseño de bajo nivel. No nace como producto comercial, sino como un espacio para construir criterio técnico fuera de la comodidad de los frameworks web.",
+  "meta": [
+    { "label": "Rol", "value": "Sistemas / C++" },
+    { "label": "Estado", "value": "En desarrollo" },
+    { "label": "Enfoque", "value": "Performance" }
+  ],
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/sebas3261/mvnex" }
+  ],
+  "stack": ["C++", "Estructuras de datos", "Algoritmos", "Memoria", "Performance", "Linux", "Git"],
+  "overviewLabel": "Resumen",
+  "problem": {
+    "title": "El punto de partida",
+    "body": "Gran parte del desarrollo moderno permite avanzar rápido, pero también puede esconder cómo se comporta realmente el software. MVNEX nace para practicar decisiones más cercanas al sistema: estructuras, memoria, costos de ejecución y diseño interno.",
+    "points": [
+      "Salir del flujo habitual de frameworks y trabajar con C++.",
+      "Practicar fundamentos de Computer Science en código real.",
+      "Entender mejor los tradeoffs entre simplicidad, rendimiento y control."
+    ]
+  },
+  "role": {
+    "title": "Mi rol",
+    "body": "Es un proyecto personal, así que mi rol cubre diseño, implementación, pruebas manuales, decisiones internas y documentación del aprendizaje. El objetivo es mejorar criterio, no solo terminar features.",
+    "items": ["Diseño interno", "Implementación C++", "Estructuras de datos", "Análisis de performance", "Debugging", "Documentación técnica"]
+  },
+  "sections": [
+    {
+      "title": "Por qué existe",
+      "body": "No todo mi aprendizaje vive en frameworks web. MVNEX existe para obligarme a pensar más lento y con más precisión sobre cómo se organiza y ejecuta el código.",
+      "points": [
+        "Practicar estructuras de datos desde una perspectiva más cercana a implementación.",
+        "Entender mejor cómo pequeñas decisiones afectan performance y claridad.",
+        "Fortalecer fundamentos que también mejoran mi trabajo backend y de arquitectura."
+      ]
+    },
+    {
+      "title": "Qué explora",
+      "body": "El proyecto se enfoca en C++, estructuras de datos, algoritmos, diseño de APIs internas y hábitos de desarrollo más cercanos a sistemas.",
+      "points": [
+        "Diseño de interfaces internas pequeñas y explícitas.",
+        "Uso de estructuras de datos con atención a costo y comportamiento.",
+        "Lectura de código desde mantenibilidad y no solo desde funcionamiento.",
+        "Trabajo con Linux, Git y ciclos de prueba más manuales."
+      ]
+    },
+    {
+      "title": "Retos",
+      "body": "A diferencia de una app web, aquí el feedback no siempre es visual. El reto está en razonar mejor, medir cuando haga falta y no esconder complejidad detrás de abstracciones prematuras.",
+      "points": [
+        "Evitar construir abstracciones antes de entender el problema.",
+        "Mantener el código legible mientras se optimizan partes concretas.",
+        "Distinguir entre performance real y micro-optimizaciones sin impacto.",
+        "Documentar decisiones para que el proyecto no se vuelva una caja negra."
+      ]
+    },
+    {
+      "title": "Qué busco aprender",
+      "body": "Me interesa mejorar mi criterio para escribir software eficiente, entender tradeoffs de rendimiento y conectar fundamentos de Computer Science con código real.",
+      "points": [
+        "Pensar mejor sobre memoria, estructuras y complejidad.",
+        "Escribir código más explícito y fácil de razonar.",
+        "Llevar fundamentos de algoritmos y diseño a decisiones prácticas.",
+        "Mejorar mi sensibilidad para detectar cuándo una solución simple ya es suficiente."
+      ]
+    }
+  ],
+  "highlights": ["C++", "Estructuras de datos", "Performance", "Fundamentos CS"],
+  "next": {
+    "title": "Lo próximo",
+    "body": "Seguir iterando el diseño interno, agregar ejemplos más claros de uso y convertir los aprendizajes importantes en notas técnicas más específicas."
+  }
+}

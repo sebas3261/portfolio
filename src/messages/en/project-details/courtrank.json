@@ -1,0 +1,87 @@
+{
+  "title": "CourtRank | Sebastian Sanchez",
+  "description": "Case study for CourtRank, a padel club platform with a Java backend, live web product, and iOS app published on the Apple App Store.",
+  "ogTitle": "CourtRank | Sebastian Sanchez",
+  "ogDescription": "A padel club platform built with Java, Spring Boot, PostgreSQL, React Native, and Next.js.",
+  "ogImageAlt": "CourtRank — Case study",
+  "back": "Back to projects",
+  "eyebrow": "Case study",
+  "icon": "/images/courtrank.png",
+  "name": "CourtRank",
+  "headline": "A multi-platform product for turning padel club operations into real software.",
+  "summary": "CourtRank started as a product idea for organizing the experience around a padel club: reservations, players, rankings, administration, and communication. It became a real platform with a live web product, an iOS app published on the Apple App Store, and Android distribution in progress.",
+  "meta": [
+    { "label": "Role", "value": "Full-stack / Backend / Mobile" },
+    { "label": "Status", "value": "Production" },
+    { "label": "Period", "value": "2024 - Present" }
+  ],
+  "links": [
+    { "label": "View web", "url": "https://getcourtrank.com/es/" }
+  ],
+  "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "Maven", "React Native", "Expo", "Next.js", "TypeScript"],
+  "overviewLabel": "Overview",
+  "problem": {
+    "title": "The problem",
+    "body": "A padel club is not just a court schedule. There are players, reservations, availability, user relationships, rankings, points, internal communication, and admin workflows that need to coexist without becoming operational chaos.",
+    "points": [
+      "Centralize reservations and administration into a clear experience.",
+      "Connect players, clubs, and competitive activity inside the same product.",
+      "Create a technical foundation that could grow without rewriting everything after the first release."
+    ]
+  },
+  "role": {
+    "title": "My role",
+    "body": "I worked across the product end to end, with a strong focus on backend and architecture, while also contributing to web, mobile, integration, deployment, debugging, and iteration.",
+    "items": ["Requirements analysis", "System design", "Relational modeling", "API design", "Backend implementation", "Web/mobile integration", "Deployment and iteration"]
+  },
+  "sections": [
+    {
+      "title": "What I built",
+      "body": "I designed and implemented backend components, web and mobile clients, and product flows that support the core operation of the platform.",
+      "points": [
+        "Authentication and user management.",
+        "Club management and admin workflows.",
+        "Court reservations and availability.",
+        "Player relationships and social activity.",
+        "Rankings, competitive experiences, and loyalty points.",
+        "Web and mobile clients integrated through REST APIs."
+      ]
+    },
+    {
+      "title": "Technical decisions",
+      "body": "The backend was designed so the domain would not be tangled with infrastructure or framework details. The priority was keeping clear boundaries and a foundation that could evolve.",
+      "points": [
+        "Java 17 and Spring Boot for robust backend services.",
+        "PostgreSQL and Flyway for relational modeling and controlled migrations.",
+        "REST APIs as the contract between backend, web, and mobile.",
+        "Hexagonal architecture, SOLID, and dependency injection to separate domain, application, and infrastructure.",
+        "Maven, Git, and deployment workflows to support the development cycle."
+      ]
+    },
+    {
+      "title": "Challenges",
+      "body": "The main challenge was that the rules were not abstract: a reservation, club, player, or ranking has edge cases once the product starts being used for real.",
+      "points": [
+        "Model reservations and availability without making the domain fragile.",
+        "Keep consistency between web clients, mobile clients, and backend services.",
+        "Design admin workflows without making the player experience feel heavy.",
+        "Move from local development to a published, usable app."
+      ]
+    },
+    {
+      "title": "What I learned",
+      "body": "CourtRank forced me to work through the full cycle, from product thinking to publication. It is the project where I have connected engineering fundamentals with practical decisions the most.",
+      "points": [
+        "Data modeling matters a lot when the domain has real rules.",
+        "A clear backend reduces friction when web and mobile evolve at the same time.",
+        "Publishing an app forces thinking beyond code: distribution, stability, support, and iteration.",
+        "The best lessons appear when the product leaves the perfect development environment."
+      ]
+    }
+  ],
+  "highlights": ["iOS published on App Store", "Live web platform", "Java + PostgreSQL backend", "Multi-platform product"],
+  "next": {
+    "title": "Next",
+    "body": "Continue polishing the mobile experience, complete Android distribution, improve club workflows, and document the internal system decisions in more depth."
+  }
+}

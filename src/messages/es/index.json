@@ -7,7 +7,7 @@
   "hero": {
     "eyebrow": "Ingeniero informático",
     "heading": "Construyo software para productos reales, usuarios reales y problemas reales.",
-    "description": "Diseño y construyo sistemas backend escalables, aplicaciones web modernas y experiencias móviles con arquitectura limpia.",
+    "description": "Diseño y construyo sistemas backend escalables, aplicaciones web modernas y experiencias móviles con arquitectura limpia, interfaces prácticas y mentalidad de producto.",
     "primaryCta": "Ver proyectos",
     "secondaryCta": "Leer sobre mí",
     "proof": ["Productos reales.", "Usuarios reales.", "Impacto real."],
@@ -81,37 +81,37 @@
   "projectsPreview": {
     "eyebrow": "Proyectos destacados",
     "heading": "Trabajo seleccionado",
-    "intro": "Productos que he construido, usados por personas reales.",
+    "intro": "Productos y experimentos que conectan pensamiento de producto con ejecución técnica, desde servicios backend hasta interfaces web y móviles.",
     "cta": "Ver todos los proyectos",
     "items": [
       {
         "name": "CourtRank",
         "type": "Mobile + Backend",
-        "description": "Plataforma para clubes de pádel. Gestión de jugadores, clubes, reservas y experiencias competitivas.",
+        "description": "Plataforma para clubes de pádel que reúne jugadores, clubes, reservas y experiencias competitivas en un solo producto. El trabajo combina arquitectura backend, modelado de datos, flujos administrativos y una experiencia móvil en React Native pensada para uso real.",
         "stack": ["Java", "Spring Boot", "PostgreSQL", "React Native", "TypeScript"],
         "stat": { "value": "18+", "label": "usuarios activos" },
         "cta": "Ver caso de estudio",
-        "url": "https://getcourtrank.com",
+        "url": "https://getcourtrank.com/es/",
         "image": null
       },
       {
         "name": "PlayZone VIP",
         "type": "Web / Frontend",
-        "description": "Experiencia web para una marca de entretenimiento. Enfocada en rendimiento, SEO y conversión.",
+        "description": "Experiencia web para una marca de entretenimiento, enfocada en carga rápida, navegación clara, bases de SEO y páginas orientadas a conversión. El proyecto equilibra detalle visual con decisiones prácticas de rendimiento.",
         "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
         "stat": null,
         "cta": "Ver proyecto",
-        "url": "https://playzonevip.com",
+        "url": "https://www.playzonevip.com/",
         "image": null
       },
       {
         "name": "mvnx",
         "type": "Herramienta para developers",
-        "description": "Herramienta para simplificar flujos de trabajo con Maven. Open source y construida para la comunidad.",
+        "description": "Herramienta para simplificar flujos de trabajo con Maven y reducir fricción repetitiva en la terminal. Construida con mentalidad de sistemas, se enfoca en pequeñas interacciones que hacen el desarrollo diario más rápido y claro.",
         "stack": ["Java", "Shell", "Maven", "Open Source"],
         "stat": null,
         "cta": "Ver en GitHub",
-        "url": null,
+        "url": "https://mvnex.sebas3261.com",
         "image": null
       }
     ]
@@ -119,26 +119,29 @@
   "expertise": {
     "eyebrow": "Expertise",
     "heading": "Con qué trabajo",
-    "intro": "Un toolkit balanceado para construir, desplegar y escalar productos.",
+    "intro": "Un toolkit balanceado para diseñar flujos de producto, implementar servicios confiables, construir interfaces y mantener sistemas después del primer release.",
     "categories": [
       {
         "name": "Backend",
-        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"]
+        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"],
+        "description": "Disfruto construir APIs, servicios y flujos de datos que hacen que un producto sea confiable. Mi trabajo backend suele partir de límites claros, código legible y arquitectura que pueda evolucionar."
       },
       {
         "name": "Frontend",
-        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"]
+        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"],
+        "description": "Construyo interfaces que se sienten directas, responsivas y útiles. Me importan los detalles que hacen un producto más fácil de entender, sin perder de vista rendimiento y accesibilidad."
       },
       {
         "name": "Ingeniería",
-        "items": ["Arquitectura Hexagonal", "DDD", "CI/CD", "AWS", "Linux", "Git"]
+        "items": ["Arquitectura Hexagonal", "DDD", "CI/CD", "AWS", "Linux", "Git"],
+        "description": "Me interesa la capa de ingeniería alrededor del producto: despliegue, colaboración, mantenibilidad, debugging y los hábitos que mantienen sano un codebase con el tiempo."
       }
     ]
   },
   "aboutPreview": {
     "eyebrow": "Sobre mí",
     "heading": "Ingeniero de software con mentalidad de producto.",
-    "bio": "Soy Sebastian, un ingeniero de software apasionado por construir productos útiles, escalables y bien hechos. Disfruto resolver problemas reales, aprender nuevas tecnologías y convertir ideas en soluciones que funcionan.",
+    "bio": "Soy Sebastian, un ingeniero de software apasionado por construir productos útiles, escalables y bien hechos. Disfruto resolver problemas reales, aprender nuevas tecnologías y convertir ideas en soluciones que funcionan y que las personas pueden usar. Mi trabajo suele estar entre arquitectura backend, decisiones de producto y las interfaces que le dan vida al sistema.",
     "bullets": [
       { "icon": "location", "text": "Basado en Colombia" },
       { "icon": "remote",   "text": "Abierto a oportunidades remotas" },
@@ -150,7 +153,7 @@
   "closing": {
     "eyebrow": "Hablemos",
     "heading": "¿Tienes un proyecto u oportunidad en mente?",
-    "description": "Siempre estoy dispuesto a discutir nuevas ideas, proyectos interesantes o colaboraciones potenciales.",
+    "description": "Siempre estoy dispuesto a discutir nuevas ideas, proyectos interesantes o colaboraciones potenciales, especialmente cuando el trabajo involucra ingeniería de producto, sistemas backend, apps móviles o experiencias web cuidadas.",
     "cta": "Escribeme"
   }
 }

@@ -18,51 +18,122 @@ const messages = lang === "es" ? es : en;
 
   <main class="bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
 
-    <!-- Header -->
-    <section class="px-6 pb-16 pt-32 sm:pb-20 sm:pt-40">
-      <div class="mx-auto max-w-4xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
-          {messages.eyebrow}
-        </p>
-        <h1 class="mt-5 max-w-3xl text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-          {messages.heading}
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-500 dark:text-zinc-400">
-          {messages.intro}
-        </p>
+    <section class="px-6 pb-20 pt-32 sm:pb-24 sm:pt-40">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-end">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-500 dark:text-sky-400">
+            {messages.eyebrow}
+          </p>
+          <h1 class="mt-5 max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+            {messages.heading}
+          </h1>
+          <span class="mt-6 block h-1 w-24 bg-gradient-to-r from-sky-400 via-violet-400 to-emerald-400"></span>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-500 dark:text-zinc-400">
+            {messages.intro}
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="aspect-[4/5] overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900">
+            <img
+              src="/images/sebastian.webp"
+              alt={messages.photoAlt}
+              class="h-full w-full scale-[1.08] object-cover object-[50%_58%]"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')"
+            />
+            <div class="hidden h-full w-full place-items-center bg-[linear-gradient(135deg,rgba(14,165,233,0.12),rgba(139,92,246,0.08),rgba(16,185,129,0.10))] grid">
+              <span class="text-7xl font-semibold tracking-tight text-zinc-300 dark:text-zinc-700">SS</span>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 hidden w-56 border border-sky-200 bg-white p-5 shadow-sm dark:border-sky-900/60 dark:bg-zinc-950 lg:block">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-sky-500 dark:text-sky-400">{messages.profileLabel}</p>
+            <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+              {messages.profileNote}
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Bio -->
-    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl">
-        <p class="max-w-3xl text-xl leading-9 text-zinc-700 dark:text-zinc-300">
-          {messages.bio}
-        </p>
+    <section class="border-t border-zinc-200 px-6 py-10 dark:border-zinc-800">
+      <div class="mx-auto grid max-w-7xl gap-px bg-zinc-200 dark:bg-zinc-800 sm:grid-cols-3">
+        {messages.quickFacts.map((fact, index) => {
+          const accents = ["bg-sky-400", "bg-violet-400", "bg-emerald-400"];
+          return (
+          <div class="bg-white py-6 dark:bg-zinc-950">
+            <span class={`mb-4 block h-1 w-10 ${accents[index]}`}></span>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">{fact.label}</p>
+            <p class="mt-2 text-lg font-semibold">{fact.value}</p>
+          </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <h2 class="border-l-2 border-sky-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+          {messages.story.title}
+        </h2>
+        <div class="space-y-7">
+          <p class="text-2xl leading-10 tracking-tight text-zinc-800 dark:text-zinc-200">
+            {messages.bio}
+          </p>
+          {messages.story.paragraphs.map((paragraph) => (
+            <p class="max-w-3xl text-base leading-8 text-zinc-500 dark:text-zinc-400">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+          {messages.now.title}
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {messages.now.items.map((item, index) => {
+            const colors = ["text-sky-500", "text-violet-500", "text-emerald-500", "text-rose-500"];
+            return (
+            <div class="border-t border-zinc-300 pt-5 dark:border-zinc-700">
+              <p class={`text-sm font-semibold ${colors[index]}`}>0{index + 1}</p>
+              <p class="mt-3 leading-7 text-zinc-700 dark:text-zinc-300">{item}</p>
+            </div>
+            );
+          })}
+        </div>
       </div>
     </section>
 
     <!-- Focus areas -->
     <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl">
-        <h2 class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
           {messages.focus.title}
         </h2>
         <div class="mt-10 grid gap-px bg-zinc-200 dark:bg-zinc-800 sm:grid-cols-2">
-          {messages.focus.items.map((item) => (
+          {messages.focus.items.map((item, index) => {
+            const lines = ["bg-sky-400", "bg-violet-400", "bg-emerald-400", "bg-rose-400"];
+            return (
             <div class="bg-white p-8 dark:bg-zinc-950">
+              <span class={`mb-5 block h-1 w-12 ${lines[index]}`}></span>
               <h3 class="text-base font-semibold">{item.title}</h3>
               <p class="mt-3 leading-7 text-zinc-500 dark:text-zinc-400">{item.body}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
 
     <!-- Stack -->
     <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl">
-        <h2 class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="border-l-2 border-sky-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
           {messages.stack.title}
         </h2>
         <div class="mt-10 space-y-6">
@@ -71,7 +142,7 @@ const messages = lang === "es" ? es : en;
               <p class="w-24 shrink-0 text-sm font-semibold text-zinc-950 dark:text-white">{cat.name}</p>
               <div class="flex flex-wrap gap-2">
                 {cat.items.map((item) => (
-                  <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                  <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm text-zinc-600 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-sky-900 dark:hover:bg-sky-950/30 dark:hover:text-sky-300">
                     {item}
                   </span>
                 ))}
@@ -84,14 +155,14 @@ const messages = lang === "es" ? es : en;
 
     <!-- Values / How I work -->
     <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl">
-        <h2 class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
           {messages.values.title}
         </h2>
         <div class="mt-10 space-y-10">
           {messages.values.items.map((item, index) => (
             <div class="flex gap-6 sm:gap-10">
-              <p class="mt-0.5 text-2xl font-semibold tabular-nums text-zinc-200 dark:text-zinc-800">
+              <p class="mt-0.5 text-2xl font-semibold tabular-nums text-violet-500 dark:text-violet-300">
                 0{index + 1}
               </p>
               <div>
@@ -104,9 +175,24 @@ const messages = lang === "es" ? es : en;
       </div>
     </section>
 
+    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <h2 class="border-l-2 border-emerald-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+          {messages.outsideCode.title}
+        </h2>
+        <div class="flex flex-wrap gap-3">
+          {messages.outsideCode.items.map((item) => (
+            <span class="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:border-violet-900/70 dark:hover:bg-violet-950/30 dark:hover:text-violet-300">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl flex flex-col gap-3 sm:flex-row">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row">
         <a
           href={`/${lang}/projects/`}
           class="inline-flex items-center justify-center rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"

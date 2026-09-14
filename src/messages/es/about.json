@@ -1,19 +1,44 @@
 {
   "title": "Sobre mí | Sebastian Sanchez",
-  "description": "Conoce más sobre Sebastian Sanchez, ingeniero de software enfocado en sistemas backend, aplicaciones web, productos móviles y arquitectura mantenible.",
+  "description": "Conoce más sobre Sebastian Sanchez Sandoval, ingeniero de software enfocado en backend, web, aplicaciones móviles en producción y arquitectura mantenible.",
   "ogTitle": "Sobre mí | Sebastian Sanchez",
   "ogDescription": "Ingeniero de software enfocado en sistemas escalables, arquitectura limpia e ingeniería de producto cuidadosa.",
   "ogImageAlt": "Sebastian Sanchez — Sobre mí",
   "eyebrow": "Sobre mí",
   "heading": "Construyendo software con pensamiento de sistemas.",
-  "intro": "Soy Sebastian Sanchez, ingeniero de software basado en Colombia. Trabajo entre backend, web y mobile — enfocado en sistemas confiables, fáciles de evolucionar y que realmente resuelven el problema.",
-  "bio": "Empecé a programar en serio alrededor de 2021, atraído por la idea de que el software puede hacer que las cosas funcionen mejor para personas reales. Desde entonces he construido productos a lo largo del stack completo — desde APIs con Spring Boot y bases de datos relacionales hasta apps con React Native y frontends con Next.js. Me importa entender el contexto del producto antes de escribir una línea, y me importa aún más dejar el codebase en mejor estado del que lo encontré.",
+  "intro": "Soy Sebastian Sanchez Sandoval, ingeniero de software y estudiante de último semestre de Ingeniería Informática en Colombia. Trabajo entre backend, web y mobile, enfocado en productos reales, sistemas confiables y software fácil de evolucionar.",
+  "photoAlt": "Retrato de Sebastian Sanchez",
+  "profileLabel": "Perfil",
+  "profileNote": "Backend, web y mobile. Mentalidad de producto por costumbre.",
+  "quickFacts": [
+    { "label": "Ubicación", "value": "Colombia" },
+    { "label": "Enfoque", "value": "Java, web y mobile" },
+    { "label": "Disponibilidad", "value": "Remoto" }
+  ],
+  "bio": "Empecé a programar en serio alrededor de 2021, atraído por la idea de que el software puede hacer que las cosas funcionen mejor para personas reales. Desde entonces he construido productos a lo largo del stack completo: APIs con Java 17 y Spring Boot, bases de datos PostgreSQL, aplicaciones web con Next.js y Astro, y apps móviles con React Native y Expo.",
+  "story": {
+    "title": "La versión menos acartonada",
+    "paragraphs": [
+      "Me gusta construir cosas que pasan de idea a uso real. CourtRank es el ejemplo más claro: una plataforma para clubes de pádel con web en producción y aplicación iOS publicada en App Store, además de distribución Android en progreso.",
+      "Mi zona favorita está en el cruce entre ingeniería y producto. Me interesa hablar con claridad sobre tradeoffs, entender por qué algo importa y luego llevarlo a una implementación que no se caiga al primer cambio.",
+      "También trabajo como freelance construyendo y desplegando aplicaciones web para clientes. PlayZone VIP fue parte de ese camino, y Foundi Finance es uno de mis proyectos personales actuales alrededor de finanzas personales, performance y arquitectura frontend mantenible."
+    ]
+  },
+  "now": {
+    "title": "Ahora mismo",
+    "items": [
+      "Terminando mi carrera de Ingeniería Informática en la Universidad de La Sabana.",
+      "Construyendo CourtRank y Foundi Finance.",
+      "Preparándome para la certificación AWS Certified Solutions Architect – Associate.",
+      "Abierto a proyectos freelance, colaboración y oportunidades remotas."
+    ]
+  },
   "focus": {
     "title": "En qué me enfoco",
     "items": [
       {
         "title": "Sistemas backend",
-        "body": "APIs REST, arquitectura de servicios, diseño de bases de datos. Me gusta construir cosas que escalen bien y fallen de forma predecible."
+        "body": "Java 17, Spring Boot, REST APIs, microservicios, Maven, Flyway y PostgreSQL. Me gusta construir cosas que escalen bien y fallen de forma predecible."
       },
       {
         "title": "Desarrollo web",
@@ -21,7 +46,7 @@
       },
       {
         "title": "Mobile",
-        "body": "React Native para productos multiplataforma. Me enfoco en la conexión entre el UX móvil y los sistemas detrás."
+        "body": "React Native y Expo para productos multiplataforma. Me enfoco en la conexión entre el UX móvil y los sistemas detrás."
       },
       {
         "title": "Arquitectura",
@@ -34,11 +59,11 @@
     "categories": [
       {
         "name": "Backend",
-        "items": ["Java", "Spring Boot", "Node.js", "PostgreSQL", "REST APIs"]
+        "items": ["Java 17", "Spring Boot", "Node.js", "PostgreSQL", "REST APIs", "Maven", "Flyway"]
       },
       {
         "name": "Frontend",
-        "items": ["TypeScript", "React", "Next.js", "Astro", "Tailwind CSS"]
+        "items": ["JavaScript", "TypeScript", "React", "Next.js", "Astro", "Tailwind CSS"]
       },
       {
         "name": "Mobile",
@@ -46,7 +71,7 @@
       },
       {
         "name": "Infraestructura",
-        "items": ["AWS", "Docker", "Git", "Vercel"]
+        "items": ["AWS", "EC2", "RDS", "IAM", "VPC", "Docker", "GitHub Actions", "Nginx"]
       }
     ]
   },
@@ -66,6 +91,10 @@
         "body": "El código se lee mucho más de lo que se escribe. La claridad y la consistencia me importan mucho."
       }
     ]
+  },
+  "outsideCode": {
+    "title": "También soy",
+    "items": ["Español nativo", "Inglés B2", "Curioso por defecto", "Deportista casual", "Un poco obsesivo con los detalles"]
   },
   "cta": {
     "projects": "Ver mis proyectos",

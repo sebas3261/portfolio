@@ -1,0 +1,230 @@
+---
+import "../../../styles/global.css";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import NavBar from "../../../components/NavBar.astro";
+
+import courtrankEn from "../../../messages/en/project-details/courtrank.json";
+import courtrankEs from "../../../messages/es/project-details/courtrank.json";
+import playzoneVipEn from "../../../messages/en/project-details/playzone-vip.json";
+import playzoneVipEs from "../../../messages/es/project-details/playzone-vip.json";
+import mvnexEn from "../../../messages/en/project-details/mvnex.json";
+import mvnexEs from "../../../messages/es/project-details/mvnex.json";
+
+const projectMessages = {
+  en: {
+    courtrank: courtrankEn,
+    "playzone-vip": playzoneVipEn,
+    mvnex: mvnexEn,
+  },
+  es: {
+    courtrank: courtrankEs,
+    "playzone-vip": playzoneVipEs,
+    mvnex: mvnexEs,
+  },
+};
+
+export function getStaticPaths() {
+  return ["en", "es"].flatMap((lang) =>
+    ["courtrank", "playzone-vip", "mvnex"].map((slug) => ({
+      params: { lang, slug },
+    })),
+  );
+}
+
+const lang = Astro.params.lang === "es" ? "es" : "en";
+const slug = Astro.params.slug ?? "courtrank";
+const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] ?? projectMessages[lang].courtrank;
+---
+
+<BaseLayout lang={lang} messages={messages}>
+  <NavBar lang={lang} />
+
+  <main class="bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
+    <section class="px-6 pb-16 pt-32 sm:pb-20 sm:pt-40">
+      <div class="mx-auto max-w-7xl">
+        <a
+          href={`/${lang}/projects/`}
+          class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+        >
+          <span aria-hidden="true">←</span>
+          {messages.back}
+        </a>
+
+        <div class="mt-12 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-500 dark:text-sky-400">
+              {messages.eyebrow}
+            </p>
+            <div class="mt-5 flex items-center gap-5">
+              {messages.icon && (
+                <img
+                  src={messages.icon}
+                  alt=""
+                  class="size-20 rounded-2xl border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900"
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
+              <h1 class="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+                {messages.name}
+              </h1>
+            </div>
+            <span class="mt-6 block h-1 w-24 bg-gradient-to-r from-sky-400 via-violet-400 to-emerald-400"></span>
+          </div>
+          <p class="max-w-3xl text-2xl leading-10 tracking-tight text-zinc-700 dark:text-zinc-300">
+            {messages.headline}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 px-6 py-12 dark:border-zinc-800">
+      <div class="mx-auto grid max-w-7xl gap-px bg-zinc-200 dark:bg-zinc-800 sm:grid-cols-3">
+        {messages.meta.map((item, index) => {
+          const accents = ["bg-sky-400", "bg-violet-400", "bg-emerald-400"];
+          return (
+            <div class="bg-white py-6 dark:bg-zinc-950">
+              <span class={`mb-4 block h-1 w-10 ${accents[index]}`}></span>
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">{item.label}</p>
+              <p class="mt-2 text-lg font-semibold">{item.value}</p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+        <div>
+          <p class="border-l-2 border-sky-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+            {messages.overviewLabel ?? "Overview"}
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            {messages.links.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+              >
+                {link.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+            {messages.summary}
+          </p>
+          <div class="mt-8 flex flex-wrap gap-2">
+            {messages.stack.map((tech) => (
+              <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm text-zinc-600 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-sky-900 dark:hover:bg-sky-950/30 dark:hover:text-sky-300">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {messages.problem && (
+      <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+          <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+            {messages.problem.title}
+          </h2>
+          <div>
+            <p class="max-w-3xl text-xl leading-9 text-zinc-700 dark:text-zinc-300">
+              {messages.problem.body}
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              {messages.problem.points.map((point, index) => {
+                const accents = ["border-sky-400", "border-violet-400", "border-emerald-400"];
+                return (
+                  <p class={`border-t pt-4 text-sm leading-6 text-zinc-500 dark:text-zinc-400 ${accents[index]}`}>
+                    {point}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {messages.role && (
+      <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900 sm:py-20">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+          <h2 class="border-l-2 border-emerald-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+            {messages.role.title}
+          </h2>
+          <div>
+            <p class="max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+              {messages.role.body}
+            </p>
+            <div class="mt-8 flex flex-wrap gap-2">
+              {messages.role.items.map((item) => (
+                <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-sm font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-400">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {messages.highlights.map((highlight, index) => {
+          const accents = ["bg-sky-400", "bg-violet-400", "bg-emerald-400", "bg-rose-400"];
+          return (
+            <div class="border-t border-zinc-300 pt-5 dark:border-zinc-700">
+              <span class={`mb-5 block h-1 w-10 ${accents[index]}`}></span>
+              <p class="text-base font-semibold leading-7">{highlight}</p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
+          {messages.sections.map((section, index) => (
+            <article class="grid gap-6 py-10 lg:grid-cols-[7rem_1fr]">
+              <p class="text-5xl font-semibold leading-none tracking-tight text-zinc-200 dark:text-zinc-800">
+                0{index + 1}
+              </p>
+              <div>
+                <h2 class="text-3xl font-semibold tracking-tight">{section.title}</h2>
+                <p class="mt-5 max-w-3xl leading-8 text-zinc-600 dark:text-zinc-400">{section.body}</p>
+                {section.points && (
+                  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+                    {section.points.map((point) => (
+                      <li class="border-l border-zinc-300 pl-4 text-sm leading-6 text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+        <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+          {messages.next.title}
+        </h2>
+        <p class="max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          {messages.next.body}
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

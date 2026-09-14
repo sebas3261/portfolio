@@ -1,0 +1,81 @@
+{
+  "title": "PlayZone VIP | Sebastian Sanchez",
+  "description": "Caso de estudio de PlayZone VIP, aplicación web desarrollada y desplegada para cliente con Next.js, TypeScript y enfoque responsive.",
+  "ogTitle": "PlayZone VIP | Sebastian Sanchez",
+  "ogDescription": "Aplicación web en producción para cliente, construida con Next.js, TypeScript, JavaScript, HTML y CSS.",
+  "ogImageAlt": "PlayZone VIP — Caso de estudio",
+  "back": "Volver a proyectos",
+  "eyebrow": "Proyecto freelance",
+  "icon": "https://www.playzonevip.com/favicon.ico",
+  "name": "PlayZone VIP",
+  "headline": "Una web de producción para convertir una idea de marca en una experiencia usable.",
+  "summary": "PlayZone VIP fue un proyecto freelance donde el reto no era solo construir una interfaz, sino transformar requerimientos de negocio en una experiencia web clara, responsive y lista para producción.",
+  "meta": [
+    { "label": "Rol", "value": "Frontend / Deploy" },
+    { "label": "Estado", "value": "Producción" },
+    { "label": "Tipo", "value": "Cliente freelance" }
+  ],
+  "links": [
+    { "label": "Ver web", "url": "https://www.playzonevip.com/" }
+  ],
+  "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+  "overviewLabel": "Resumen",
+  "problem": {
+    "title": "El problema",
+    "body": "El cliente necesitaba una presencia web que comunicara la marca, funcionara bien en móvil y pudiera desplegarse sin convertirse en una pieza difícil de mantener.",
+    "points": [
+      "Convertir requerimientos de negocio en una interfaz concreta.",
+      "Mantener una experiencia clara en desktop y mobile.",
+      "Llevar el proyecto hasta producción con una base simple de evolucionar."
+    ]
+  },
+  "role": {
+    "title": "Mi rol",
+    "body": "Me encargué del desarrollo frontend, la adaptación responsive, la estructura del proyecto y el despliegue. Fue un trabajo de ejecución completa: entender lo que necesitaba el cliente, construirlo y dejarlo funcionando en producción.",
+    "items": ["Frontend", "Responsive design", "TypeScript", "Implementación UI", "Deploy", "Ajustes de producción"]
+  },
+  "sections": [
+    {
+      "title": "Objetivo",
+      "body": "Traducir una necesidad de negocio en una web que se sintiera directa, navegable y lista para usuarios reales.",
+      "points": [
+        "Definir una estructura visual clara.",
+        "Priorizar navegación sencilla y contenido fácil de escanear.",
+        "Evitar complejidad innecesaria para mantener el proyecto ágil."
+      ]
+    },
+    {
+      "title": "Ejecución",
+      "body": "Construí la interfaz con Next.js y TypeScript, cuidando estructura, estilos, adaptación móvil y despliegue. El foco fue mantener el producto entendible, estable y fácil de ajustar.",
+      "points": [
+        "Componentes y estilos organizados para facilitar cambios.",
+        "Diseño responsive para distintos tamaños de pantalla.",
+        "Revisión de detalles visuales antes de llevarlo a producción.",
+        "Despliegue final y ajustes posteriores según necesidades del cliente."
+      ]
+    },
+    {
+      "title": "Retos",
+      "body": "En un proyecto freelance, el reto técnico viene mezclado con comunicación, tiempos y decisiones prácticas. Había que construir algo pulido sin sobrediseñar.",
+      "points": [
+        "Balancear velocidad de entrega con mantenibilidad.",
+        "Tomar decisiones visuales y técnicas con información incompleta.",
+        "Mantener el alcance controlado para llegar a producción."
+      ]
+    },
+    {
+      "title": "Aprendizaje",
+      "body": "Este proyecto reforzó la importancia de comunicar tradeoffs con claridad, avanzar con restricciones reales y cerrar el ciclo hasta producción.",
+      "points": [
+        "Un proyecto no termina cuando compila: termina cuando está publicado y cumple su objetivo.",
+        "La estructura simple suele ser mejor que una arquitectura grande para una web de cliente.",
+        "El responsive design no es un extra; es parte central de la experiencia."
+      ]
+    }
+  ],
+  "highlights": ["Proyecto para cliente", "Responsive design", "Producción", "Frontend mantenible"],
+  "next": {
+    "title": "Lo próximo",
+    "body": "Pulir el caso de estudio con capturas reales, decisiones visuales y una lectura más detallada del proceso de despliegue."
+  }
+}

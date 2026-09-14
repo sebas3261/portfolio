@@ -5,30 +5,56 @@
   "ogDescription": "Proyectos de software en sistemas backend, aplicaciones web y productos móviles.",
   "ogImageAlt": "Sebastian Sanchez — Proyectos",
   "eyebrow": "Proyectos",
-  "heading": "Lo que estoy construyendo.",
-  "intro": "Productos reales, restricciones reales. Los casos de estudio y writeups están en camino.",
-  "inProgress": {
-    "label": "En progreso",
+  "heading": "Productos reales, sistemas reales.",
+  "intro": "Una selección de proyectos donde he trabajado producto, backend, web, mobile, despliegue y las decisiones pequeñas que hacen que el software aguante uso real.",
+  "stats": [
+    { "value": "App Store", "label": "iOS publicada" },
+    { "value": "2024", "label": "Construyendo producto" },
+    { "value": "Full-stack", "label": "Backend, web y mobile" }
+  ],
+  "caseStudyCta": "Ver caso de estudio",
+  "featured": {
+    "label": "Proyecto principal",
+    "name": "CourtRank",
+    "slug": "courtrank",
+    "type": "Mobile + Backend + Web",
+    "description": "Plataforma para clubes de pádel con producto web en producción y aplicación iOS publicada en App Store. El proyecto reúne reservas, jugadores, clubes, rankings, relaciones entre usuarios, puntos de fidelidad y flujos administrativos.",
+    "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "React Native", "Expo", "Next.js", "TypeScript"],
+    "links": [
+      { "label": "Ver web", "url": "https://getcourtrank.com/es/" }
+    ],
+    "highlights": [
+      "Backend con arquitectura hexagonal, APIs REST, Maven, Flyway y modelado relacional.",
+      "Aplicación móvil en React Native/Expo integrada con servicios backend.",
+      "Ciclo completo: análisis, diseño de sistema, implementación, despliegue, debugging e iteración."
+    ]
+  },
+  "projects": {
+    "label": "Otros proyectos",
     "items": [
       {
-        "name": "CourtRank",
-        "type": "Mobile + Backend",
-        "description": "Plataforma para clubes de pádel — reservas, rankings de jugadores y flujos de administración.",
-        "stack": ["React Native", "Spring Boot", "PostgreSQL"],
-        "status": "En progreso"
+        "name": "PlayZone VIP",
+        "slug": "playzone-vip",
+        "type": "Web / Frontend",
+        "description": "Aplicación web para un cliente, construida y desplegada con enfoque en responsive design, rendimiento y una base mantenible para producción.",
+        "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+        "status": "Producción",
+        "url": "https://www.playzonevip.com/"
       },
       {
         "name": "MVNEX",
+        "slug": "mvnex",
         "type": "Sistemas / C++",
         "description": "Proyecto de bajo nivel enfocado en rendimiento, estructuras de datos y profundidad de implementación.",
         "stack": ["C++"],
-        "status": "Caso de estudio pronto"
+        "status": "En desarrollo",
+        "url": "https://github.com/sebas3261/mvnex"
       }
     ]
   },
-  "emptyState": {
-    "title": "Casos de estudio en camino.",
-    "body": "Estoy trabajando en writeups detallados para cada proyecto — las decisiones tomadas, los tradeoffs, lo que funcionó y lo que no. Vuelve pronto.",
-    "cta": "Escribeme"
+  "caseStudies": {
+    "title": "Casos de estudio iniciales listos.",
+    "body": "Cada proyecto ya tiene una página propia con contexto, stack, decisiones y aprendizajes. Iré profundizando esos writeups a medida que los proyectos evolucionen.",
+    "cta": "Hablemos"
   }
 }

@@ -1,0 +1,82 @@
+{
+  "title": "MVNEX | Sebastian Sanchez",
+  "description": "Case study for MVNEX, a systems project in C++ focused on performance, data structures, and implementation depth.",
+  "ogTitle": "MVNEX | Sebastian Sanchez",
+  "ogDescription": "A C++ systems project focused on performance, data structures, and technical depth.",
+  "ogImageAlt": "MVNEX — Case study",
+  "back": "Back to projects",
+  "eyebrow": "Systems project",
+  "name": "MVNEX",
+  "headline": "A project for moving lower in the stack, thinking about performance, and strengthening fundamentals.",
+  "summary": "MVNEX is a C++ project focused on practicing data structures, algorithms, performance, and lower-level design. It is not meant to be a commercial product; it is a space for building technical judgment outside the comfort of web frameworks.",
+  "meta": [
+    { "label": "Role", "value": "Systems / C++" },
+    { "label": "Status", "value": "In development" },
+    { "label": "Focus", "value": "Performance" }
+  ],
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/sebas3261/mvnex" }
+  ],
+  "stack": ["C++", "Data Structures", "Algorithms", "Memory", "Performance", "Linux", "Git"],
+  "overviewLabel": "Overview",
+  "problem": {
+    "title": "Starting point",
+    "body": "Modern development often helps us move fast, but it can also hide how software actually behaves. MVNEX exists to practice decisions closer to the system: structures, memory, execution costs, and internal design.",
+    "points": [
+      "Step outside the usual framework workflow and work with C++.",
+      "Practice Computer Science fundamentals in real code.",
+      "Understand tradeoffs between simplicity, performance, and control."
+    ]
+  },
+  "role": {
+    "title": "My role",
+    "body": "This is a personal project, so my role covers design, implementation, manual testing, internal decisions, and documenting the learning. The goal is to improve judgment, not just finish features.",
+    "items": ["Internal design", "C++ implementation", "Data structures", "Performance analysis", "Debugging", "Technical documentation"]
+  },
+  "sections": [
+    {
+      "title": "Why it exists",
+      "body": "Not all of my learning lives inside web frameworks. MVNEX exists to force slower and more precise thinking about how code is organized and executed.",
+      "points": [
+        "Practice data structures from an implementation-oriented perspective.",
+        "Understand how small decisions affect performance and clarity.",
+        "Strengthen fundamentals that also improve my backend and architecture work."
+      ]
+    },
+    {
+      "title": "What it explores",
+      "body": "The project focuses on C++, data structures, algorithms, internal API design, and development habits closer to systems work.",
+      "points": [
+        "Small, explicit internal interface design.",
+        "Data structures with attention to cost and behavior.",
+        "Reading code through maintainability, not only whether it works.",
+        "Work with Linux, Git, and more manual testing cycles."
+      ]
+    },
+    {
+      "title": "Challenges",
+      "body": "Unlike a web app, feedback here is not always visual. The challenge is to reason better, measure when needed, and avoid hiding complexity behind premature abstractions.",
+      "points": [
+        "Avoid building abstractions before understanding the problem.",
+        "Keep code readable while optimizing concrete parts.",
+        "Distinguish between real performance work and micro-optimizations with no impact.",
+        "Document decisions so the project does not become a black box."
+      ]
+    },
+    {
+      "title": "What I want to learn",
+      "body": "I want to improve my judgment for writing efficient software, understanding performance tradeoffs, and connecting Computer Science fundamentals with real code.",
+      "points": [
+        "Think better about memory, structures, and complexity.",
+        "Write code that is more explicit and easier to reason about.",
+        "Bring algorithms and design fundamentals into practical decisions.",
+        "Improve my instinct for knowing when a simple solution is already enough."
+      ]
+    }
+  ],
+  "highlights": ["C++", "Data structures", "Performance", "CS fundamentals"],
+  "next": {
+    "title": "Next",
+    "body": "Keep iterating on the internal design, add clearer usage examples, and turn the most important lessons into more specific technical notes."
+  }
+}

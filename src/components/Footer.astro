@@ -27,32 +27,44 @@ const socials = [
 ];
 ---
 
-<footer class="border-t border-zinc-200 bg-white px-6 py-10 text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white">
+<footer class="border-t border-zinc-200 bg-white px-6 py-16 text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white sm:py-20">
   <div class="mx-auto max-w-7xl">
 
     <!-- Main row -->
-    <div class="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+    <div class="grid gap-12 lg:grid-cols-[1.1fr_auto_auto] lg:items-start lg:gap-16">
 
       <!-- Brand -->
-      <a
-        href={`/${lang}/`}
-        class="flex items-center gap-3 transition-opacity hover:opacity-70"
-        aria-label="Sebastian Sanchez — Home"
-      >
-        <img src="/logo-dark.svg" alt="Sebastian Sanchez logo" class="h-8 w-auto dark:hidden" />
-        <img src="/logo.svg" alt="Sebastian Sanchez logo" class="hidden h-8 w-auto dark:block" />
-        <span class="text-sm font-semibold">Sebastian Sanchez</span>
-        <span class="hidden text-xs text-zinc-400 sm:block">Software Engineer</span>
-      </a>
+      <div>
+        <a
+          href={`/${lang}/`}
+          class="inline-flex items-center gap-3 transition-opacity hover:opacity-70"
+          aria-label="Sebastian Sanchez — Home"
+        >
+          <img src="/logo-dark.svg" alt="Sebastian Sanchez logo" class="h-10 w-auto dark:hidden" />
+          <img src="/logo.svg" alt="Sebastian Sanchez logo" class="hidden h-10 w-auto dark:block" />
+          <span class="text-base font-semibold">Sebastian Sanchez</span>
+        </a>
+        <p class="mt-6 max-w-md text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+          Software Engineer building product-minded systems.
+        </p>
+        <a
+          href={`/${lang}/contact/`}
+          class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
+        >
+          hello@sebas3261.com
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
 
       <!-- Nav links -->
       <nav aria-label="Footer navigation">
-        <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">Navigation</p>
+        <ul class="mt-5 grid gap-3">
           {Object.entries(navLinks).map(([key, label]) => (
             <li>
               <a
                 href={key === "home" ? `/${lang}/` : `/${lang}/${key}/`}
-                class="text-sm text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                class="text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
               >
                 {label}
               </a>
@@ -62,26 +74,30 @@ const socials = [
       </nav>
 
       <!-- Socials -->
-      <div class="flex items-center gap-3">
-        {socials.map((s) => (
-          <a
-            href={s.href}
-            target={s.href.startsWith("mailto") ? undefined : "_blank"}
-            rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-            aria-label={s.label}
-            class="flex size-8 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-white"
-            set:html={s.icon}
-          />
-        ))}
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">Elsewhere</p>
+        <div class="mt-5 flex items-center gap-3">
+          {socials.map((s) => (
+            <a
+              href={s.href}
+              target={s.href.startsWith("mailto") ? undefined : "_blank"}
+              rel={s.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+              aria-label={s.label}
+              class="flex size-10 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-white"
+              set:html={s.icon}
+            />
+          ))}
+        </div>
       </div>
 
     </div>
 
     <!-- Bottom row -->
-    <div class="mt-8 border-t border-zinc-100 pt-6 dark:border-zinc-800">
+    <div class="mt-14 flex flex-col gap-3 border-t border-zinc-100 pt-6 text-xs text-zinc-400 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-xs text-zinc-400">
         © {year} Sebastian Sanchez. All rights reserved.
       </p>
+      <p>Based in Colombia · Available remotely</p>
     </div>
 
   </div>

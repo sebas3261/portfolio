@@ -7,7 +7,7 @@
   "hero": {
     "eyebrow": "Software Engineer",
     "heading": "I build software for real products, real users, and real problems.",
-    "description": "I design and build scalable backend systems, modern web applications, and mobile experiences with clean architecture.",
+    "description": "I design and build scalable backend systems, modern web applications, and mobile experiences with clean architecture, practical interfaces, and a product-first mindset.",
     "primaryCta": "View my work",
     "secondaryCta": "Read about me",
     "proof": ["Real products.", "Real users.", "Real impact."],
@@ -81,37 +81,37 @@
   "projectsPreview": {
     "eyebrow": "Featured Projects",
     "heading": "Selected Work",
-    "intro": "Products I've built, used by real people.",
+    "intro": "Products and experiments that connect product thinking with engineering execution, from backend services to mobile and web interfaces.",
     "cta": "View all projects",
     "items": [
       {
         "name": "CourtRank",
         "type": "Mobile + Backend",
-        "description": "A platform for padel clubs. Manage players, clubs, reservations and competitive experiences.",
+        "description": "A platform for padel clubs that brings players, clubs, reservations and competitive experiences into one product. The work combines backend architecture, data modeling, admin workflows and a React Native mobile experience designed for real usage.",
         "stack": ["Java", "Spring Boot", "PostgreSQL", "React Native", "TypeScript"],
         "stat": { "value": "18+", "label": "active users" },
         "cta": "View case study",
-        "url": "https://getcourtrank.com",
+        "url": "https://getcourtrank.com/es/",
         "image": null
       },
       {
         "name": "PlayZone VIP",
         "type": "Web / Frontend",
-        "description": "Web experience for an entertainment brand. Focused on performance, SEO and conversion.",
+        "description": "A web experience for an entertainment brand, focused on fast loading, clear navigation, SEO foundations and conversion-oriented pages. The project balances frontend polish with practical performance decisions.",
         "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
         "stat": null,
         "cta": "View project",
-        "url": "https://playzonevip.com",
+        "url": "https://www.playzonevip.com/",
         "image": null
       },
       {
         "name": "mvnx",
         "type": "Developer Tool",
-        "description": "A developer tool for simplifying Maven workflows. Open source and built for the community.",
+        "description": "A developer tool for simplifying Maven workflows and reducing repetitive command-line friction. Built with a systems mindset, it focuses on small interactions that make everyday development feel faster and clearer.",
         "stack": ["Java", "Shell", "Maven", "Open Source"],
         "stat": null,
         "cta": "View on GitHub",
-        "url": null,
+        "url": "https://mvnex.sebas3261.com",
         "image": null
       }
     ]
@@ -119,26 +119,29 @@
   "expertise": {
     "eyebrow": "Expertise",
     "heading": "What I work with",
-    "intro": "A balanced toolkit to build, deploy and scale products.",
+    "intro": "A balanced toolkit for designing product flows, implementing reliable services, shipping interfaces and keeping systems maintainable after the first release.",
     "categories": [
       {
         "name": "Backend",
-        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"]
+        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"],
+        "description": "I enjoy building APIs, services and data flows that make products dependable. My backend work is usually shaped around clear boundaries, readable code and architecture that can evolve."
       },
       {
         "name": "Frontend",
-        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"]
+        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"],
+        "description": "I build interfaces that feel direct, responsive and useful. I care about the small details that make a product easier to understand, without losing sight of performance and accessibility."
       },
       {
         "name": "Engineering",
-        "items": ["Hexagonal Architecture", "DDD", "CI/CD", "AWS", "Linux", "Git"]
+        "items": ["Hexagonal Architecture", "DDD", "CI/CD", "AWS", "Linux", "Git"],
+        "description": "I like the engineering layer around the product: deployment, collaboration, maintainability, debugging and the habits that keep a codebase healthy over time."
       }
     ]
   },
   "aboutPreview": {
     "eyebrow": "About",
     "heading": "Software engineer with a product mindset.",
-    "bio": "I'm Sebastian, a software engineer passionate about building useful, scalable and well-crafted products. I enjoy solving real problems, learning new technologies and turning ideas into working solutions.",
+    "bio": "I'm Sebastian, a software engineer passionate about building useful, scalable and well-crafted products. I enjoy solving real problems, learning new technologies and turning ideas into working solutions that people can actually use. My work often sits between backend architecture, product decisions and the interfaces that bring the system to life.",
     "bullets": [
       { "icon": "location", "text": "Based in Colombia" },
       { "icon": "remote",   "text": "Open to remote opportunities" },
@@ -150,7 +153,7 @@
   "closing": {
     "eyebrow": "Let's connect",
     "heading": "Have a project or opportunity in mind?",
-    "description": "I'm always open to discussing new ideas, interesting projects or potential collaborations.",
+    "description": "I'm always open to discussing new ideas, interesting projects or potential collaborations, especially when the work involves product engineering, backend systems, mobile apps or thoughtful web experiences.",
     "cta": "Get in touch"
   }
 }

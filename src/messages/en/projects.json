@@ -5,30 +5,56 @@
   "ogDescription": "Selected software projects across backend systems, web applications, and mobile products.",
   "ogImageAlt": "Sebastian Sanchez — Projects",
   "eyebrow": "Projects",
-  "heading": "Things I'm building.",
-  "intro": "Real products, real constraints. Case studies and writeups are on the way.",
-  "inProgress": {
-    "label": "In progress",
+  "heading": "Real products, real systems.",
+  "intro": "A selection of projects where I've worked across product, backend, web, mobile, deployment, and the small decisions that help software hold up in real usage.",
+  "stats": [
+    { "value": "App Store", "label": "Published iOS app" },
+    { "value": "2024", "label": "Building product" },
+    { "value": "Full-stack", "label": "Backend, web and mobile" }
+  ],
+  "caseStudyCta": "Case study",
+  "featured": {
+    "label": "Main project",
+    "name": "CourtRank",
+    "slug": "courtrank",
+    "type": "Mobile + Backend + Web",
+    "description": "A platform for padel clubs with a live web product and an iOS application published on the Apple App Store. The project brings together reservations, players, clubs, rankings, user relationships, loyalty points, and admin workflows.",
+    "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "React Native", "Expo", "Next.js", "TypeScript"],
+    "links": [
+      { "label": "View web", "url": "https://getcourtrank.com/es/" }
+    ],
+    "highlights": [
+      "Backend with hexagonal architecture, REST APIs, Maven, Flyway, and relational data modeling.",
+      "Mobile app built with React Native/Expo and integrated with backend services.",
+      "Full product cycle: analysis, system design, implementation, deployment, debugging, and iteration."
+    ]
+  },
+  "projects": {
+    "label": "Other projects",
     "items": [
       {
-        "name": "CourtRank",
-        "type": "Mobile + Backend",
-        "description": "Platform for padel clubs — reservations, player rankings, and club admin workflows.",
-        "stack": ["React Native", "Spring Boot", "PostgreSQL"],
-        "status": "In progress"
+        "name": "PlayZone VIP",
+        "slug": "playzone-vip",
+        "type": "Web / Frontend",
+        "description": "A client web application built and deployed with attention to responsive design, performance, and a maintainable production foundation.",
+        "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+        "status": "Production",
+        "url": "https://www.playzonevip.com/"
       },
       {
         "name": "MVNEX",
+        "slug": "mvnex",
         "type": "Systems / C++",
         "description": "A lower-level systems project focused on performance, data structures, and implementation depth.",
         "stack": ["C++"],
-        "status": "Case study soon"
+        "status": "In development",
+        "url": "https://github.com/sebas3261/mvnex"
       }
     ]
   },
-  "emptyState": {
-    "title": "Case studies coming.",
-    "body": "I'm working on proper writeups for each project — the decisions made, the tradeoffs, what worked and what didn't. Check back soon.",
-    "cta": "Get in touch"
+  "caseStudies": {
+    "title": "Initial case studies are live.",
+    "body": "Each project now has its own page with context, stack, decisions, and lessons learned. I will keep deepening those writeups as the projects evolve.",
+    "cta": "Let's talk"
   }
 }

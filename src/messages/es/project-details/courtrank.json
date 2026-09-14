@@ -1,0 +1,87 @@
+{
+  "title": "CourtRank | Sebastian Sanchez",
+  "description": "Caso de estudio de CourtRank, plataforma para clubes de pádel con backend Java, web en producción y aplicación iOS publicada en App Store.",
+  "ogTitle": "CourtRank | Sebastian Sanchez",
+  "ogDescription": "Plataforma para clubes de pádel construida con Java, Spring Boot, PostgreSQL, React Native y Next.js.",
+  "ogImageAlt": "CourtRank — Caso de estudio",
+  "back": "Volver a proyectos",
+  "eyebrow": "Caso de estudio",
+  "icon": "/images/courtrank.png",
+  "name": "CourtRank",
+  "headline": "Una plataforma multi-plataforma para llevar la operación de clubes de pádel a producto real.",
+  "summary": "CourtRank empezó como una idea de producto para ordenar la experiencia alrededor de un club de pádel: reservas, jugadores, rankings, administración y comunicación. Terminó convirtiéndose en una plataforma real con web en producción, app iOS publicada en App Store y Android en progreso.",
+  "meta": [
+    { "label": "Rol", "value": "Full-stack / Backend / Mobile" },
+    { "label": "Estado", "value": "En producción" },
+    { "label": "Periodo", "value": "2024 - Presente" }
+  ],
+  "links": [
+    { "label": "Ver web", "url": "https://getcourtrank.com/es/" }
+  ],
+  "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "Maven", "React Native", "Expo", "Next.js", "TypeScript"],
+  "overviewLabel": "Resumen",
+  "problem": {
+    "title": "El problema",
+    "body": "Un club de pádel no es solo una agenda de canchas. Hay jugadores, reservas, disponibilidad, relaciones entre usuarios, rankings, puntos, comunicación interna y flujos administrativos que deben convivir sin volverse un caos operativo.",
+    "points": [
+      "Centralizar reservas y administración en una experiencia clara.",
+      "Conectar jugadores, clubes y actividad competitiva dentro del mismo producto.",
+      "Crear una base técnica que pudiera crecer sin rehacer todo después del primer release."
+    ]
+  },
+  "role": {
+    "title": "Mi rol",
+    "body": "Trabajé el producto de punta a punta, con un foco fuerte en backend y arquitectura, pero también participando en web, mobile, integración, despliegue, debugging e iteración.",
+    "items": ["Análisis de requerimientos", "Diseño de sistema", "Modelado relacional", "Diseño de APIs", "Implementación backend", "Integración web/mobile", "Despliegue e iteración"]
+  },
+  "sections": [
+    {
+      "title": "Qué construí",
+      "body": "Diseñé e implementé componentes backend, clientes web y móviles, y flujos de producto que sostienen la operación principal de la plataforma.",
+      "points": [
+        "Autenticación y manejo de usuarios.",
+        "Gestión de clubes y flujos administrativos.",
+        "Reservas de canchas y disponibilidad.",
+        "Relaciones entre jugadores y actividad social.",
+        "Rankings, experiencias competitivas y puntos de fidelidad.",
+        "Clientes web y mobile integrados con APIs REST."
+      ]
+    },
+    {
+      "title": "Decisiones técnicas",
+      "body": "El backend se diseñó para que el dominio no quedara mezclado con detalles de infraestructura o frameworks. La prioridad fue mantener límites claros y una base que pudiera evolucionar.",
+      "points": [
+        "Java 17 y Spring Boot para construir servicios backend robustos.",
+        "PostgreSQL y Flyway para modelado relacional y migraciones controladas.",
+        "APIs REST como contrato entre backend, web y mobile.",
+        "Arquitectura hexagonal, SOLID e inyección de dependencias para separar dominio, aplicación e infraestructura.",
+        "Maven, Git y flujos de despliegue para sostener el ciclo de desarrollo."
+      ]
+    },
+    {
+      "title": "Retos",
+      "body": "El reto principal fue que las reglas no eran abstractas: una reserva, un club, un jugador o un ranking tienen casos borde cuando el producto empieza a usarse de verdad.",
+      "points": [
+        "Modelar reservas y disponibilidad sin volver frágil el dominio.",
+        "Mantener consistencia entre clientes web, mobile y backend.",
+        "Diseñar flujos administrativos sin hacer pesada la experiencia del jugador.",
+        "Pasar de desarrollo local a una app publicada y usable."
+      ]
+    },
+    {
+      "title": "Aprendizajes",
+      "body": "CourtRank me obligó a trabajar el ciclo completo, desde producto hasta publicación. Es el proyecto donde más he conectado fundamentos de ingeniería con decisiones prácticas.",
+      "points": [
+        "El modelado de datos pesa muchísimo cuando el dominio tiene reglas reales.",
+        "Un backend claro reduce fricción cuando web y mobile evolucionan al mismo tiempo.",
+        "Publicar una app obliga a pensar más allá del código: distribución, estabilidad, soporte e iteración.",
+        "Los mejores aprendizajes aparecen cuando el producto sale del entorno perfecto."
+      ]
+    }
+  ],
+  "highlights": ["iOS publicado en App Store", "Web en producción", "Backend Java + PostgreSQL", "Producto multi-plataforma"],
+  "next": {
+    "title": "Lo próximo",
+    "body": "Seguir puliendo la experiencia móvil, completar distribución Android, mejorar flujos para clubes y documentar con más profundidad las decisiones internas del sistema."
+  }
+}

@@ -6,7 +6,12 @@ import Footer from "../components/Footer.astro";
 const { lang, messages, noindex = false } = Astro.props;
 const navMessages = lang === "es" ? es : en;
 
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const normalizedPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(normalizedPath, Astro.site);
+const englishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/en");
+const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
 ---
 
 <html lang={lang}>
@@ -26,12 +31,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonical} />
 
     <!-- Languages -->
-    <link rel="alternate" hreflang="en" href={new URL("/en/", Astro.site)} />
-    <link rel="alternate" hreflang="es" href={new URL("/es/", Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(englishPath, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(spanishPath, Astro.site)} />
     <link
       rel="alternate"
       hreflang="x-default"
-      href={new URL("/en/", Astro.site)}
+      href={new URL(englishPath, Astro.site)}
     />
 
     </>}
