@@ -37,8 +37,10 @@ export type BlogPost = MdxBlogPost | NotionBlogPost;
 
 const notionToken = import.meta.env.NOTION_TOKEN;
 const notionDatabaseId = import.meta.env.NOTION_BLOG_DATABASE_ID;
+const notionCacheMs = 30_000;
 
 const notion = notionToken ? new Client({ auth: notionToken }) : null;
+let cachedNotionPosts: { expiresAt: number; posts: NotionBlogPost[] } | null = null;
 
 function plainText(value: any[] | undefined): string {
   return value?.map((item) => item.plain_text ?? "").join("").trim() ?? "";
@@ -151,6 +153,9 @@ async function queryNotionPosts(startCursor?: string): Promise<NotionQueryRespon
 
 async function getNotionPosts(): Promise<NotionBlogPost[]> {
   if (!notion || !notionDatabaseId) return [];
+  if (cachedNotionPosts && cachedNotionPosts.expiresAt > Date.now()) {
+    return cachedNotionPosts.posts;
+  }
 
   const posts: NotionBlogPost[] = [];
   let cursor: string | undefined;
@@ -190,6 +195,11 @@ async function getNotionPosts(): Promise<NotionBlogPost[]> {
     console.warn("Notion blog source failed. Falling back to local MDX posts.", error);
     return [];
   }
+
+  cachedNotionPosts = {
+    expiresAt: Date.now() + notionCacheMs,
+    posts,
+  };
 
   return posts;
 }

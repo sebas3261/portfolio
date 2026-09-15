@@ -8,17 +8,7 @@ import NotionBlocks from "../../../components/NotionBlocks.astro";
 import { getBlogPost, getBlogPosts } from "../../../lib/blog";
 import { render } from "astro:content";
 
-export async function getStaticPaths() {
-  const posts = await getBlogPosts();
-
-  return posts.map((post) => ({
-    params: {
-      lang: post.lang,
-      slug: post.slug,
-    },
-    props: { postId: post.id },
-  }));
-}
+export const prerender = false;
 
 const lang = Astro.params.lang === "es" ? "es" : "en";
 const slug = Astro.params.slug ?? "";
