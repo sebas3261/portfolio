@@ -2,9 +2,20 @@
 interface Props {
   lang: string;
   navLinks: Record<string, string>;
+  messages: {
+    brandHomeLabel: string;
+    logoAlt: string;
+    tagline: string;
+    contactEmail: string;
+    navigationLabel: string;
+    navigationTitle: string;
+    elsewhereTitle: string;
+    copyright: string;
+    location: string;
+  };
 }
 
-const { lang, navLinks } = Astro.props;
+const { lang, navLinks, messages } = Astro.props;
 
 const year = new Date().getFullYear();
 
@@ -38,27 +49,27 @@ const socials = [
         <a
           href={`/${lang}/`}
           class="inline-flex items-center gap-3 transition-opacity hover:opacity-70"
-          aria-label="Sebastian Sanchez — Home"
+          aria-label={messages.brandHomeLabel}
         >
-          <img src="/logo-dark.svg" alt="Sebastian Sanchez logo" class="h-10 w-auto dark:hidden" />
-          <img src="/logo.svg" alt="Sebastian Sanchez logo" class="hidden h-10 w-auto dark:block" />
+          <img src="/logo-dark.svg" alt={messages.logoAlt} class="h-10 w-auto dark:hidden" />
+          <img src="/logo.svg" alt={messages.logoAlt} class="hidden h-10 w-auto dark:block" />
           <span class="text-base font-semibold">Sebastian Sanchez</span>
         </a>
         <p class="mt-6 max-w-md text-2xl font-semibold leading-tight tracking-tight sm:text-4xl">
-          Software Engineer building product-minded systems.
+          {messages.tagline}
         </p>
         <a
           href={`/${lang}/contact/`}
           class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
         >
-          hello@sebas3261.com
+          {messages.contactEmail}
           <span aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- Nav links -->
-      <nav aria-label="Footer navigation">
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">Navigation</p>
+      <nav aria-label={messages.navigationLabel}>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">{messages.navigationTitle}</p>
         <ul class="mt-5 grid gap-3">
           {Object.entries(navLinks).map(([key, label]) => (
             <li>
@@ -75,7 +86,7 @@ const socials = [
 
       <!-- Socials -->
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">Elsewhere</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">{messages.elsewhereTitle}</p>
         <div class="mt-5 flex items-center gap-3">
           {socials.map((s) => (
             <a
@@ -95,9 +106,9 @@ const socials = [
     <!-- Bottom row -->
     <div class="mt-14 flex flex-col gap-3 border-t border-zinc-100 pt-6 text-xs text-zinc-400 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-xs text-zinc-400">
-        © {year} Sebastian Sanchez. All rights reserved.
+        © {year} Sebastian Sanchez. {messages.copyright}
       </p>
-      <p>Based in Colombia · Available remotely</p>
+      <p>{messages.location}</p>
     </div>
 
   </div>

@@ -1,10 +1,13 @@
 ---
-import en from "../messages/en/navbar.json";
-import es from "../messages/es/navbar.json";
+import navbarEn from "../messages/en/navbar.json";
+import navbarEs from "../messages/es/navbar.json";
+import footerEn from "../messages/en/footer.json";
+import footerEs from "../messages/es/footer.json";
 import Footer from "../components/Footer.astro";
 
 const { lang, messages, noindex = false } = Astro.props;
-const navMessages = lang === "es" ? es : en;
+const navMessages = lang === "es" ? navbarEs : navbarEn;
+const footerMessages = lang === "es" ? footerEs : footerEn;
 
 const normalizedPath = Astro.url.pathname.endsWith("/")
   ? Astro.url.pathname
@@ -88,7 +91,7 @@ const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
   </head>
   <body>
     <slot />
-    <Footer lang={lang} navLinks={navMessages.links} />
+    <Footer lang={lang} navLinks={navMessages.links} messages={footerMessages} />
     <script is:inline>
       (function () {
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
