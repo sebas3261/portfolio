@@ -55,7 +55,7 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
                 <div>
                   <a
                     href={`/${lang}/blog/${post.slug}/`}
-                    class="grid gap-5 sm:grid-cols-[minmax(0,1fr)_8.5rem] sm:items-start md:grid-cols-[minmax(0,1fr)_10rem]"
+                    class="grid gap-6 sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start md:grid-cols-[minmax(0,1fr)_16rem]"
                   >
                     <div>
                       <h2 class="text-2xl font-semibold tracking-tight transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400 sm:text-3xl">
@@ -77,11 +77,11 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
                       </div>
                     </div>
                     {post.cover && (
-                      <div class="order-first flex aspect-[16/9] items-center justify-center overflow-hidden sm:order-none sm:aspect-square">
+                      <div class="order-first aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900 sm:order-none">
                         <img
                           src={post.cover}
                           alt={post.coverAlt ?? ""}
-                          class="h-full w-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-[1.04] group-hover:opacity-100"
+                          class="h-full w-full object-cover object-center opacity-95 transition-transform duration-700 group-hover:scale-[1.04] group-hover:opacity-100"
                           loading="lazy"
                           decoding="async"
                         />
