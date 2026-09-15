@@ -1,82 +1,82 @@
 {
   "title": "MVNEX | Sebastian Sanchez",
-  "description": "Case study for MVNEX, a systems project in C++ focused on performance, data structures, and implementation depth.",
+  "description": "Case study for MVNEX, a C++ CLI that aims to give Maven an npm-like experience.",
   "ogTitle": "MVNEX | Sebastian Sanchez",
-  "ogDescription": "A C++ systems project focused on performance, data structures, and technical depth.",
+  "ogDescription": "A C++ CLI for making Maven workflows feel simpler, faster, and more familiar.",
   "ogImageAlt": "MVNEX — Case study",
   "back": "Back to projects",
-  "eyebrow": "Systems project",
+  "eyebrow": "Developer CLI",
   "name": "MVNEX",
-  "headline": "A project for moving lower in the stack, thinking about performance, and strengthening fundamentals.",
-  "summary": "MVNEX is a C++ project focused on practicing data structures, algorithms, performance, and lower-level design. It is not meant to be a commercial product; it is a space for building technical judgment outside the comfort of web frameworks.",
+  "headline": "An npm-like experience for working with Maven with less friction.",
+  "summary": "MVNEX is a CLI that aims to simplify everyday Maven work: easier-to-remember commands, more direct workflows, and a lighter experience for Java projects. It is built in C++ as an exercise in tooling, command design, and systems judgment.",
   "meta": [
-    { "label": "Role", "value": "Systems / C++" },
+    { "label": "Role", "value": "CLI / C++" },
     { "label": "Status", "value": "In development" },
-    { "label": "Focus", "value": "Performance" }
+    { "label": "Focus", "value": "Developer experience" }
   ],
   "links": [
     { "label": "GitHub", "url": "https://github.com/sebas3261/mvnex" }
   ],
-  "stack": ["C++", "Data Structures", "Algorithms", "Memory", "Performance", "Linux", "Git"],
+  "stack": ["C++", "Maven", "CLI", "Developer Experience", "Linux", "Git"],
   "overviewLabel": "Overview",
   "problem": {
     "title": "Starting point",
-    "body": "Modern development often helps us move fast, but it can also hide how software actually behaves. MVNEX exists to practice decisions closer to the system: structures, memory, execution costs, and internal design.",
+    "body": "Maven is powerful, but its everyday experience can feel more verbose than modern tools like npm. MVNEX starts from that friction: create a simpler command layer for common tasks without losing control of the Java ecosystem.",
     "points": [
-      "Step outside the usual framework workflow and work with C++.",
-      "Practice Computer Science fundamentals in real code.",
-      "Understand tradeoffs between simplicity, performance, and control."
+      "Reduce repetitive commands in Maven projects.",
+      "Explore how a CLI can improve developer experience.",
+      "Build a small tool with systems fundamentals in C++."
     ]
   },
   "role": {
     "title": "My role",
-    "body": "This is a personal project, so my role covers design, implementation, manual testing, internal decisions, and documenting the learning. The goal is to improve judgment, not just finish features.",
-    "items": ["Internal design", "C++ implementation", "Data structures", "Performance analysis", "Debugging", "Technical documentation"]
+    "body": "This is a personal project, so my role covers command design, C++ implementation, manual testing, internal decisions, and documenting the learning. The goal is for the tool to feel useful, not just technically interesting.",
+    "items": ["CLI design", "C++ implementation", "Maven workflows", "Developer experience", "Debugging", "Technical documentation"]
   },
   "sections": [
     {
       "title": "Why it exists",
-      "body": "Not all of my learning lives inside web frameworks. MVNEX exists to force slower and more precise thinking about how code is organized and executed.",
+      "body": "MVNEX exists because there is a big difference between a tool that works and a tool that feels good in the terminal. The idea is to take npm's familiarity and apply it to common Maven tasks.",
       "points": [
-        "Practice data structures from an implementation-oriented perspective.",
-        "Understand how small decisions affect performance and clarity.",
-        "Strengthen fundamentals that also improve my backend and architecture work."
+        "Make frequent commands easier to remember.",
+        "Reduce steps for repetitive build, test, and run workflows.",
+        "Learn to design tooling around real usage, not just implementation."
       ]
     },
     {
       "title": "What it explores",
-      "body": "The project focuses on C++, data structures, algorithms, internal API design, and development habits closer to systems work.",
+      "body": "The project explores command parsing, clear terminal interface design, process execution, and a simple internal architecture so the tool can grow over time.",
       "points": [
-        "Small, explicit internal interface design.",
-        "Data structures with attention to cost and behavior.",
-        "Reading code through maintainability, not only whether it works.",
-        "Work with Linux, Git, and more manual testing cycles."
+        "Aliases and commands inspired by modern package manager experiences.",
+        "Running Maven tasks through a more direct interface.",
+        "Readable terminal messages oriented around action.",
+        "Work with Linux, Git, and manual testing cycles."
       ]
     },
     {
       "title": "Challenges",
-      "body": "Unlike a web app, feedback here is not always visual. The challenge is to reason better, measure when needed, and avoid hiding complexity behind premature abstractions.",
+      "body": "The challenge is simplifying without hiding too much. MVNEX should feel lightweight and familiar while staying transparent about what it runs underneath.",
       "points": [
-        "Avoid building abstractions before understanding the problem.",
-        "Keep code readable while optimizing concrete parts.",
-        "Distinguish between real performance work and micro-optimizations with no impact.",
+        "Design commands that are easy to remember.",
+        "Keep mental compatibility with Maven instead of inventing another heavy tool.",
+        "Avoid premature abstractions while the usage flow is still maturing.",
         "Document decisions so the project does not become a black box."
       ]
     },
     {
       "title": "What I want to learn",
-      "body": "I want to improve my judgment for writing efficient software, understanding performance tradeoffs, and connecting Computer Science fundamentals with real code.",
+      "body": "I want to improve my judgment for designing developer tools: how to name commands, how to reduce friction, and how to build a CLI that feels fast and reliable.",
       "points": [
-        "Think better about memory, structures, and complexity.",
-        "Write code that is more explicit and easier to reason about.",
-        "Bring algorithms and design fundamentals into practical decisions.",
+        "Think more carefully about terminal user experience.",
+        "Write explicit C++ code that is easier to reason about.",
+        "Connect systems fundamentals with a usable tool.",
         "Improve my instinct for knowing when a simple solution is already enough."
       ]
     }
   ],
-  "highlights": ["C++", "Data structures", "Performance", "CS fundamentals"],
+  "highlights": ["CLI", "Maven", "C++", "Developer experience"],
   "next": {
     "title": "Next",
-    "body": "Keep iterating on the internal design, add clearer usage examples, and turn the most important lessons into more specific technical notes."
+    "body": "Keep refining the command syntax, add clear usage examples, and better document which Maven tasks each command simplifies."
   }
 }

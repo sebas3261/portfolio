@@ -40,7 +40,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
   <NavBar lang={lang} />
 
   <main class="bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
-    <section class="px-6 pb-16 pt-32 sm:pb-20 sm:pt-40">
+    <section class="bg-zinc-50 px-6 pb-16 pt-28 dark:bg-zinc-900/40 sm:pb-20 sm:pt-40">
       <div class="mx-auto max-w-7xl">
         <a
           href={`/${lang}/projects/`}
@@ -56,16 +56,16 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
               {messages.eyebrow}
             </p>
             <div class="mt-5 flex items-center gap-5">
-              {messages.icon && (
+              {"icon" in messages && messages.icon && (
                 <img
                   src={messages.icon}
                   alt=""
-                  class="size-20 rounded-2xl border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900"
+                  class="size-20 rounded-2xl border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-950"
                   loading="eager"
                   decoding="async"
                 />
               )}
-              <h1 class="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 class="text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                 {messages.name}
               </h1>
             </div>
@@ -93,7 +93,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
       </div>
     </section>
 
-    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+    <section class="border-t border-zinc-200 bg-white px-6 py-16 dark:border-zinc-800 dark:bg-zinc-950 sm:py-24">
       <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
         <div>
           <p class="border-l-2 border-sky-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
@@ -129,7 +129,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
     </section>
 
     {messages.problem && (
-      <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+      <section class="border-t border-zinc-200 bg-zinc-50 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900/40 sm:py-24">
         <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
             {messages.problem.title}
@@ -154,7 +154,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
     )}
 
     {messages.role && (
-      <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900 sm:py-20">
+      <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900/40 sm:py-20">
         <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <h2 class="border-l-2 border-emerald-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
             {messages.role.title}
@@ -165,7 +165,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
             </p>
             <div class="mt-8 flex flex-wrap gap-2">
               {messages.role.items.map((item) => (
-                <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-sm font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-400">
+                <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-sm font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400">
                   {item}
                 </span>
               ))}
@@ -175,12 +175,12 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
       </section>
     )}
 
-    <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900 sm:py-20">
+    <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900/40 sm:py-20">
       <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {messages.highlights.map((highlight, index) => {
           const accents = ["bg-sky-400", "bg-violet-400", "bg-emerald-400", "bg-rose-400"];
           return (
-            <div class="border-t border-zinc-300 pt-5 dark:border-zinc-700">
+            <div class="border-t border-zinc-300 pt-5 dark:border-zinc-800">
               <span class={`mb-5 block h-1 w-10 ${accents[index]}`}></span>
               <p class="text-base font-semibold leading-7">{highlight}</p>
             </div>
@@ -189,12 +189,12 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
       </div>
     </section>
 
-    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-24">
+    <section class="border-t border-zinc-200 bg-white px-6 py-16 dark:border-zinc-800 dark:bg-zinc-950 sm:py-24">
       <div class="mx-auto max-w-7xl">
         <div class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
           {messages.sections.map((section, index) => (
             <article class="grid gap-6 py-10 lg:grid-cols-[7rem_1fr]">
-              <p class="text-5xl font-semibold leading-none tracking-tight text-zinc-200 dark:text-zinc-800">
+              <p class="text-4xl font-semibold leading-none tracking-tight text-zinc-200 dark:text-zinc-800 sm:text-5xl">
                 0{index + 1}
               </p>
               <div>
@@ -203,7 +203,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
                 {section.points && (
                   <ul class="mt-6 grid gap-3 sm:grid-cols-2">
                     {section.points.map((point) => (
-                      <li class="border-l border-zinc-300 pl-4 text-sm leading-6 text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+                      <li class="border-l border-zinc-300 pl-4 text-sm leading-6 text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
                         {point}
                       </li>
                     ))}
@@ -216,7 +216,7 @@ const messages = projectMessages[lang][slug as keyof typeof projectMessages.en] 
       </div>
     </section>
 
-    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
+    <section class="border-t border-zinc-200 bg-zinc-50 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900/40 sm:py-20">
       <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.7fr_1.3fr]">
         <h2 class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
           {messages.next.title}

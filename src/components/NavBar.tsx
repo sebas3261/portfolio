@@ -5,6 +5,7 @@ import { MorphIcon } from "morphicons/react";
 interface Props {
   lang: string;
   currentPath: string;
+  localizedPaths?: Partial<Record<"en" | "es", string>>;
   variant?: "default" | "heroDark";
   messages: {
     brandHomeLabel: string;
@@ -32,7 +33,15 @@ interface Props {
 
 type Theme = "light" | "dark";
 
-function getLocalizedPath(currentPath: string, targetLang: "en" | "es") {
+function getLocalizedPath(
+  currentPath: string,
+  targetLang: "en" | "es",
+  localizedPaths?: Partial<Record<"en" | "es", string>>,
+) {
+  if (localizedPaths?.[targetLang]) {
+    return localizedPaths[targetLang];
+  }
+
   const normalizedPath = currentPath.startsWith("/") ? currentPath : `/${currentPath}`;
 
   if (normalizedPath === "/") {
@@ -46,7 +55,7 @@ function getLocalizedPath(currentPath: string, targetLang: "en" | "es") {
   return `/${targetLang}${normalizedPath}`;
 }
 
-export default function NavBar({ lang, currentPath, messages, variant = "default" }: Props) {
+export default function NavBar({ lang, currentPath, localizedPaths, messages, variant = "default" }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
   const [scrolled, setScrolled] = useState(false);
@@ -127,8 +136,8 @@ export default function NavBar({ lang, currentPath, messages, variant = "default
     { href: `/${lang}/about/`, label: messages.links.about },
     { href: `/${lang}/blog/`, label: messages.links.blog },
   ];
-  const englishHref = getLocalizedPath(currentPath, "en");
-  const spanishHref = getLocalizedPath(currentPath, "es");
+  const englishHref = getLocalizedPath(currentPath, "en", localizedPaths);
+  const spanishHref = getLocalizedPath(currentPath, "es", localizedPaths);
 
   return (
     <>

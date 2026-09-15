@@ -86,6 +86,7 @@
     "items": [
       {
         "name": "CourtRank",
+        "slug": "courtrank",
         "type": "Mobile + Backend",
         "description": "A platform for padel clubs that brings players, clubs, reservations and competitive experiences into one product. The work combines backend architecture, data modeling, admin workflows and a React Native mobile experience designed for real usage.",
         "stack": ["Java", "Spring Boot", "PostgreSQL", "React Native", "TypeScript"],
@@ -96,21 +97,23 @@
       },
       {
         "name": "PlayZone VIP",
+        "slug": "playzone-vip",
         "type": "Web / Frontend",
         "description": "A web experience for an entertainment brand, focused on fast loading, clear navigation, SEO foundations and conversion-oriented pages. The project balances frontend polish with practical performance decisions.",
         "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
         "stat": null,
-        "cta": "View project",
+        "cta": "View case study",
         "url": "https://www.playzonevip.com/",
         "image": null
       },
       {
-        "name": "mvnx",
-        "type": "Developer Tool",
-        "description": "A developer tool for simplifying Maven workflows and reducing repetitive command-line friction. Built with a systems mindset, it focuses on small interactions that make everyday development feel faster and clearer.",
-        "stack": ["Java", "Shell", "Maven", "Open Source"],
+        "name": "MVNEX",
+        "slug": "mvnex",
+        "type": "Systems / C++",
+        "description": "A CLI that tries to give Maven a more npm-like experience: more memorable commands, shorter workflows, and less friction in Java projects. It is built in C++ as a systems, performance, and developer tooling exercise.",
+        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
         "stat": null,
-        "cta": "View on GitHub",
+        "cta": "View case study",
         "url": "https://mvnex.sebas3261.com",
         "image": null
       }

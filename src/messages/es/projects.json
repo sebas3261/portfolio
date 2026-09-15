@@ -48,7 +48,8 @@
         "description": "Proyecto de bajo nivel enfocado en rendimiento, estructuras de datos y profundidad de implementación.",
         "stack": ["C++"],
         "status": "En desarrollo",
-        "url": "https://github.com/sebas3261/mvnex"
+        "url": "https://mvnex.sebas3261.com",
+        "githubUrl": "https://github.com/sebas3261/mvnex"
       }
     ]
   },

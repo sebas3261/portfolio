@@ -86,6 +86,7 @@
     "items": [
       {
         "name": "CourtRank",
+        "slug": "courtrank",
         "type": "Mobile + Backend",
         "description": "Plataforma para clubes de pádel que reúne jugadores, clubes, reservas y experiencias competitivas en un solo producto. El trabajo combina arquitectura backend, modelado de datos, flujos administrativos y una experiencia móvil en React Native pensada para uso real.",
         "stack": ["Java", "Spring Boot", "PostgreSQL", "React Native", "TypeScript"],
@@ -96,21 +97,23 @@
       },
       {
         "name": "PlayZone VIP",
+        "slug": "playzone-vip",
         "type": "Web / Frontend",
         "description": "Experiencia web para una marca de entretenimiento, enfocada en carga rápida, navegación clara, bases de SEO y páginas orientadas a conversión. El proyecto equilibra detalle visual con decisiones prácticas de rendimiento.",
         "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
         "stat": null,
-        "cta": "Ver proyecto",
+        "cta": "Ver caso de estudio",
         "url": "https://www.playzonevip.com/",
         "image": null
       },
       {
-        "name": "mvnx",
-        "type": "Herramienta para developers",
-        "description": "Herramienta para simplificar flujos de trabajo con Maven y reducir fricción repetitiva en la terminal. Construida con mentalidad de sistemas, se enfoca en pequeñas interacciones que hacen el desarrollo diario más rápido y claro.",
-        "stack": ["Java", "Shell", "Maven", "Open Source"],
+        "name": "MVNEX",
+        "slug": "mvnex",
+        "type": "Sistemas / C++",
+        "description": "Una CLI que busca darle a Maven una experiencia más cercana a npm: comandos más memorables, flujos más cortos y menos fricción en proyectos Java. Está construida en C++ como ejercicio de sistemas, rendimiento y diseño de herramientas para developers.",
+        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
         "stat": null,
-        "cta": "Ver en GitHub",
+        "cta": "Ver caso de estudio",
         "url": "https://mvnex.sebas3261.com",
         "image": null
       }

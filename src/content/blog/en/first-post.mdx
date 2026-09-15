@@ -1,0 +1,29 @@
+---
+title: "First post"
+description: "A sample note for testing the blog flow with Markdown files."
+date: 2026-09-15
+lang: en
+slug: first-post
+cover: /images/blog/first-post.svg
+coverAlt: "Abstract image for the first post"
+tags: ["Astro", "Markdown", "Portfolio"]
+draft: false
+---
+
+import YouTube from "../../../components/YouTube.astro";
+
+This file is an example of the blog format.
+
+When you want to publish a real post, duplicate it, set `draft` to `false`, and write the content in MDX.
+
+You can also add images inside the content:
+
+![Blog visual example](/images/blog/first-post.svg)
+
+To embed YouTube, import the component and use it like this:
+
+```mdx
+import YouTube from "../../../components/YouTube.astro";
+
+<YouTube id="dQw4w9WgXcQ" title="Video demo" />
+```

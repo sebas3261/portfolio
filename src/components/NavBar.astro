@@ -3,7 +3,7 @@ import NavBarReact from "./NavBar";
 import en from "../messages/en/navbar.json";
 import es from "../messages/es/navbar.json";
 
-const { lang = "en", variant = "default" } = Astro.props;
+const { lang = "en", variant = "default", localizedPaths } = Astro.props;
 const messages = lang === "es" ? es : en;
 const currentPath = Astro.url.pathname;
 ---
@@ -13,5 +13,6 @@ const currentPath = Astro.url.pathname;
   lang={lang}
   messages={messages}
   currentPath={currentPath}
+  localizedPaths={localizedPaths}
   variant={variant}
 />

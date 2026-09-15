@@ -15,20 +15,19 @@
     { "label": "Focus", "value": "Java, web and mobile" },
     { "label": "Availability", "value": "Remote" }
   ],
-  "bio": "I started programming seriously around 2021, drawn to the idea that software can make things work better for real people. Since then I've built products across the full stack: Java 17 and Spring Boot APIs, PostgreSQL databases, web applications with Next.js and Astro, and mobile apps with React Native and Expo.",
+  "bio": "I like building products that move from idea to real usage: APIs, web applications, mobile experiences, and developer tools.",
   "story": {
     "title": "The less polished version",
     "paragraphs": [
-      "I like building things that move from idea to real usage. CourtRank is the clearest example: a platform for padel clubs with a live web product and an iOS app published on the Apple App Store, with Android distribution in progress.",
-      "My favorite place is the overlap between engineering and product. I care about talking clearly through tradeoffs, understanding why something matters, and then turning that into an implementation that does not fall apart after the first change.",
-      "I also work as a freelance developer building and deploying web applications for clients. PlayZone VIP is part of that path, and Foundi Finance is one of my current personal projects around personal finance, performance, and maintainable frontend architecture."
+      "CourtRank is the clearest example: a platform for padel clubs with a live web product and an iOS app published on the App Store.",
+      "My favorite place is the overlap between engineering and product: understanding the problem, talking clearly through tradeoffs, and building something that can evolve."
     ]
   },
   "now": {
     "title": "Right now",
     "items": [
       "Finishing my Computer Engineering degree at Universidad de La Sabana.",
-      "Building CourtRank and Foundi Finance.",
+      "Building CourtRank and MVNEX.",
       "Preparing for the AWS Certified Solutions Architect – Associate certification.",
       "Open to freelance projects, collaboration and remote opportunities."
     ]

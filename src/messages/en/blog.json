@@ -5,8 +5,10 @@
   "ogDescription": "Notes about software engineering, systems, architecture, and product development.",
   "ogImageAlt": "Sebastian Sanchez — Blog",
   "eyebrow": "Blog",
-  "heading": "Notes from the workbench.",
-  "intro": "Short essays, technical notes, and ideas about building software with intention.",
+  "heading": "Ideas, bugs, and things I learn.",
+  "intro": "I write about software, product, and the small decisions that end up mattering a lot.",
+  "readCta": "Read note",
+  "publishedLabel": "Published",
   "emptyState": {
     "title": "First post is being written.",
     "body": "I'm putting together notes on things I'm learning and building — architecture decisions, tradeoffs, things that surprised me. It'll be here soon.",

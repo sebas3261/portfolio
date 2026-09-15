@@ -1,0 +1,29 @@
+---
+title: "Primer post"
+description: "Una nota de ejemplo para probar el flujo del blog con archivos Markdown."
+date: 2026-09-15
+lang: es
+slug: first-post
+cover: /images/blog/primer-post.svg
+coverAlt: "Imagen abstracta del primer post"
+tags: ["Astro", "Markdown", "Portfolio"]
+draft: false
+---
+
+import YouTube from "../../../components/YouTube.astro";
+
+Este archivo es un ejemplo del formato del blog.
+
+Cuando quieras publicar un post real, puedes duplicarlo, cambiar `draft` a `false` y escribir el contenido en MDX.
+
+También puedes poner imágenes dentro del contenido:
+
+![Ejemplo visual del blog](/images/blog/primer-post.svg)
+
+Para embeber YouTube, importa el componente y úsalo así:
+
+```mdx
+import YouTube from "../../../components/YouTube.astro";
+
+<YouTube id="dQw4w9WgXcQ" title="Demo del video" />
+```

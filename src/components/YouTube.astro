@@ -1,0 +1,22 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+const src = `https://www.youtube-nocookie.com/embed/${id}`;
+---
+
+<figure class="my-10">
+  <div class="aspect-video overflow-hidden rounded-sm bg-zinc-950 shadow-2xl shadow-zinc-950/10 dark:shadow-black/30">
+    <iframe
+      src={src}
+      title={title}
+      class="h-full w-full"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+</figure>

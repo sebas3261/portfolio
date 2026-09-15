@@ -6,13 +6,29 @@
   "ogImageAlt": "Sebastian Sanchez — Contacto",
   "eyebrow": "Contacto",
   "heading": "Construyamos algo que valga la pena mantener.",
-  "intro": "¿Tienes un proyecto, rol o problema técnico en mente? Envíame una nota y te responderé.",
+  "intro": "Si tienes un producto que construir, una idea que aterrizar o un sistema que necesita orden, cuéntame el contexto y vemos cómo moverlo.",
   "emailLabel": "Email",
-  "email": "hello@sebastian3261.com",
-  "availability": "Abierto a proyectos de ingeniería de software y colaboraciones enfocadas en producto.",
+  "email": "hello@sebas3261.com",
+  "availabilityLabel": "Disponibilidad",
+  "availability": "Abierto a proyectos freelance, colaboración técnica y oportunidades remotas.",
+  "response": "Normalmente respondo con contexto, preguntas concretas y una siguiente acción clara.",
+  "workLabel": "Me interesa hablar de",
+  "work": [
+    "Aplicaciones web rápidas y mantenibles",
+    "Backends Java / Spring Boot",
+    "Productos móviles con React Native",
+    "Arquitectura, performance y refactors con sentido"
+  ],
+  "processLabel": "Cómo suelo arrancar",
+  "process": [
+    { "title": "Contexto", "body": "Qué existe, qué duele y qué necesita pasar." },
+    { "title": "Criterio", "body": "Definir alcance, riesgos y el camino más razonable." },
+    { "title": "Ejecución", "body": "Construir, validar, ajustar y dejar algo mantenible." }
+  ],
   "linksLabel": "También en",
   "links": {
     "github": "GitHub",
     "linkedin": "LinkedIn"
-  }
+  },
+  "cta": "Escribirme"
 }

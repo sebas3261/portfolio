@@ -15,20 +15,19 @@
     { "label": "Enfoque", "value": "Java, web y mobile" },
     { "label": "Disponibilidad", "value": "Remoto" }
   ],
-  "bio": "Empecé a programar en serio alrededor de 2021, atraído por la idea de que el software puede hacer que las cosas funcionen mejor para personas reales. Desde entonces he construido productos a lo largo del stack completo: APIs con Java 17 y Spring Boot, bases de datos PostgreSQL, aplicaciones web con Next.js y Astro, y apps móviles con React Native y Expo.",
+  "bio": "Me gusta construir productos que pasan de idea a uso real: APIs, aplicaciones web, experiencias móviles y herramientas para developers.",
   "story": {
     "title": "La versión menos acartonada",
     "paragraphs": [
-      "Me gusta construir cosas que pasan de idea a uso real. CourtRank es el ejemplo más claro: una plataforma para clubes de pádel con web en producción y aplicación iOS publicada en App Store, además de distribución Android en progreso.",
-      "Mi zona favorita está en el cruce entre ingeniería y producto. Me interesa hablar con claridad sobre tradeoffs, entender por qué algo importa y luego llevarlo a una implementación que no se caiga al primer cambio.",
-      "También trabajo como freelance construyendo y desplegando aplicaciones web para clientes. PlayZone VIP fue parte de ese camino, y Foundi Finance es uno de mis proyectos personales actuales alrededor de finanzas personales, performance y arquitectura frontend mantenible."
+      "CourtRank es el ejemplo más claro: una plataforma para clubes de pádel con web en producción y app iOS publicada en App Store.",
+      "Mi zona favorita está entre ingeniería y producto: entender el problema, hablar claro de tradeoffs y construir algo que pueda evolucionar."
     ]
   },
   "now": {
     "title": "Ahora mismo",
     "items": [
       "Terminando mi carrera de Ingeniería Informática en la Universidad de La Sabana.",
-      "Construyendo CourtRank y Foundi Finance.",
+      "Construyendo CourtRank y MVNEX.",
       "Preparándome para la certificación AWS Certified Solutions Architect – Associate.",
       "Abierto a proyectos freelance, colaboración y oportunidades remotas."
     ]
