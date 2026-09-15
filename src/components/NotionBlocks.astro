@@ -1,0 +1,118 @@
+---
+interface Props {
+  blocks: Record<string, any>[];
+}
+
+const { blocks } = Astro.props;
+
+function richText(items: any[] = []) {
+  return items.map((item) => {
+    const text = item.plain_text ?? "";
+    const href = item.href;
+    const annotations = item.annotations ?? {};
+    let className = "";
+
+    if (annotations.bold) className += " font-semibold";
+    if (annotations.italic) className += " italic";
+    if (annotations.code) className += " rounded bg-zinc-100 px-1 py-0.5 font-mono text-sm dark:bg-zinc-900";
+
+    return { text, href, className: className.trim() };
+  });
+}
+
+function externalUrl(block: any): string | undefined {
+  const data = block[block.type];
+  if (!data) return undefined;
+  if (data.type === "external") return data.external?.url;
+  if (data.type === "file") return data.file?.url;
+  if (data.url) return data.url;
+  return undefined;
+}
+
+function youtubeEmbed(url: string): string | undefined {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
+  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : undefined;
+}
+---
+
+{blocks.map((block) => {
+  const data = block[block.type] ?? {};
+  const text = richText(data.rich_text);
+
+  if (block.type === "paragraph" && text.length === 0) {
+    return <div class="h-6"></div>;
+  }
+
+  if (block.type === "paragraph") {
+    return (
+      <p>
+        {text.map((part) =>
+          part.href ? <a href={part.href} class={part.className}>{part.text}</a> : <span class={part.className}>{part.text}</span>
+        )}
+      </p>
+    );
+  }
+
+  if (block.type === "heading_2") {
+    return <h2>{text.map((part) => <span class={part.className}>{part.text}</span>)}</h2>;
+  }
+
+  if (block.type === "heading_3") {
+    return <h3>{text.map((part) => <span class={part.className}>{part.text}</span>)}</h3>;
+  }
+
+  if (block.type === "bulleted_list_item") {
+    return <ul><li>{text.map((part) => <span class={part.className}>{part.text}</span>)}</li></ul>;
+  }
+
+  if (block.type === "numbered_list_item") {
+    return <ol><li>{text.map((part) => <span class={part.className}>{part.text}</span>)}</li></ol>;
+  }
+
+  if (block.type === "quote") {
+    return <blockquote>{text.map((part) => <span class={part.className}>{part.text}</span>)}</blockquote>;
+  }
+
+  if (block.type === "code") {
+    return (
+      <pre><code>{data.rich_text?.map((part: any) => part.plain_text ?? "").join("")}</code></pre>
+    );
+  }
+
+  if (block.type === "image") {
+    const src = externalUrl(block);
+    const caption = richText(data.caption);
+    return src ? (
+      <figure>
+        <img src={src} alt={caption.map((part) => part.text).join(" ") || ""} loading="lazy" decoding="async" />
+        {caption.length > 0 && <figcaption>{caption.map((part) => <span class={part.className}>{part.text}</span>)}</figcaption>}
+      </figure>
+    ) : null;
+  }
+
+  if (["video", "embed", "bookmark"].includes(block.type)) {
+    const url = externalUrl(block);
+    const embed = url ? youtubeEmbed(url) : undefined;
+
+    if (embed) {
+      return (
+        <figure class="my-10">
+          <div class="aspect-video overflow-hidden rounded-sm bg-zinc-950 shadow-2xl shadow-zinc-950/10 dark:shadow-black/30">
+            <iframe
+              src={embed}
+              title="YouTube video"
+              class="h-full w-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </figure>
+      );
+    }
+
+    return url ? <p><a href={url}>{url}</a></p> : null;
+  }
+
+  return null;
+})}

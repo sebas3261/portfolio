@@ -4,64 +4,74 @@ import blogEn from "../../../messages/en/blog.json";
 import blogEs from "../../../messages/es/blog.json";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import NavBar from "../../../components/NavBar.astro";
-import { getCollection, render } from "astro:content";
+import NotionBlocks from "../../../components/NotionBlocks.astro";
+import { getBlogPost, getBlogPosts } from "../../../lib/blog";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
+  const posts = await getBlogPosts();
 
   return posts.map((post) => ({
     params: {
-      lang: post.data.lang,
-      slug: post.data.slug,
+      lang: post.lang,
+      slug: post.slug,
     },
-    props: { post },
+    props: { postId: post.id },
   }));
 }
 
-const { post } = Astro.props;
 const lang = Astro.params.lang === "es" ? "es" : "en";
+const slug = Astro.params.slug ?? "";
+const post = await getBlogPost(lang, slug);
+
+if (!post) {
+  return Astro.redirect(`/${lang}/404/`);
+}
+
 const blogMessages = lang === "es" ? blogEs : blogEn;
-const { Content } = await render(post);
+const renderedPost = post.source === "mdx" ? await render(post.entry) : null;
+const Content = renderedPost?.Content;
 const date = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
   month: "long",
   day: "numeric",
   year: "numeric",
   timeZone: "UTC",
-}).format(post.data.date);
+}).format(post.date);
 
 const messages = {
   ...blogMessages,
-  title: `${post.data.title} | Sebastian Sanchez`,
-  description: post.data.description,
-  ogTitle: `${post.data.title} | Sebastian Sanchez`,
-  ogDescription: post.data.description,
+  title: `${post.title} | Sebastian Sanchez`,
+  description: post.description,
+  ogTitle: `${post.title} | Sebastian Sanchez`,
+  ogDescription: post.description,
+  ...(post.cover ? { ogImage: post.cover } : {}),
 };
 ---
 
 <BaseLayout lang={lang} messages={messages}>
-  <NavBar lang={lang} variant={post.data.cover ? "heroDark" : undefined} />
+  <NavBar lang={lang} variant={post.cover ? "heroDark" : undefined} />
 
   <main class="bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
     <article>
       <header
         class:list={[
           "relative overflow-hidden px-6 pb-16 pt-28 sm:pb-20 sm:pt-40",
-          post.data.cover
+          post.cover
             ? "min-h-[72svh] bg-zinc-950 text-white md:min-h-[78dvh]"
             : "bg-zinc-50 dark:bg-zinc-900/40",
         ]}
       >
-        {post.data.cover && (
+        {post.cover && (
           <>
             <img
-              src={post.data.cover}
+              src={post.cover}
               alt=""
-              class="absolute inset-0 z-0 h-full w-full object-cover opacity-70"
+              class="absolute inset-0 z-0 h-full w-full object-cover opacity-90"
               loading="eager"
               decoding="async"
             />
-            <div class="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(9,9,11,0.96)_0%,rgba(9,9,11,0.78)_44%,rgba(9,9,11,0.28)_100%)]"></div>
-            <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_72%_42%,rgba(255,255,255,0.14),transparent_26%)]"></div>
+            <div class="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(9,9,11,0.68)_0%,rgba(9,9,11,0.42)_42%,rgba(9,9,11,0.04)_100%)]"></div>
+            <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_72%_42%,rgba(255,255,255,0.22),transparent_30%)]"></div>
           </>
         )}
         <div class="relative z-20 mx-auto flex min-h-[calc(72svh-11rem)] max-w-6xl items-end md:min-h-[calc(78dvh-12rem)]">
@@ -70,7 +80,7 @@ const messages = {
               href={`/${lang}/blog/`}
               class:list={[
                 "inline-flex items-center gap-2 text-sm font-semibold transition-colors",
-                post.data.cover
+                post.cover
                   ? "text-zinc-300 hover:text-white"
                   : "text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white",
               ]}
@@ -81,29 +91,29 @@ const messages = {
             <p
               class:list={[
                 "mt-10 text-xs font-semibold uppercase tracking-[0.28em]",
-                post.data.cover ? "text-zinc-300" : "text-sky-500 dark:text-sky-400",
+                post.cover ? "text-zinc-300" : "text-sky-500 dark:text-sky-400",
               ]}
             >
               {blogMessages.publishedLabel} · {date}
             </p>
             <h1 class="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-              {post.data.title}
+              {post.title}
             </h1>
             <span class="mt-6 block h-1 w-24 bg-gradient-to-r from-sky-400 via-violet-400 to-emerald-400"></span>
             <p
               class:list={[
                 "mt-6 text-lg leading-8 sm:text-xl",
-                post.data.cover ? "max-w-2xl text-zinc-300" : "text-zinc-500 dark:text-zinc-400",
+                post.cover ? "max-w-2xl text-zinc-300" : "text-zinc-500 dark:text-zinc-400",
               ]}
             >
-              {post.data.description}
+              {post.description}
             </p>
             <div class="mt-8 flex flex-wrap gap-2">
-              {post.data.tags.map((tag) => (
+              {post.tags.map((tag) => (
                 <span
                   class:list={[
                     "rounded-full border px-3 py-1 text-xs font-medium",
-                    post.data.cover
+                    post.cover
                       ? "border-white/15 bg-white/10 text-zinc-200 backdrop-blur-sm"
                       : "border-zinc-200 bg-white text-zinc-500 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400",
                   ]}
@@ -118,7 +128,7 @@ const messages = {
 
       <section class="border-t border-zinc-200 px-6 py-14 dark:border-zinc-800 sm:py-20">
         <div class="blog-content mx-auto max-w-3xl">
-          <Content />
+          {Content ? <Content /> : <NotionBlocks blocks={post.source === "notion" ? post.blocks : []} />}
         </div>
       </section>
     </article>

@@ -18,13 +18,13 @@
     "name": "CourtRank",
     "slug": "courtrank",
     "type": "Mobile + Backend + Web",
-    "description": "A platform for padel clubs with a live web product and an iOS application published on the Apple App Store. The project brings together reservations, players, clubs, rankings, user relationships, loyalty points, and admin workflows.",
-    "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "React Native", "Expo", "Next.js", "TypeScript"],
+    "description": "A platform for padel clubs with a live web product and an iOS application published on the Apple App Store. The current version runs on a TypeScript full-stack foundation, while I work on migrating the backend to Java to strengthen architecture, domain boundaries, and scalability.",
+    "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Expo", "Next.js", "Java"],
     "links": [
       { "label": "View web", "url": "https://getcourtrank.com/es/" }
     ],
     "highlights": [
-      "Backend with hexagonal architecture, REST APIs, Maven, Flyway, and relational data modeling.",
+      "Current TypeScript backend with REST APIs, relational domain modeling, and a Java migration in progress.",
       "Mobile app built with React Native/Expo and integrated with backend services.",
       "Full product cycle: analysis, system design, implementation, deployment, debugging, and iteration."
     ]
@@ -45,8 +45,8 @@
         "name": "MVNEX",
         "slug": "mvnex",
         "type": "Systems / C++",
-        "description": "A lower-level systems project focused on performance, data structures, and implementation depth.",
-        "stack": ["C++"],
+        "description": "A CLI that aims to give Maven a more npm-like experience: memorable commands, shorter workflows, and less friction when working with Java projects.",
+        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
         "status": "In development",
         "url": "https://mvnex.sebas3261.com",
         "githubUrl": "https://github.com/sebas3261/mvnex"

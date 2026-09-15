@@ -1,43 +1,49 @@
-# Astro Starter Kit: Minimal
+# Sebastian Sanchez Portfolio
+
+Personal portfolio built with Astro.
+
+## Commands
 
 ```sh
-pnpm create astro@latest -- --template minimal
+pnpm install
+pnpm dev
+pnpm build
+pnpm preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Blog
 
-## 🚀 Project Structure
+The blog can read posts from Notion or from local MDX files.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Notion source
+
+Set these environment variables:
+
+```sh
+NOTION_TOKEN=
+NOTION_BLOG_DATABASE_ID=
+```
+
+The Notion database should include these properties:
+
+- `Title`: title
+- `Description`: rich text
+- `Date`: date
+- `Lang`: select with `en` or `es`
+- `Slug`: rich text
+- `Tags`: multi-select
+- `Draft`: checkbox
+- `Cover`: page cover, URL, or file property
+- `CoverAlt`: rich text, optional
+
+Supported Notion content blocks include paragraphs, headings, bullet lists, numbered lists, quotes, code, images, and YouTube embeds.
+
+### Local fallback
+
+If Notion variables are missing, the blog uses local files in:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/content/blog
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Use `.mdx` when a post needs custom components.

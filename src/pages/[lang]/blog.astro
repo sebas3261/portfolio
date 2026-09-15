@@ -4,7 +4,7 @@ import en from "../../messages/en/blog.json";
 import es from "../../messages/es/blog.json";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "../../lib/blog";
 
 export function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
@@ -12,9 +12,9 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang === "es" ? "es" : "en";
 const messages = lang === "es" ? es : en;
-const posts = (await getCollection("blog"))
-  .filter((post) => post.data.lang === lang && !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getBlogPosts())
+  .filter((post) => post.lang === lang)
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
   month: "short",
@@ -51,23 +51,23 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
           <div class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
             {posts.map((post) => (
               <article class="group grid gap-5 py-8 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <time datetime={post.data.date.toISOString()} class="text-sm font-medium text-zinc-400">
-                  {formatter.format(post.data.date)}
+                <time datetime={post.date.toISOString()} class="text-sm font-medium text-zinc-400">
+                  {formatter.format(post.date)}
                 </time>
                 <div>
                   <a
-                    href={`/${lang}/blog/${post.data.slug}/`}
+                    href={`/${lang}/blog/${post.slug}/`}
                     class="grid gap-5 sm:grid-cols-[minmax(0,1fr)_8.5rem] sm:items-start md:grid-cols-[minmax(0,1fr)_10rem]"
                   >
                     <div>
                       <h2 class="text-2xl font-semibold tracking-tight transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400 sm:text-3xl">
-                        {post.data.title}
+                        {post.title}
                       </h2>
                       <p class="mt-4 max-w-2xl leading-7 text-zinc-500 dark:text-zinc-400">
-                        {post.data.description}
+                        {post.description}
                       </p>
                       <div class="mt-5 flex flex-wrap items-center gap-3">
-                        {post.data.tags.map((tag) => (
+                        {post.tags.map((tag) => (
                           <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
                             {tag}
                           </span>
@@ -78,11 +78,11 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
                         </span>
                       </div>
                     </div>
-                    {post.data.cover && (
+                    {post.cover && (
                       <div class="order-first flex aspect-[16/9] items-center justify-center overflow-hidden sm:order-none sm:aspect-square">
                         <img
-                          src={post.data.cover}
-                          alt={post.data.coverAlt ?? ""}
+                          src={post.cover}
+                          alt={post.coverAlt ?? ""}
                           class="h-full w-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-[1.04] group-hover:opacity-100"
                           loading="lazy"
                           decoding="async"

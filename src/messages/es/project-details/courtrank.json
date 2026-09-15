@@ -1,8 +1,8 @@
 {
   "title": "CourtRank | Sebastian Sanchez",
-  "description": "Caso de estudio de CourtRank, plataforma para clubes de pádel con backend Java, web en producción y aplicación iOS publicada en App Store.",
+  "description": "Caso de estudio de CourtRank, plataforma para clubes de pádel con stack actual en TypeScript y migración de backend a Java en progreso.",
   "ogTitle": "CourtRank | Sebastian Sanchez",
-  "ogDescription": "Plataforma para clubes de pádel construida con Java, Spring Boot, PostgreSQL, React Native y Next.js.",
+  "ogDescription": "Plataforma para clubes de pádel construida con TypeScript, Node.js, PostgreSQL, React Native y Next.js, con migración de backend a Java en progreso.",
   "ogImageAlt": "CourtRank — Caso de estudio",
   "back": "Volver a proyectos",
   "eyebrow": "Caso de estudio",
@@ -18,7 +18,7 @@
   "links": [
     { "label": "Ver web", "url": "https://getcourtrank.com/es/" }
   ],
-  "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "Maven", "React Native", "Expo", "Next.js", "TypeScript"],
+  "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Expo", "Next.js", "Java"],
   "overviewLabel": "Resumen",
   "problem": {
     "title": "El problema",
@@ -49,13 +49,13 @@
     },
     {
       "title": "Decisiones técnicas",
-      "body": "El backend se diseñó para que el dominio no quedara mezclado con detalles de infraestructura o frameworks. La prioridad fue mantener límites claros y una base que pudiera evolucionar.",
+      "body": "La versión actual está construida sobre TypeScript, pero la dirección técnica es migrar el backend a Java para separar mejor el dominio, ordenar reglas de negocio y preparar una base más sólida para crecer.",
       "points": [
-        "Java 17 y Spring Boot para construir servicios backend robustos.",
-        "PostgreSQL y Flyway para modelado relacional y migraciones controladas.",
+        "TypeScript y Node.js como base actual del producto en producción.",
+        "PostgreSQL para modelado relacional y persistencia confiable.",
         "APIs REST como contrato entre backend, web y mobile.",
-        "Arquitectura hexagonal, SOLID e inyección de dependencias para separar dominio, aplicación e infraestructura.",
-        "Maven, Git y flujos de despliegue para sostener el ciclo de desarrollo."
+        "Migración progresiva a Java para fortalecer arquitectura, dominio e infraestructura.",
+        "Git y flujos de despliegue para sostener el ciclo de desarrollo."
       ]
     },
     {
@@ -79,9 +79,9 @@
       ]
     }
   ],
-  "highlights": ["iOS publicado en App Store", "Web en producción", "Backend Java + PostgreSQL", "Producto multi-plataforma"],
+  "highlights": ["iOS publicado en App Store", "Web en producción", "Backend TypeScript hoy, Java en camino", "Producto multi-plataforma"],
   "next": {
     "title": "Lo próximo",
-    "body": "Seguir puliendo la experiencia móvil, completar distribución Android, mejorar flujos para clubes y documentar con más profundidad las decisiones internas del sistema."
+    "body": "Seguir puliendo la experiencia móvil, completar distribución Android, avanzar la migración del backend a Java y mejorar flujos para clubes con una base más clara."
   }
 }

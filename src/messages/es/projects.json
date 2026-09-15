@@ -18,13 +18,13 @@
     "name": "CourtRank",
     "slug": "courtrank",
     "type": "Mobile + Backend + Web",
-    "description": "Plataforma para clubes de pádel con producto web en producción y aplicación iOS publicada en App Store. El proyecto reúne reservas, jugadores, clubes, rankings, relaciones entre usuarios, puntos de fidelidad y flujos administrativos.",
-    "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "React Native", "Expo", "Next.js", "TypeScript"],
+    "description": "Plataforma para clubes de pádel con producto web en producción y aplicación iOS publicada en App Store. La versión actual corre sobre una base full-stack en TypeScript, mientras trabajo en migrar el backend a Java para fortalecer arquitectura, dominio y escalabilidad.",
+    "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Expo", "Next.js", "Java"],
     "links": [
       { "label": "Ver web", "url": "https://getcourtrank.com/es/" }
     ],
     "highlights": [
-      "Backend con arquitectura hexagonal, APIs REST, Maven, Flyway y modelado relacional.",
+      "Backend actual en TypeScript con APIs REST, dominio relacional y migración a Java en progreso.",
       "Aplicación móvil en React Native/Expo integrada con servicios backend.",
       "Ciclo completo: análisis, diseño de sistema, implementación, despliegue, debugging e iteración."
     ]
@@ -45,8 +45,8 @@
         "name": "MVNEX",
         "slug": "mvnex",
         "type": "Sistemas / C++",
-        "description": "Proyecto de bajo nivel enfocado en rendimiento, estructuras de datos y profundidad de implementación.",
-        "stack": ["C++"],
+        "description": "CLI que busca darle a Maven una experiencia más cercana a npm: comandos más memorables, flujos más cortos y menos fricción para trabajar con proyectos Java.",
+        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
         "status": "En desarrollo",
         "url": "https://mvnex.sebas3261.com",
         "githubUrl": "https://github.com/sebas3261/mvnex"

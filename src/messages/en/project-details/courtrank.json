@@ -1,8 +1,8 @@
 {
   "title": "CourtRank | Sebastian Sanchez",
-  "description": "Case study for CourtRank, a padel club platform with a Java backend, live web product, and iOS app published on the Apple App Store.",
+  "description": "Case study for CourtRank, a padel club platform with a current TypeScript stack and an in-progress backend migration to Java.",
   "ogTitle": "CourtRank | Sebastian Sanchez",
-  "ogDescription": "A padel club platform built with Java, Spring Boot, PostgreSQL, React Native, and Next.js.",
+  "ogDescription": "A padel club platform built with TypeScript, Node.js, PostgreSQL, React Native, and Next.js, with an in-progress backend migration to Java.",
   "ogImageAlt": "CourtRank — Case study",
   "back": "Back to projects",
   "eyebrow": "Case study",
@@ -18,7 +18,7 @@
   "links": [
     { "label": "View web", "url": "https://getcourtrank.com/es/" }
   ],
-  "stack": ["Java 17", "Spring Boot", "PostgreSQL", "Flyway", "Maven", "React Native", "Expo", "Next.js", "TypeScript"],
+  "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Expo", "Next.js", "Java"],
   "overviewLabel": "Overview",
   "problem": {
     "title": "The problem",
@@ -49,13 +49,13 @@
     },
     {
       "title": "Technical decisions",
-      "body": "The backend was designed so the domain would not be tangled with infrastructure or framework details. The priority was keeping clear boundaries and a foundation that could evolve.",
+      "body": "The current version is built on TypeScript, but the technical direction is migrating the backend to Java to separate the domain more clearly, organize business rules, and prepare a stronger foundation for growth.",
       "points": [
-        "Java 17 and Spring Boot for robust backend services.",
-        "PostgreSQL and Flyway for relational modeling and controlled migrations.",
+        "TypeScript and Node.js as the current production foundation.",
+        "PostgreSQL for relational modeling and dependable persistence.",
         "REST APIs as the contract between backend, web, and mobile.",
-        "Hexagonal architecture, SOLID, and dependency injection to separate domain, application, and infrastructure.",
-        "Maven, Git, and deployment workflows to support the development cycle."
+        "Progressive migration to Java to strengthen architecture, domain boundaries, and infrastructure.",
+        "Git and deployment workflows to support the development cycle."
       ]
     },
     {
@@ -79,9 +79,9 @@
       ]
     }
   ],
-  "highlights": ["iOS published on App Store", "Live web platform", "Java + PostgreSQL backend", "Multi-platform product"],
+  "highlights": ["iOS published on App Store", "Live web platform", "TypeScript backend today, Java in progress", "Multi-platform product"],
   "next": {
     "title": "Next",
-    "body": "Continue polishing the mobile experience, complete Android distribution, improve club workflows, and document the internal system decisions in more depth."
+    "body": "Continue polishing the mobile experience, complete Android distribution, move the backend migration to Java forward, and improve club workflows on a clearer foundation."
   }
 }
