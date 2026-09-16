@@ -4,6 +4,7 @@ import navbarEs from "../messages/es/navbar.json";
 import footerEn from "../messages/en/footer.json";
 import footerEs from "../messages/es/footer.json";
 import Footer from "../components/Footer.astro";
+import PostHog from "../components/PostHog.astro";
 
 const { lang, messages, noindex = false } = Astro.props;
 const navMessages = lang === "es" ? navbarEs : navbarEn;
@@ -50,10 +51,16 @@ const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- PostHog Analytics -->
+    <PostHog />
+
     <!-- Anti-flash: aplica el tema antes de que React hidrate -->
     <script is:inline>
       (function () {
-        var stored = localStorage.getItem("theme");
+        var stored = null;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch (e) {}
         var dark = stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
         if (dark) {
           document.documentElement.classList.add("dark");

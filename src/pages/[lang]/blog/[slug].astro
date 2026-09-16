@@ -123,4 +123,65 @@ const messages = {
       </section>
     </article>
   </main>
+
+  <script is:inline define:vars={{ postSlug: post.slug, postTitle: post.title, lang }}>
+    (function () {
+      var startTime = Date.now();
+      var readTracked = false;
+      var scroll50Tracked = false;
+
+      function checkScroll() {
+        if (!window.posthog) return;
+        var content = document.querySelector(".blog-content");
+        if (!content) return;
+
+        var rect = content.getBoundingClientRect();
+        var contentHeight = rect.height;
+        if (contentHeight <= 0) return;
+
+        var visibleBottom = window.innerHeight - rect.top;
+        var progress = Math.min(Math.max(visibleBottom / contentHeight, 0), 1);
+
+        if (!scroll50Tracked && progress >= 0.5) {
+          scroll50Tracked = true;
+          window.posthog.capture("blog_read_progress", {
+            slug: postSlug,
+            title: postTitle,
+            lang: lang,
+            progress: 50,
+          });
+        }
+
+        if (!readTracked && progress >= 0.85) {
+          var secondsSpent = Math.round((Date.now() - startTime) / 1000);
+          if (secondsSpent >= 15) {
+            readTracked = true;
+            window.posthog.capture("blog_read_completed", {
+              slug: postSlug,
+              title: postTitle,
+              lang: lang,
+              time_spent_seconds: secondsSpent,
+            });
+          }
+        }
+      }
+
+      window.addEventListener("scroll", checkScroll, { passive: true });
+
+      window.addEventListener("beforeunload", function () {
+        if (window.posthog) {
+          var totalSeconds = Math.round((Date.now() - startTime) / 1000);
+          if (totalSeconds >= 5) {
+            window.posthog.capture("blog_time_spent", {
+              slug: postSlug,
+              title: postTitle,
+              lang: lang,
+              seconds: totalSeconds,
+              completed: readTracked,
+            });
+          }
+        }
+      });
+    })();
+  </script>
 </BaseLayout>
