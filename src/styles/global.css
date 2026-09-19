@@ -98,8 +98,7 @@
   overflow-x: auto;
   border: 1px solid rgb(39 39 42);
   border-radius: 0.5rem;
-  background:
-    linear-gradient(180deg, rgb(24 24 27), rgb(9 9 11));
+  background: rgb(14 14 16);
   box-shadow: 0 24px 60px rgb(9 9 11 / 0.12);
   color: rgb(244 244 245);
   font-size: 0.9rem;
@@ -109,7 +108,12 @@
 }
 
 .blog-content pre.shiki {
-  background: linear-gradient(180deg, rgb(24 24 27), rgb(9 9 11)) !important;
+  background: rgb(14 14 16) !important;
+}
+
+.blog-content pre.shiki code,
+.blog-content pre.shiki span {
+  background: transparent !important;
 }
 
 .blog-content pre::before {
