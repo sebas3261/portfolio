@@ -1,9 +1,51 @@
 ---
+import { codeToHtml } from "shiki";
+
 interface Props {
   blocks: Record<string, any>[];
 }
 
 const { blocks } = Astro.props;
+
+const languageMap: Record<string, string> = {
+  "c++": "cpp",
+  "c#": "csharp",
+  "java/c/c++/c#": "java",
+  javascript: "js",
+  typescript: "ts",
+  shell: "bash",
+  plain_text: "text",
+};
+
+function normalizeLanguage(language: string | undefined): string {
+  if (!language) return "text";
+  const normalized = language.toLowerCase().trim();
+  return languageMap[normalized] ?? normalized;
+}
+
+function escapeAttribute(value: string): string {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
+async function highlightCode(code: string, language: string): Promise<string> {
+  const normalizedLanguage = normalizeLanguage(language);
+
+  try {
+    const html = await codeToHtml(code, {
+      lang: normalizedLanguage,
+      theme: "github-dark-default",
+    });
+
+    return html.replace("<pre", `<pre data-language="${escapeAttribute(language)}"`);
+  } catch {
+    const fallback = await codeToHtml(code, {
+      lang: "text",
+      theme: "github-dark-default",
+    });
+
+    return fallback.replace("<pre", `<pre data-language="${escapeAttribute(language || "code")}"`);
+  }
+}
 
 function richText(items: any[] = []) {
   return items.map((item) => {
@@ -33,9 +75,24 @@ function youtubeEmbed(url: string): string | undefined {
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
   return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : undefined;
 }
+
+const renderedBlocks = await Promise.all(
+  blocks.map(async (block) => {
+    if (block.type !== "code") return block;
+
+    const data = block[block.type] ?? {};
+    const code = data.rich_text?.map((part: any) => part.plain_text ?? "").join("") ?? "";
+    const language = data.language || "code";
+
+    return {
+      ...block,
+      highlightedCodeHtml: await highlightCode(code, language),
+    };
+  }),
+);
 ---
 
-{blocks.map((block) => {
+{renderedBlocks.map((block) => {
   const data = block[block.type] ?? {};
   const text = richText(data.rich_text);
 
@@ -74,9 +131,7 @@ function youtubeEmbed(url: string): string | undefined {
   }
 
   if (block.type === "code") {
-    return (
-      <pre><code>{data.rich_text?.map((part: any) => part.plain_text ?? "").join("")}</code></pre>
-    );
+    return <Fragment set:html={block.highlightedCodeHtml} />;
   }
 
   if (block.type === "image") {
