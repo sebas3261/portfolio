@@ -9,6 +9,22 @@
   "intro": "Escribo sobre software, producto y esas decisiones pequeñas que terminan importando mucho.",
   "readCta": "Leer nota",
   "publishedLabel": "Publicado",
+  "explorer": {
+    "searchPlaceholder": "Buscar por título, tema o tag...",
+    "filterAll": "Todos",
+    "moreFilters": "Más filtros",
+    "sortLabel": "Ordenar posts",
+    "sortNewest": "Más recientes",
+    "sortOldest": "Más antiguos",
+    "resultsLabel": "Mostrando {start}-{end} de {total} notas",
+    "emptyTitle": "No encontré nada con esos filtros.",
+    "emptyBody": "Prueba con otra búsqueda, cambia el tag o vuelve a ver todas las notas.",
+    "clearFilters": "Limpiar filtros",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "pageLabel": "Página",
+    "readCta": "Leer nota"
+  },
   "emptyState": {
     "title": "El primer post está siendo escrito.",
     "body": "Estoy armando notas sobre cosas que estoy aprendiendo y construyendo — decisiones de arquitectura, tradeoffs, cosas que me sorprendieron. Estará aquí pronto.",

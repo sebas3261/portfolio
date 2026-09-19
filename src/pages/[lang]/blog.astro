@@ -3,6 +3,7 @@ import "../../styles/global.css";
 import en from "../../messages/en/blog.json";
 import es from "../../messages/es/blog.json";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogExplorer from "../../components/BlogExplorer";
 import NavBar from "../../components/NavBar.astro";
 import { getBlogPosts } from "../../lib/blog";
 
@@ -20,6 +21,17 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
   year: "numeric",
   timeZone: "UTC",
 });
+
+const explorerPosts = posts.map((post) => ({
+  slug: post.slug,
+  title: post.title,
+  description: post.description,
+  date: post.date.toISOString(),
+  formattedDate: formatter.format(post.date),
+  cover: post.cover,
+  coverAlt: post.coverAlt,
+  tags: post.tags,
+}));
 ---
 
 <BaseLayout lang={lang} messages={messages}>
@@ -46,52 +58,7 @@ const formatter = new Intl.DateTimeFormat(lang === "es" ? "es-CO" : "en-US", {
     <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
       <div class="mx-auto max-w-4xl">
         {posts.length > 0 ? (
-          <div class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
-            {posts.map((post) => (
-              <article class="group grid gap-5 py-8 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <time datetime={post.date.toISOString()} class="text-sm font-medium text-zinc-400">
-                  {formatter.format(post.date)}
-                </time>
-                <div>
-                  <a
-                    href={`/${lang}/blog/${post.slug}/`}
-                    class="grid gap-6 sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start md:grid-cols-[minmax(0,1fr)_16rem]"
-                  >
-                    <div>
-                      <h2 class="text-2xl font-semibold tracking-tight transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400 sm:text-3xl">
-                        {post.title}
-                      </h2>
-                      <p class="mt-4 max-w-2xl leading-7 text-zinc-500 dark:text-zinc-400">
-                        {post.description}
-                      </p>
-                      <div class="mt-5 flex flex-wrap items-center gap-3">
-                        {post.tags.map((tag) => (
-                          <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-                            {tag}
-                          </span>
-                        ))}
-                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 dark:text-white">
-                          {messages.readCta}
-                          <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-                        </span>
-                      </div>
-                    </div>
-                    {post.cover && (
-                      <div class="order-first aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900 sm:order-none">
-                        <img
-                          src={post.cover}
-                          alt={post.coverAlt ?? ""}
-                          class="h-full w-full object-cover object-center opacity-95 transition-transform duration-700 group-hover:scale-[1.04] group-hover:opacity-100"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    )}
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+          <BlogExplorer client:load lang={lang} posts={explorerPosts} messages={messages.explorer} />
         ) : (
           <div class="max-w-lg">
             <h2 class="text-xl font-semibold">{messages.emptyState.title}</h2>
