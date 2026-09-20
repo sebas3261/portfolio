@@ -4,7 +4,7 @@
     {
       "source": "/",
       "destination": "/en/",
-      "permanent": false
+      "permanent": true
     }
   ],
   "headers": [

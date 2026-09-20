@@ -16,6 +16,39 @@ const normalizedPath = Astro.url.pathname.endsWith("/")
 const canonical = new URL(normalizedPath, Astro.site);
 const englishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/en");
 const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
+const siteUrl = new URL("/", Astro.site).toString();
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Sebastian Sanchez",
+  url: siteUrl,
+  inLanguage: ["en", "es"],
+  publisher: {
+    "@type": "Person",
+    name: "Sebastian Sanchez",
+    url: siteUrl,
+  },
+};
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sebastian Sanchez",
+  alternateName: "sebas3261",
+  url: siteUrl,
+  jobTitle: "Software Engineer",
+  sameAs: [
+    "https://github.com/sebas3261",
+    "https://www.linkedin.com/in/sebastian-sanchez-sandoval",
+    "https://www.instagram.com/sebas.3261/",
+  ],
+  knowsAbout: [
+    "Software Engineering",
+    "Backend Development",
+    "Web Development",
+    "Mobile Development",
+    "Product Engineering",
+  ],
+};
 ---
 
 <html lang={lang}>
@@ -94,6 +127,8 @@ const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
     <meta name="twitter:description" content={messages.ogDescription} />
     <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
     <meta name="twitter:image:alt" content={messages.ogImageAlt} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     </>}
   </head>
   <body>

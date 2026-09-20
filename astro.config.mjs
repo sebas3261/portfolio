@@ -32,5 +32,5 @@ export default defineConfig({
     },
   },
 
-  site: "https://sebas3261.com",
+  site: "https://www.sebas3261.com",
 });

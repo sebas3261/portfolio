@@ -3,7 +3,7 @@ import { getBlogPosts } from "../lib/blog";
 
 export const prerender = false;
 
-const site = "https://sebas3261.com";
+const site = "https://www.sebas3261.com";
 
 function escapeXml(value: string): string {
   return value
