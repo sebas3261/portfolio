@@ -121,10 +121,8 @@ const personSchema = {
       content={lang === "es" ? "en_US" : "es_CO"}
     />
     <meta property="og:image" content={ogImage} />
-    {!hasCustomOgImage && <>
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-    </>}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={messages.ogImageAlt} />
 
     <!-- Twitter / X -->
