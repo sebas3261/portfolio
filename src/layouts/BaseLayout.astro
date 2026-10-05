@@ -14,6 +14,10 @@ const normalizedPath = Astro.url.pathname.endsWith("/")
   ? Astro.url.pathname
   : `${Astro.url.pathname}/`;
 const canonical = new URL(normalizedPath, Astro.site);
+const hasCustomOgImage = Boolean(messages.ogImage);
+const ogImage = hasCustomOgImage
+  ? new URL(messages.ogImage, Astro.site)
+  : new URL("/og-image.png", Astro.site);
 const englishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/en");
 const spanishPath = normalizedPath.replace(/^\/(en|es)(?=\/|$)/, "/es");
 const siteUrl = new URL("/", Astro.site).toString();
@@ -116,16 +120,18 @@ const personSchema = {
       property="og:locale:alternate"
       content={lang === "es" ? "en_US" : "es_CO"}
     />
-    <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content={ogImage} />
+    {!hasCustomOgImage && <>
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </>}
     <meta property="og:image:alt" content={messages.ogImageAlt} />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={messages.ogTitle} />
     <meta name="twitter:description" content={messages.ogDescription} />
-    <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={messages.ogImageAlt} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

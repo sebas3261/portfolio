@@ -35,6 +35,7 @@ const messages = {
   ogTitle: `${post.title} | Sebastian Sanchez`,
   ogDescription: post.description,
   ...(post.cover ? { ogImage: post.cover } : {}),
+  ...(post.coverAlt ? { ogImageAlt: post.coverAlt } : {}),
 };
 ---
 
