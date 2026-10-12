@@ -185,7 +185,7 @@ async function getNotionPosts(): Promise<NotionBlogPost[]> {
           coverAlt: propertyText(properties, "CoverAlt") || title,
           tags: propertyTags(properties, "Tags"),
           draft: propertyCheckbox(properties, "Draft"),
-          blocks: await getNotionBlocks(page.id),
+          blocks: [],
         });
       }
 
@@ -233,5 +233,11 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function getBlogPost(lang: Lang, slug: string): Promise<BlogPost | undefined> {
-  return (await getBlogPosts()).find((post) => post.lang === lang && post.slug === slug);
+  const post = (await getBlogPosts()).find((post) => post.lang === lang && post.slug === slug);
+
+  if (post?.source === "notion" && post.blocks.length === 0) {
+    post.blocks = await getNotionBlocks(post.notionPageId);
+  }
+
+  return post;
 }
