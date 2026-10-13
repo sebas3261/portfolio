@@ -1,0 +1,22 @@
+---
+const { slug, name, lang = "en", compact = false } = Astro.props;
+const appAlt = lang === "es" ? "Capturas de la app iOS de CourtRank" : "CourtRank iOS app screenshots";
+---
+
+{slug === "courtrank" ? (
+  <div class:list={["relative flex items-center justify-center gap-4 overflow-hidden rounded-2xl border border-lime-400/15 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.18),transparent_65%)] bg-zinc-950 px-6 sm:gap-6", compact ? "aspect-[16/10] py-4" : "min-h-80 py-10"]} aria-label={appAlt}>
+    <img src="/images/projects/courtrank-app-home.webp" alt={lang === "es" ? "CourtRank: inicio y reservas" : "CourtRank: home and bookings"} width="314" height="680" class:list={["-rotate-3 rounded-2xl border-4 border-zinc-800 shadow-2xl", compact ? "h-[85%] w-auto" : "w-[42%] max-w-44"]} loading="lazy" />
+    <img src="/images/projects/courtrank-app-bookings.webp" alt={lang === "es" ? "CourtRank: lista de reservas" : "CourtRank: booking list"} width="314" height="680" class:list={["rotate-3 rounded-2xl border-4 border-zinc-800 shadow-2xl", compact ? "mt-5 h-[85%] w-auto" : "mt-12 w-[42%] max-w-44"]} loading="lazy" />
+  </div>
+) : slug === "playzone-vip" ? (
+  <div class="flex aspect-[16/10] flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
+    <div class="flex h-9 items-center gap-2 px-4 text-[10px] text-zinc-400" aria-hidden="true"><span class="size-1.5 rounded-full bg-zinc-600"></span><span class="size-1.5 rounded-full bg-zinc-600"></span><span class="size-1.5 rounded-full bg-zinc-600"></span><span class="ml-2">playzonevip.com</span></div>
+    <img src="/images/projects/playzone-vip.webp" alt={lang === "es" ? "Página principal de PlayZone VIP" : "PlayZone VIP homepage"} width="1280" height="720" class="min-h-0 w-full flex-1 object-cover" loading="lazy" />
+  </div>
+) : (
+  <div class="flex aspect-[16/10] flex-col justify-between overflow-hidden rounded-2xl border border-indigo-400/20 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.18),transparent_70%)] bg-zinc-950 p-6 sm:p-8">
+    <div class="flex items-center gap-3"><img src="/images/projects/mvnex-logo.svg" alt="" width="44" height="44" class="size-11" /><span class="text-xl font-semibold tracking-tight text-white">{name}</span><span class="ml-auto text-[10px] uppercase tracking-widest text-zinc-500">CLI / C++</span></div>
+    <pre class="mt-6 text-sm leading-8 text-zinc-200 sm:text-base"><code><span class="text-indigo-300">$</span> mvnex init my-app{"\n"}<span class="text-indigo-300">$</span> mvnex add lombok{"\n"}<span class="text-indigo-300">$</span> mvn package</code></pre>
+    <p class="mt-6 text-xs text-zinc-500">Maven · Developer experience</p>
+  </div>
+)}

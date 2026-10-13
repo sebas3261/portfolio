@@ -11,8 +11,6 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const messages = lang === "es" ? es : en;
-const heroVideo = "/videos/hero-developer.mp4";
-const heroPoster = "/videos/hero-developer-poster.jpg";
 const heroTechnologies = [
   ...messages.hero.technologies,
   ...messages.hero.technologies,
@@ -41,176 +39,120 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
 
   <main class="overflow-x-hidden">
   <!-- Hero -->
-  <section id="hero" class="relative h-svh max-h-svh overflow-hidden bg-zinc-950 text-white md:h-dvh md:max-h-dvh">
-    <img
-      id="hero-poster"
-      src={heroPoster}
-      alt=""
-      class="absolute inset-0 z-0 h-full w-full object-cover opacity-70 transition-opacity duration-500"
-      loading="eager"
-      decoding="async"
-    />
-    <video
-      id="hero-video"
-      class="absolute inset-0 z-10 h-full w-full object-cover opacity-70"
-      poster={heroPoster}
-      autoplay
-      muted
-      playsinline
-      webkit-playsinline
-      preload="auto"
-    >
-      <source src={heroVideo} type="video/mp4" />
-    </video>
-    <div class="absolute inset-0 z-20 bg-[linear-gradient(90deg,rgba(9,9,11,0.94)_0%,rgba(9,9,11,0.76)_42%,rgba(9,9,11,0.22)_100%)]"></div>
-    <div class="absolute inset-0 z-20 bg-[radial-gradient(circle_at_72%_42%,rgba(255,255,255,0.16),transparent_26%)]"></div>
-
-    <div class="relative z-30 mx-auto grid h-svh max-h-svh max-w-7xl grid-rows-[1fr_auto] px-6 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-24 sm:px-8 sm:pt-28 md:h-dvh md:max-h-dvh lg:px-10">
-      <div class="max-w-3xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-300">
-          {messages.hero.eyebrow}
-        </p>
-        <h1 class="mt-5 text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-          {messages.hero.heading}
+  <section id="hero" class="relative isolate overflow-hidden bg-zinc-950 text-white">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_85%_35%,rgba(79,112,255,0.14),transparent_52%)]"></div>
+    <div class="mx-auto flex min-h-svh max-w-7xl flex-col px-6 pt-24 pb-8 sm:px-8 sm:pt-28 lg:px-10">
+      <div class="grid flex-1 items-center gap-10 py-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] lg:gap-20 sm:py-10">
+      <div>
+        <p class="text-xs font-medium uppercase tracking-[0.24em] text-zinc-400">{messages.hero.eyebrow}</p>
+        <h1 class="mt-6 text-[clamp(3.25rem,7vw,6rem)] font-semibold leading-[0.98] tracking-[-0.06em]">
+          <span class="block">{messages.hero.heading}</span>
+          <span class="block text-indigo-300">{messages.hero.headingAccent}</span>
         </h1>
-        <p class="mt-5 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl max-[820px]:text-base max-[820px]:leading-7">
-          {messages.hero.description}
-        </p>
-
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row max-[820px]:mt-6">
-          <a
-            href={`/${lang}/projects/`}
-            class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-zinc-950 transition-transform hover:-translate-y-0.5 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          >
-            {messages.hero.primaryCta}
-            <span class="ml-2" aria-hidden="true">→</span>
-          </a>
-          <a
-            href={`/${lang}/about/`}
-            class="group inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-zinc-200 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          >
-            <span class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-white after:transition-transform after:duration-300 group-hover:after:origin-left group-hover:after:scale-x-100">
-              {messages.hero.secondaryCta}
-            </span>
-            <span class="ml-2 translate-x-0 opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" aria-hidden="true">→</span>
-          </a>
+        <div class="mt-8 grid gap-7 lg:mt-10">
+          <p class="max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">{messages.hero.description}</p>
+          <div class="flex flex-wrap items-center gap-5">
+            <a href="#selected-work" class="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              {messages.hero.primaryCta}<span aria-hidden="true">↘</span>
+            </a>
+            <a href={`https://vaulsoftware.com/${lang}/`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-zinc-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label={messages.projectsPreview.company.cta}>
+              <img src="/images/vaul/vaul-white.svg" width="32" height="20" alt="" class="h-5 w-8 object-contain" />
+              VAUL Software<span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </div>
-
-      <div class="grid gap-6 pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end max-[820px]:pb-10">
-        <div class="min-w-0">
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">
-            {messages.hero.techLabel}
-          </p>
-          <div class="tech-marquee-mask mt-4 overflow-hidden">
-            <div class="tech-marquee-track flex w-max items-center gap-4">
-              {heroTechnologies.map((technology) => (
-                <div class="flex h-11 shrink-0 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-zinc-200 backdrop-blur-sm">
-                  <img
-                    src={technology.icon}
-                    alt={technology.name}
-                    class="size-5 object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span>{technology.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      <figure class="relative mx-auto w-full max-w-xs md:ml-auto md:mr-0 lg:max-w-sm">
+        <div aria-hidden="true" class="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-indigo-500/10 blur-3xl"></div>
+        <div class="aspect-[4/5] overflow-hidden rounded-lg border border-indigo-300/20 bg-zinc-900 shadow-[0_20px_70px_-25px_rgba(79,112,255,0.25)]">
+          <img src="/images/sebastian.webp" alt={messages.hero.portraitAlt} width="664" height="1182" loading="eager" fetchpriority="high" decoding="async" class="h-full w-full object-cover object-[50%_70%]" />
         </div>
-
-        <div class="flex items-end justify-between gap-8 text-xs text-zinc-400 lg:min-w-80">
-          <div>
-            <p class="font-semibold uppercase tracking-[0.18em]">{messages.hero.scrollLabel}</p>
-            <span class="mt-3 block h-7 w-px bg-zinc-500"></span>
-          </div>
-          <div class="text-right leading-6">
-            <div class="mb-4 font-semibold uppercase tracking-[0.18em] text-zinc-300">
-              {messages.hero.proof.map((item) => (
-                <p>{item}</p>
-              ))}
-            </div>
-            <p>{messages.hero.location}</p>
-            <p>{messages.hero.availability}</p>
+        <figcaption class="mt-4 flex items-center justify-between gap-3 text-xs text-zinc-500">
+          <span>Sebastian Sanchez</span>
+          <span>{messages.hero.portraitCaption}</span>
+        </figcaption>
+      </figure>
+      </div>
+      <div class="mt-10 border-t border-white/10 pt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+          <p>{messages.hero.techLabel}</p>
+          <p>{messages.hero.location} · {messages.hero.availability}</p>
+        </div>
+        <div class="tech-marquee-mask mt-5 overflow-hidden">
+          <div class="tech-marquee-track flex w-max items-center gap-4">
+            {heroTechnologies.map((technology, index) => (
+              <div aria-hidden={index >= messages.hero.technologies.length ? "true" : undefined} class="flex h-11 shrink-0 items-center gap-3 rounded-full border border-white/10 px-4 text-sm font-medium text-zinc-300">
+                <img src={technology.icon} alt="" class="size-5 object-contain brightness-0 invert" loading="lazy" decoding="async" />
+                <span>{technology.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <script>
-    const hero = document.querySelector<HTMLElement>("#hero");
-    const heroVideo = document.querySelector<HTMLVideoElement>("#hero-video");
-    const heroPoster = document.querySelector<HTMLImageElement>("#hero-poster");
-    const START_TIME = 0.8;
-    let ticking = false;
-    let targetTime = START_TIME;
-    let primed = false;
+  <!-- About preview -->
+  <section id="about-preview" class="scroll-mt-16 grid place-items-center border-t border-zinc-200 bg-white px-6 pt-16 pb-8 text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white sm:pt-24 sm:pb-10">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
 
-    function updateTargetTime() {
-      if (!hero || !heroVideo || !Number.isFinite(heroVideo.duration)) return;
+        <!-- Left: text -->
+        <div class="flex flex-col justify-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
+            {messages.aboutPreview.eyebrow}
+          </p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">
+            {messages.aboutPreview.heading}
+          </h2>
+          <p class="mt-5 text-base leading-7 text-zinc-500 dark:text-zinc-400">
+            {messages.aboutPreview.bio}
+          </p>
+          <div class="mt-8">
+            <p class="text-sm leading-6 text-zinc-500 dark:text-zinc-400">{messages.projectsPreview.company.eyebrow}</p>
+            <a href={`https://vaulsoftware.com/${lang}/`} target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-4 focus-visible:outline-2 focus-visible:outline-offset-4" aria-label={messages.projectsPreview.company.cta}>
+              <img src="/images/vaul/vaul-color.svg" alt="" width="80" height="50" class="h-12 w-20 object-contain dark:hidden" />
+              <img src="/images/vaul/vaul-white.svg" alt="" width="80" height="50" class="hidden h-12 w-20 object-contain dark:block" />
+              <span class="text-2xl font-semibold tracking-tight sm:text-3xl">VAUL Software</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <a
+            href={`/${lang}/about/`}
+            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950 underline-offset-4 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
+          >
+            {messages.aboutPreview.cta}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
 
-      const scrollRange = Math.max(hero.offsetHeight, window.innerHeight);
-      const progress = Math.min(Math.max(window.scrollY / scrollRange, 0), 1);
-      const scrubDuration = Math.max(heroVideo.duration - START_TIME, 0);
-      targetTime = START_TIME + progress * scrubDuration;
-    }
+        <!-- Right: bullets + decorative note -->
+        <div class="relative flex flex-col justify-center gap-3">
+          {messages.aboutPreview.bullets.map((bullet) => {
+            const bulletIcons: Record<string, string> = {
+              location: `<svg class="size-4 shrink-0 text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>`,
+              remote:   `<svg class="size-4 shrink-0 text-violet-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3"/></svg>`,
+              learning: `<svg class="size-4 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-1.342"/></svg>`,
+              hobby:    `<svg class="size-4 shrink-0 text-rose-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>`,
+            };
+            return (
+              <div class="flex items-center gap-4 border-b border-zinc-100 py-4 dark:border-zinc-800 last:border-b-0">
+                <span set:html={bulletIcons[bullet.icon] ?? bulletIcons.location} />
+                <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">{bullet.text}</span>
+              </div>
+            );
+          })}
+          <!-- Decorative note -->
+          <p class="mt-4 text-right text-sm italic text-zinc-400">
+            Always building<br/>what's next. ↗
+          </p>
+        </div>
 
-    function syncHeroVideo() {
-      if (!heroVideo || !Number.isFinite(heroVideo.duration)) return;
-
-      const nextTime = heroVideo.currentTime + (targetTime - heroVideo.currentTime) * 0.28;
-
-      if (Math.abs(heroVideo.currentTime - targetTime) > 0.04) {
-        heroVideo.currentTime = nextTime;
-        window.requestAnimationFrame(syncHeroVideo);
-      }
-    }
-
-    function requestSync() {
-      if (ticking) return;
-
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        updateTargetTime();
-        syncHeroVideo();
-        ticking = false;
-      });
-    }
-
-    async function primeHeroVideo() {
-      if (!heroVideo || primed) return;
-
-      primed = true;
-      heroVideo.muted = true;
-      heroVideo.currentTime = START_TIME;
-
-      try {
-        await heroVideo.play();
-        heroVideo.pause();
-        heroVideo.currentTime = targetTime;
-        heroPoster?.classList.add("opacity-0");
-      } catch {
-        heroVideo.currentTime = START_TIME;
-      }
-
-      requestSync();
-    }
-
-    heroVideo?.pause();
-    if (heroVideo) {
-      heroVideo.currentTime = START_TIME;
-    }
-    heroVideo?.addEventListener("loadedmetadata", requestSync);
-    heroVideo?.addEventListener("loadeddata", primeHeroVideo, { once: true });
-    heroVideo?.addEventListener("canplay", primeHeroVideo, { once: true });
-    window.addEventListener("scroll", requestSync, { passive: true });
-    window.addEventListener("resize", requestSync);
-  </script>
+      </div>
+    </div>
+  </section>
 
   <!-- Projects preview -->
-  <section class="grid place-items-center bg-white px-6 py-16 text-zinc-950 dark:bg-zinc-950 dark:text-white sm:py-28 md:min-h-dvh">
+  <section id="selected-work" class="scroll-mt-24 grid place-items-center bg-white px-6 pt-8 pb-16 text-zinc-950 dark:bg-zinc-950 dark:text-white sm:pt-10 sm:pb-28">
     <div class="mx-auto max-w-7xl">
 
       <!-- Header row -->
@@ -222,7 +164,7 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
           <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">
             {messages.projectsPreview.heading}
           </h2>
-          <p class="mt-3 text-base text-zinc-500 dark:text-zinc-400">
+          <p class="mt-3 max-w-2xl text-base leading-7 text-zinc-500 dark:text-zinc-400">
             {messages.projectsPreview.intro}
           </p>
         </div>
@@ -235,11 +177,23 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
         </a>
       </div>
 
-      <div class="mt-14 divide-y divide-zinc-200 dark:divide-zinc-800">
-        {messages.projectsPreview.items.map((project, index) => (
-          <article class="group grid gap-6 py-8 first:pt-0 lg:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1.1fr)] lg:items-center">
 
-            <div class="project-mockup relative h-44 overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900 sm:h-60 lg:h-72">
+
+      <div class="mt-12 grid gap-x-10 gap-y-14 md:grid-cols-2 lg:gap-x-14 lg:gap-y-20">
+        {messages.projectsPreview.items.map((project, index) => (
+          <article id={`project-${project.slug}`} class:list={[
+            "group grid gap-6",
+            index === 0
+              ? "md:col-span-2 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center lg:gap-14"
+              : "content-start border-t border-zinc-200 pt-8 dark:border-zinc-800",
+          ]}>
+
+            <div class="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="flex h-8 items-center gap-1.5 border-b border-zinc-200 px-3 dark:border-zinc-800" aria-hidden="true">
+                <span class="size-1.5 rounded-full bg-zinc-400/50"></span><span class="size-1.5 rounded-full bg-zinc-400/50"></span><span class="size-1.5 rounded-full bg-zinc-400/50"></span>
+                <span class="ml-2 truncate text-[10px] text-zinc-500">{new URL(project.url).hostname}</span>
+              </div>
+            <div class="project-mockup relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
               {project.image ? (
                 <img src={project.image} alt={project.name} class="h-full w-full object-cover object-top" />
               ) : project.url ? (
@@ -262,11 +216,11 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="absolute inset-0 z-10 flex items-end justify-end p-3 opacity-0 transition-opacity duration-200 hover:opacity-100"
-                    aria-label={`Open ${project.name}`}
+                    class="absolute inset-0 z-30 flex items-end justify-end p-3 opacity-0 transition-opacity duration-200 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-white"
+                    aria-label={`${messages.projectsPreview.openSite}: ${project.name}`}
                   >
                     <span class="flex items-center gap-1.5 rounded-full bg-zinc-950/80 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
-                      Open site
+                      {messages.projectsPreview.openSite}
                       <svg class="size-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
                     </span>
                   </a>
@@ -283,19 +237,31 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
                 </>
               )}
             </div>
+            </div>
             <div class="flex flex-1 flex-col">
               <div class="grid gap-4 sm:grid-cols-[auto_1fr]">
                 <span class="text-sm font-semibold text-zinc-300 dark:text-zinc-700">0{index + 1}</span>
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">{project.type}</p>
-                  <h3 class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{project.name}</h3>
+                  <h3 class:list={["mt-2 font-semibold tracking-tight", index === 0 ? "text-3xl sm:text-5xl" : "text-2xl sm:text-3xl"]}>{project.name}</h3>
                 </div>
               </div>
-              <p class="mt-5 flex-1 text-base leading-7 text-zinc-500 dark:text-zinc-400 lg:pl-9">
+              <p class="mt-5 flex-1 text-base leading-7 text-zinc-500 dark:text-zinc-400">
                 {project.description}
               </p>
 
-              <div class="mt-5 flex flex-wrap gap-2 lg:pl-9">
+              <dl class="mt-5 grid gap-3">
+                <div>
+                  <dt class="sr-only">{messages.projectsPreview.roleLabel}</dt>
+                  <dd class="text-sm leading-6 text-zinc-500 dark:text-zinc-400">{project.role}</dd>
+                </div>
+                <div>
+                  <dt class="sr-only">{messages.projectsPreview.outcomeLabel}</dt>
+                  <dd class="border-l-2 border-emerald-500/60 pl-3 text-sm leading-6 text-zinc-700 dark:text-zinc-300">{project.outcome}</dd>
+                </div>
+              </dl>
+
+              <div class="mt-5 flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <span class="rounded-full border border-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
                     {tech}
@@ -303,18 +269,7 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
                 ))}
               </div>
 
-              <div class="mt-6 flex items-center justify-between gap-4 lg:pl-9">
-                {project.stat ? (
-                  <div class="flex items-center gap-1.5 text-sm text-zinc-500">
-                    <svg class="size-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                    </svg>
-                    <span class="font-semibold text-zinc-950 dark:text-white">{project.stat.value}</span>
-                    <span>{project.stat.label}</span>
-                  </div>
-                ) : (
-                  <span></span>
-                )}
+              <div class="mt-6 flex items-center gap-4">
                 <a
                   href={`/${lang}/projects/${project.slug}/`}
                   class="inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 transition-all hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
@@ -406,57 +361,6 @@ const expertiseFallbackIcon = `<svg class="size-3.5" fill="none" viewBox="0 0 24
           </div>
         </div>
               </div>
-    </div>
-  </section>
-
-  <!-- About preview -->
-  <section class="grid place-items-center border-t border-zinc-200 bg-white px-6 py-16 text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-white sm:py-28 md:min-h-dvh">
-    <div class="mx-auto max-w-7xl">
-      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
-
-        <!-- Left: text -->
-        <div class="flex flex-col justify-center">
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
-            {messages.aboutPreview.eyebrow}
-          </p>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">
-            {messages.aboutPreview.heading}
-          </h2>
-          <p class="mt-5 text-base leading-7 text-zinc-500 dark:text-zinc-400">
-            {messages.aboutPreview.bio}
-          </p>
-          <a
-            href={`/${lang}/about/`}
-            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950 underline-offset-4 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
-          >
-            {messages.aboutPreview.cta}
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <!-- Right: bullets + decorative note -->
-        <div class="relative flex flex-col justify-center gap-3">
-          {messages.aboutPreview.bullets.map((bullet) => {
-            const bulletIcons: Record<string, string> = {
-              location: `<svg class="size-4 shrink-0 text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>`,
-              remote:   `<svg class="size-4 shrink-0 text-violet-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3"/></svg>`,
-              learning: `<svg class="size-4 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-1.342"/></svg>`,
-              hobby:    `<svg class="size-4 shrink-0 text-rose-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>`,
-            };
-            return (
-              <div class="flex items-center gap-4 border-b border-zinc-100 py-4 dark:border-zinc-800 last:border-b-0">
-                <span set:html={bulletIcons[bullet.icon] ?? bulletIcons.location} />
-                <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">{bullet.text}</span>
-              </div>
-            );
-          })}
-          <!-- Decorative note -->
-          <p class="mt-4 text-right text-sm italic text-zinc-400">
-            Always building<br/>what's next. ↗
-          </p>
-        </div>
-
-      </div>
     </div>
   </section>
 

@@ -41,7 +41,7 @@ const explorerPosts = posts.map((post) => ({
 
     <!-- Header -->
     <section class="bg-zinc-50 px-6 pb-16 pt-28 dark:bg-zinc-900/40 sm:pb-20 sm:pt-40">
-      <div class="mx-auto max-w-4xl">
+      <div class="mx-auto max-w-7xl">
         <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-500 dark:text-sky-400">
           {messages.eyebrow}
         </p>
@@ -55,8 +55,8 @@ const explorerPosts = posts.map((post) => ({
       </div>
     </section>
 
-    <section class="border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
-      <div class="mx-auto max-w-4xl">
+    <section id="articles" class="scroll-mt-24 border-t border-zinc-200 px-6 py-16 dark:border-zinc-800 sm:py-20">
+      <div class="mx-auto max-w-7xl">
         {posts.length > 0 ? (
           <BlogExplorer client:load lang={lang} posts={explorerPosts} messages={messages.explorer} />
         ) : (

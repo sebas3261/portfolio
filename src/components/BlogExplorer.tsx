@@ -13,6 +13,11 @@ type BlogPost = {
 
 type BlogExplorerMessages = {
   searchPlaceholder: string;
+  filterTitle: string;
+  topicsLabel: string;
+  topicSearchPlaceholder: string;
+  fewerFilters: string;
+  noTopics: string;
   filterAll: string;
   moreFilters: string;
   sortLabel: string;
@@ -36,12 +41,12 @@ interface Props {
 
 const postsPerPage = 6;
 const visibleTagLimit = 8;
-const extraTagLimit = 24;
 
 export default function BlogExplorer({ lang, posts, messages }: Props) {
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("all");
   const [showAllTags, setShowAllTags] = useState(false);
+  const [tagQuery, setTagQuery] = useState("");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
   const [page, setPage] = useState(1);
   const [controlsVisible, setControlsVisible] = useState(false);
@@ -61,9 +66,12 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
   }, [posts]);
 
   const visibleTags = tags.slice(0, visibleTagLimit);
-  const hiddenTags = tags.slice(visibleTagLimit, visibleTagLimit + extraTagLimit);
   const hiddenTagCount = Math.max(0, tags.length - visibleTagLimit);
-  const activeTagIsHidden = activeTag !== "all" && !visibleTags.includes(activeTag);
+  const displayedTags = (showAllTags || tagQuery.trim() ? tags : visibleTags)
+    .filter(tag => tag.toLowerCase().includes(tagQuery.trim().toLowerCase()));
+  if (!tagQuery.trim() && activeTag !== "all" && !displayedTags.includes(activeTag)) {
+    displayedTags.push(activeTag);
+  }
 
   const filteredPosts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -163,20 +171,23 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
     setQuery("");
     setActiveTag("all");
     setShowAllTags(false);
+    setTagQuery("");
     setSort("newest");
     setPage(1);
   }
 
   return (
-    <div>
+    <div className="grid items-start gap-10 md:grid-cols-[16rem_minmax(0,1fr)] lg:gap-14">
+      <aside className="md:sticky md:top-24 md:pb-2">
       <div
         ref={controlsRef}
         className={[
-          "blog-controls-enter border-y border-zinc-200 py-6 dark:border-zinc-800",
+          "blog-controls-enter md:border-r md:border-zinc-200 md:pr-7 dark:md:border-zinc-800",
           controlsVisible ? "is-visible" : "",
         ].join(" ")}
       >
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+        <h2 className="mb-6 text-lg font-semibold tracking-tight">{messages.filterTitle}</h2>
+        <div className="grid gap-5">
           <label className="group relative block">
             <span className="sr-only">{messages.searchPlaceholder}</span>
             <span className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-zinc-400 transition-colors group-focus-within:text-zinc-950 dark:text-zinc-500 dark:group-focus-within:text-white">
@@ -191,98 +202,47 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
                 resetPage();
               }}
               placeholder={messages.searchPlaceholder}
-              className="h-12 w-full border-0 border-b border-zinc-200 bg-transparent pl-8 pr-3 text-base font-semibold text-zinc-950 outline-none transition-colors placeholder:font-medium placeholder:text-zinc-400 focus:border-zinc-950 dark:border-zinc-800 dark:text-white dark:placeholder:text-zinc-500 dark:focus:border-white"
+              className="h-12 w-full border-0 border-b border-zinc-200 bg-transparent pl-8 pr-3 text-base font-semibold text-zinc-950 outline-none transition-colors placeholder:font-medium placeholder:text-zinc-400 focus:border-indigo-400 dark:border-zinc-800 dark:text-white dark:placeholder:text-zinc-500 dark:focus:border-indigo-400"
               type="search"
             />
           </label>
 
-          <div className="flex rounded-full border border-zinc-200 bg-zinc-50 p-1 dark:border-zinc-800 dark:bg-zinc-900/70" aria-label={messages.sortLabel}>
-            <button
-              type="button"
-              onClick={() => {
-                setSort("newest");
-                resetPage();
-              }}
-              className={sortButtonClass(sort === "newest")}
-            >
-              {messages.sortNewest}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSort("oldest");
-                resetPage();
-              }}
-              className={sortButtonClass(sort === "oldest")}
-            >
-              {messages.sortOldest}
-            </button>
-          </div>
+          <fieldset>
+            <legend className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">{messages.sortLabel}</legend>
+            <div className="grid grid-cols-2 gap-1 rounded-lg bg-zinc-100 p-1 dark:bg-zinc-900">
+              {(["newest", "oldest"] as const).map(value => (
+                <button key={value} type="button" aria-pressed={sort === value} onClick={() => { setSort(value); resetPage(); }} className={[
+                  "min-h-9 rounded-md px-2 py-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400",
+                  sort === value ? "bg-white text-zinc-950 shadow-sm dark:bg-zinc-800 dark:text-white" : "text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white",
+                ].join(" ")}>
+                  {value === "newest" ? messages.sortNewest : messages.sortOldest}
+                </button>
+              ))}
+            </div>
+          </fieldset>
         </div>
 
         {tags.length > 0 && (
-          <div className="relative mt-5">
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setActiveTag("all");
-                  resetPage();
-                }}
-                className={tagButtonClass(activeTag === "all")}
-              >
-                {messages.filterAll}
-              </button>
-              {visibleTags.map((tag) => (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={() => {
-                    setActiveTag(tag);
-                    resetPage();
-                  }}
-                  className={tagButtonClass(activeTag === tag)}
-                >
-                  {tag}
+          <div className="mt-7">
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">{messages.topicsLabel}</h3>
+            {hiddenTagCount > 0 && (
+              <input type="search" value={tagQuery} onChange={event => setTagQuery(event.target.value)} placeholder={messages.topicSearchPlaceholder} aria-label={messages.topicSearchPlaceholder} className="mb-3 h-9 w-full border-0 border-b border-zinc-200 bg-transparent px-1 text-sm outline-none focus:border-indigo-400 dark:border-zinc-800 dark:text-white" />
+            )}
+            <button type="button" onClick={() => { setActiveTag("all"); resetPage(); }} aria-pressed={activeTag === "all"} className={tagButtonClass(activeTag === "all")}>
+              <span>{messages.filterAll}</span><span className="ml-2 text-xs opacity-50">{posts.length}</span>
+            </button>
+            <div className="mt-1 flex max-h-[min(24rem,40dvh)] flex-wrap gap-1 overflow-y-auto overscroll-contain pr-1 md:flex-col md:flex-nowrap" role="group" aria-label={messages.topicsLabel}>
+              {displayedTags.map(tag => (
+                <button key={tag} type="button" onClick={() => { setActiveTag(tag); resetPage(); }} aria-pressed={activeTag === tag} className={tagButtonClass(activeTag === tag)}>
+                  <span className="min-w-0 break-words">{tag}</span><span className="ml-2 shrink-0 text-xs opacity-50">{posts.filter(post => post.tags.includes(tag)).length}</span>
                 </button>
               ))}
-              {activeTagIsHidden && (
-                <button type="button" className={tagButtonClass(true)} onClick={() => setShowAllTags(true)}>
-                  {activeTag}
-                </button>
-              )}
-              {hiddenTagCount > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setShowAllTags((current) => !current)}
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-500 transition-colors hover:border-zinc-950 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:border-white dark:hover:text-white"
-                  aria-expanded={showAllTags}
-                >
-                  {messages.moreFilters}
-                  <span className="text-zinc-400">+{hiddenTagCount}</span>
-                </button>
-              )}
+              {displayedTags.length === 0 && <p className="px-3 py-2 text-xs text-zinc-500">{messages.noTopics}</p>}
             </div>
-
-            {showAllTags && hiddenTags.length > 0 && (
-              <div className="mt-4 max-h-44 overflow-y-auto border-l border-zinc-200 pl-4 dark:border-zinc-800">
-                <div className="flex flex-wrap gap-2">
-                  {hiddenTags.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      onClick={() => {
-                        setActiveTag(tag);
-                        setShowAllTags(false);
-                        resetPage();
-                      }}
-                      className={tagButtonClass(activeTag === tag)}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            {hiddenTagCount > 0 && !tagQuery.trim() && (
+              <button type="button" onClick={() => setShowAllTags(current => !current)} aria-expanded={showAllTags} className="mt-3 text-xs font-medium text-indigo-600 hover:underline dark:text-indigo-300">
+                {showAllTags ? messages.fewerFilters : `${messages.moreFilters} (+${hiddenTagCount})`}
+              </button>
             )}
           </div>
         )}
@@ -295,13 +255,15 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
         </p>
       </div>
 
+      </aside>
+      <div className="min-w-0">
       {visiblePosts.length > 0 ? (
         <div ref={postsListRef} className="divide-y divide-zinc-200 border-b border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
           {visiblePosts.map((post, index) => (
             <article
               key={`${post.slug}-${query}-${activeTag}-${sort}-${safePage}`}
               className={[
-                "blog-post-enter group grid gap-5 py-8 sm:grid-cols-[8rem_minmax(0,1fr)]",
+                "blog-post-enter group grid gap-5 py-8 first:pt-0 xl:grid-cols-[6rem_minmax(0,1fr)]",
                 postsVisible ? "is-visible" : "",
               ].join(" ")}
               style={{ "--blog-post-delay": `${Math.min(index * 70, 420)}ms` } as CSSProperties}
@@ -312,7 +274,7 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
               <div>
                 <a
                   href={`/${lang}/blog/${post.slug}/`}
-                  className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_13rem] sm:items-start md:grid-cols-[minmax(0,1fr)_16rem]"
+                  className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_13rem] xl:items-start"
                 >
                   <div>
                     <h2 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400 sm:text-3xl">
@@ -339,7 +301,7 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
                     </div>
                   </div>
                   {post.cover && (
-                    <div className="order-first aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900 sm:order-none">
+                    <div className="order-first aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900 xl:order-none">
                       <img
                         src={post.cover}
                         alt={post.coverAlt ?? ""}
@@ -409,24 +371,16 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
           </div>
         </nav>
       )}
+      </div>
     </div>
   );
 }
 
 function tagButtonClass(active: boolean) {
   return [
-    "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+    "inline-flex items-center justify-between rounded-lg border border-transparent px-3 py-2 text-sm transition-colors shrink-0 md:w-full text-left focus-visible:outline-2 focus-visible:outline-indigo-400",
     active
-      ? "border-zinc-950 bg-zinc-950 text-white dark:border-white dark:bg-white dark:text-zinc-950"
-      : "border-zinc-200 bg-white text-zinc-500 hover:border-zinc-950 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:border-white dark:hover:text-white",
-  ].join(" ");
-}
-
-function sortButtonClass(active: boolean) {
-  return [
-    "h-9 rounded-full px-4 text-xs font-semibold transition-colors",
-    active
-      ? "bg-white text-zinc-950 shadow-sm shadow-zinc-950/5 dark:bg-zinc-800 dark:text-white"
-      : "text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white",
+      ? "bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300"
+      : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white",
   ].join(" ");
 }

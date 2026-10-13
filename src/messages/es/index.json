@@ -5,13 +5,17 @@
   "ogDescription": "Construyendo sistemas backend escalables, aplicaciones web y productos móviles.",
   "ogImageAlt": "Sebastian Sanchez — Ingeniero informatico",
   "hero": {
-    "eyebrow": "Ingeniero informático",
-    "heading": "Construyo software para productos reales, usuarios reales y problemas reales.",
-    "description": "Diseño y construyo sistemas backend escalables, aplicaciones web modernas y experiencias móviles con arquitectura limpia, interfaces prácticas y mentalidad de producto.",
+    "eyebrow": "Sebastian Sanchez · Ingeniero de software",
+    "heading": "De la idea",
+    "description": "Desarrollo productos propios y soluciones para negocios. Soy fundador de VAUL Software y trabajo entre backend, web y aplicaciones móviles.",
     "primaryCta": "Ver proyectos",
     "secondaryCta": "Leer sobre mí",
-    "proof": ["Productos reales.", "Usuarios reales.", "Impacto real."],
-    "techLabel": "Tecnologías de confianza",
+    "proof": [
+      "Productos reales.",
+      "Usuarios reales.",
+      "Impacto real."
+    ],
+    "techLabel": "Herramientas con las que construyo",
     "scrollLabel": "Scroll",
     "location": "Basado en Colombia",
     "availability": "Disponible remoto",
@@ -76,48 +80,82 @@
         "name": "Vercel",
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
       }
-    ]
+    ],
+    "headingAccent": "al producto.",
+    "portraitAlt": "Sebastian Sanchez en el puente de Brooklyn",
+    "portraitCaption": "Fundador de VAUL Software"
   },
   "projectsPreview": {
     "eyebrow": "Proyectos destacados",
     "heading": "Trabajo seleccionado",
-    "intro": "Productos y experimentos que conectan pensamiento de producto con ejecución técnica, desde servicios backend hasta interfaces web y móviles.",
+    "intro": "Productos propios, proyectos para clientes y herramientas que he construido. Cada uno muestra una parte de mi trabajo: definir el problema, desarrollar la solución y llevarla a quienes la usan.",
     "cta": "Ver todos los proyectos",
     "items": [
       {
         "name": "CourtRank",
         "slug": "courtrank",
-        "type": "Mobile + Backend",
-        "description": "Plataforma para clubes de pádel que reúne jugadores, clubes, reservas y experiencias competitivas en un solo producto. La versión actual vive en TypeScript y estoy llevando el backend hacia Java para ordenar mejor dominio, arquitectura y escalabilidad.",
-        "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Java"],
-        "stat": { "value": "18+", "label": "usuarios activos" },
+        "type": "Producto propio · VAUL Software",
+        "description": "Reservas y gestión para clubes de pádel, conectadas con una app para jugadores. CourtRank reúne la operación del club y la experiencia de juego en un mismo producto.",
+        "stack": [
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "React Native",
+          "Java"
+        ],
+        "stat": null,
         "cta": "Ver caso de estudio",
         "url": "https://getcourtrank.com/es/",
-        "image": null
+        "image": null,
+        "role": "Desarrollo de producto, backend e integración web y móvil.",
+        "outcome": "Web en producción y app iOS publicada en App Store."
       },
       {
         "name": "PlayZone VIP",
         "slug": "playzone-vip",
-        "type": "Web / Frontend",
-        "description": "Experiencia web para una marca de entretenimiento, enfocada en carga rápida, navegación clara, bases de SEO y páginas orientadas a conversión. El proyecto equilibra detalle visual con decisiones prácticas de rendimiento.",
-        "stack": ["Next.js", "TypeScript", "SEO", "Tailwind CSS"],
+        "type": "Proyecto para cliente · VAUL Software",
+        "description": "Sitio web para un centro de deportes y entretenimiento. Organiza sus actividades y facilita que los visitantes encuentren información y contacten al negocio.",
+        "stack": [
+          "Astro",
+          "TypeScript",
+          "SEO",
+          "Responsive design"
+        ],
         "stat": null,
         "cta": "Ver caso de estudio",
         "url": "https://www.playzonevip.com/",
-        "image": null
+        "image": null,
+        "role": "Desarrollo frontend, adaptación móvil y despliegue.",
+        "outcome": "Sitio publicado para presentar las actividades y facilitar el contacto."
       },
       {
         "name": "MVNEX",
         "slug": "mvnex",
-        "type": "Sistemas / C++",
-        "description": "Una CLI que busca darle a Maven una experiencia más cercana a npm: comandos más memorables, flujos más cortos y menos fricción en proyectos Java. Está construida en C++ como ejercicio de sistemas, rendimiento y diseño de herramientas para developers.",
-        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
+        "type": "Herramienta personal · En desarrollo",
+        "description": "Una CLI en C++ para simplificar la creación de proyectos y el trabajo con dependencias en Maven, manteniendo proyectos estándar compatibles con su ecosistema.",
+        "stack": [
+          "C++",
+          "Maven",
+          "CLI",
+          "Developer Tool"
+        ],
         "stat": null,
         "cta": "Ver caso de estudio",
         "url": "https://mvnex.sebas3261.com/es/",
-        "image": null
+        "image": null,
+        "role": "Diseño de comandos, implementación en C++ y documentación.",
+        "outcome": "Herramienta en desarrollo, con repositorio y documentación públicos."
       }
-    ]
+    ],
+    "roleLabel": "Mi aporte",
+    "outcomeLabel": "Resultado",
+    "openSite": "Visitar sitio",
+    "company": {
+      "eyebrow": "Mi empresa · Fundador y desarrollador",
+      "heading": "VAUL Software",
+      "description": "Fundé VAUL Software para desarrollar productos propios y soluciones de software para negocios. CourtRank es uno de sus productos; PlayZone VIP, uno de sus proyectos para clientes.",
+      "cta": "Conocer VAUL Software"
+    }
   },
   "expertise": {
     "eyebrow": "Expertise",
@@ -126,30 +164,63 @@
     "categories": [
       {
         "name": "Backend",
-        "items": ["Java", "Spring Boot", "Node.js", "REST APIs", "PostgreSQL", "Docker"],
+        "items": [
+          "Java",
+          "Spring Boot",
+          "Node.js",
+          "REST APIs",
+          "PostgreSQL",
+          "Docker"
+        ],
         "description": "Disfruto construir APIs, servicios y flujos de datos que hacen que un producto sea confiable. Mi trabajo backend suele partir de límites claros, código legible y arquitectura que pueda evolucionar."
       },
       {
         "name": "Frontend",
-        "items": ["React", "Next.js", "Astro", "TypeScript", "Tailwind CSS", "HTML & CSS"],
+        "items": [
+          "React",
+          "Next.js",
+          "Astro",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML & CSS"
+        ],
         "description": "Construyo interfaces que se sienten directas, responsivas y útiles. Me importan los detalles que hacen un producto más fácil de entender, sin perder de vista rendimiento y accesibilidad."
       },
       {
         "name": "Ingeniería",
-        "items": ["Arquitectura Hexagonal", "DDD", "CI/CD", "AWS", "Linux", "Git"],
+        "items": [
+          "Arquitectura Hexagonal",
+          "DDD",
+          "CI/CD",
+          "AWS",
+          "Linux",
+          "Git"
+        ],
         "description": "Me interesa la capa de ingeniería alrededor del producto: despliegue, colaboración, mantenibilidad, debugging y los hábitos que mantienen sano un codebase con el tiempo."
       }
     ]
   },
   "aboutPreview": {
     "eyebrow": "Sobre mí",
-    "heading": "Ingeniero de software con mentalidad de producto.",
-    "bio": "Soy Sebastian, un ingeniero de software apasionado por construir productos útiles, escalables y bien hechos. Disfruto resolver problemas reales, aprender nuevas tecnologías y convertir ideas en soluciones que funcionan y que las personas pueden usar. Mi trabajo suele estar entre arquitectura backend, decisiones de producto y las interfaces que le dan vida al sistema.",
+    "heading": "Ingeniero, creador de productos y fundador.",
+    "bio": "Soy Sebastian, ingeniero de software y fundador de VAUL Software. Desarrollo productos propios como CourtRank y soluciones para clientes como PlayZone VIP. Mi trabajo conecta las decisiones de producto con la arquitectura backend y las interfaces web y móviles que las personas usan.",
     "bullets": [
-      { "icon": "location", "text": "Basado en Colombia" },
-      { "icon": "remote",   "text": "Abierto a oportunidades remotas" },
-      { "icon": "learning", "text": "Aprendizaje continuo" },
-      { "icon": "hobby",    "text": "Deportes, tecnología y buen café" }
+      {
+        "icon": "location",
+        "text": "Basado en Colombia"
+      },
+      {
+        "icon": "remote",
+        "text": "Abierto a oportunidades remotas"
+      },
+      {
+        "icon": "learning",
+        "text": "Aprendizaje continuo"
+      },
+      {
+        "icon": "hobby",
+        "text": "Deportes, tecnología y buen café"
+      }
     ],
     "cta": "Más sobre mí"
   },

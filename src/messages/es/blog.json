@@ -10,12 +10,12 @@
   "readCta": "Leer nota",
   "publishedLabel": "Publicado",
   "explorer": {
-    "searchPlaceholder": "Buscar por título, tema o tag...",
+    "searchPlaceholder": "Buscar notas…",
     "filterAll": "Todos",
     "moreFilters": "Más filtros",
     "sortLabel": "Ordenar posts",
-    "sortNewest": "Más recientes",
-    "sortOldest": "Más antiguos",
+    "sortNewest": "Recientes",
+    "sortOldest": "Antiguos",
     "resultsLabel": "Mostrando {start}-{end} de {total} notas",
     "emptyTitle": "No encontré nada con esos filtros.",
     "emptyBody": "Prueba con otra búsqueda, cambia el tag o vuelve a ver todas las notas.",
@@ -23,11 +23,22 @@
     "previous": "Anterior",
     "next": "Siguiente",
     "pageLabel": "Página",
-    "readCta": "Leer nota"
+    "readCta": "Leer nota",
+    "filterTitle": "Explorar notas",
+    "topicsLabel": "Temas",
+    "topicSearchPlaceholder": "Buscar temas…",
+    "fewerFilters": "Mostrar menos",
+    "noTopics": "No hay temas con ese nombre."
   },
   "emptyState": {
     "title": "El primer post está siendo escrito.",
     "body": "Estoy armando notas sobre cosas que estoy aprendiendo y construyendo — decisiones de arquitectura, tradeoffs, cosas que me sorprendieron. Estará aquí pronto.",
-    "topics": ["Diseño de sistemas", "Arquitectura de APIs", "React Native", "Código limpio", "Pensamiento de producto"]
+    "topics": [
+      "Diseño de sistemas",
+      "Arquitectura de APIs",
+      "React Native",
+      "Código limpio",
+      "Pensamiento de producto"
+    ]
   }
 }

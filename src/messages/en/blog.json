@@ -10,12 +10,12 @@
   "readCta": "Read note",
   "publishedLabel": "Published",
   "explorer": {
-    "searchPlaceholder": "Search by title, topic, or tag...",
+    "searchPlaceholder": "Search notes…",
     "filterAll": "All",
     "moreFilters": "More filters",
     "sortLabel": "Sort posts",
-    "sortNewest": "Newest first",
-    "sortOldest": "Oldest first",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
     "resultsLabel": "Showing {start}-{end} of {total} notes",
     "emptyTitle": "No notes matched those filters.",
     "emptyBody": "Try another search, switch tags, or go back to all notes.",
@@ -23,11 +23,22 @@
     "previous": "Previous",
     "next": "Next",
     "pageLabel": "Page",
-    "readCta": "Read note"
+    "readCta": "Read note",
+    "filterTitle": "Explore notes",
+    "topicsLabel": "Topics",
+    "topicSearchPlaceholder": "Find a topic…",
+    "fewerFilters": "Show fewer",
+    "noTopics": "No matching topics."
   },
   "emptyState": {
     "title": "First post is being written.",
     "body": "I'm putting together notes on things I'm learning and building — architecture decisions, tradeoffs, things that surprised me. It'll be here soon.",
-    "topics": ["Systems design", "API architecture", "React Native", "Clean code", "Product thinking"]
+    "topics": [
+      "Systems design",
+      "API architecture",
+      "React Native",
+      "Clean code",
+      "Product thinking"
+    ]
   }
 }

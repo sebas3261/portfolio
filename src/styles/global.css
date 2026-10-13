@@ -13,7 +13,12 @@
 }
 
 .tech-marquee-track {
-  animation: tech-marquee 28s linear infinite;
+  animation: tech-marquee 90s linear infinite;
+}
+
+.tech-marquee-mask:hover .tech-marquee-track,
+.tech-marquee-mask:focus-within .tech-marquee-track {
+  animation-play-state: paused;
 }
 
 .tech-marquee-mask {

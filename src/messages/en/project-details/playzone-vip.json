@@ -1,8 +1,8 @@
 {
   "title": "PlayZone VIP | Sebastian Sanchez",
-  "description": "Case study for PlayZone VIP, a client web application built and deployed with Next.js, TypeScript, and responsive design.",
+  "description": "Case study for PlayZone VIP, a client web application built and deployed with Astro, TypeScript, and responsive design.",
   "ogTitle": "PlayZone VIP | Sebastian Sanchez",
-  "ogDescription": "A production client web application built with Next.js, TypeScript, JavaScript, HTML, and CSS.",
+  "ogDescription": "A production client web application built with Astro, TypeScript, JavaScript, HTML, and CSS.",
   "ogImageAlt": "PlayZone VIP — Case study",
   "back": "Back to projects",
   "eyebrow": "Freelance project",
@@ -18,7 +18,7 @@
   "links": [
     { "label": "View web", "url": "https://www.playzonevip.com/" }
   ],
-  "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+  "stack": ["Astro", "TypeScript", "JavaScript", "HTML", "CSS"],
   "overviewLabel": "Overview",
   "problem": {
     "title": "The problem",
@@ -46,7 +46,7 @@
     },
     {
       "title": "Execution",
-      "body": "I built the interface with Next.js and TypeScript, taking care of structure, styling, mobile adaptation, and deployment. The focus was keeping the product understandable, stable, and easy to adjust.",
+      "body": "I built the interface with Astro and TypeScript, taking care of structure, styling, mobile adaptation, and deployment. The focus was keeping the product understandable, stable, and easy to adjust.",
       "points": [
         "Organized components and styles to make changes easier.",
         "Responsive design for different screen sizes.",

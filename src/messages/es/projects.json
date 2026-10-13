@@ -5,23 +5,43 @@
   "ogDescription": "Proyectos de software en sistemas backend, aplicaciones web y productos móviles.",
   "ogImageAlt": "Sebastian Sanchez — Proyectos",
   "eyebrow": "Proyectos",
-  "heading": "Productos reales, sistemas reales.",
-  "intro": "Una selección de proyectos donde he trabajado producto, backend, web, mobile, despliegue y las decisiones pequeñas que hacen que el software aguante uso real.",
+  "heading": "Productos y proyectos.",
+  "intro": "Explora mis productos, trabajos para clientes y herramientas de desarrollo. Cada caso de estudio cuenta el contexto, mi aporte y las decisiones detrás del proyecto.",
   "stats": [
-    { "value": "App Store", "label": "iOS publicada" },
-    { "value": "2024", "label": "Construyendo producto" },
-    { "value": "Full-stack", "label": "Backend, web y mobile" }
+    {
+      "value": "App Store",
+      "label": "iOS publicada"
+    },
+    {
+      "value": "2024",
+      "label": "Construyendo producto"
+    },
+    {
+      "value": "Full-stack",
+      "label": "Backend, web y mobile"
+    }
   ],
   "caseStudyCta": "Ver caso de estudio",
   "featured": {
     "label": "Proyecto principal",
     "name": "CourtRank",
     "slug": "courtrank",
-    "type": "Mobile + Backend + Web",
+    "type": "Producto propio · VAUL Software",
     "description": "Plataforma para clubes de pádel con producto web en producción y aplicación iOS publicada en App Store. La versión actual corre sobre una base full-stack en TypeScript, mientras trabajo en migrar el backend a Java para fortalecer arquitectura, dominio y escalabilidad.",
-    "stack": ["TypeScript", "Node.js", "PostgreSQL", "React Native", "Expo", "Next.js", "Java"],
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "React Native",
+      "Expo",
+      "Next.js",
+      "Java"
+    ],
     "links": [
-      { "label": "Ver web", "url": "https://getcourtrank.com/es/" }
+      {
+        "label": "Ver web",
+        "url": "https://getcourtrank.com/es/"
+      }
     ],
     "highlights": [
       "Backend actual en TypeScript con APIs REST, dominio relacional y migración a Java en progreso.",
@@ -35,9 +55,14 @@
       {
         "name": "PlayZone VIP",
         "slug": "playzone-vip",
-        "type": "Web / Frontend",
+        "type": "Proyecto para cliente · VAUL Software",
         "description": "Aplicación web para un cliente, construida y desplegada con enfoque en responsive design, rendimiento y una base mantenible para producción.",
-        "stack": ["Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+        "stack": [
+          "Astro",
+          "TypeScript",
+          "HTML",
+          "CSS"
+        ],
         "status": "Producción",
         "url": "https://www.playzonevip.com/"
       },
@@ -46,7 +71,12 @@
         "slug": "mvnex",
         "type": "Sistemas / C++",
         "description": "CLI que busca darle a Maven una experiencia más cercana a npm: comandos más memorables, flujos más cortos y menos fricción para trabajar con proyectos Java.",
-        "stack": ["C++", "Maven", "CLI", "Developer Tool"],
+        "stack": [
+          "C++",
+          "Maven",
+          "CLI",
+          "Developer Tool"
+        ],
         "status": "En desarrollo",
         "url": "https://mvnex.sebas3261.com",
         "githubUrl": "https://github.com/sebas3261/mvnex"
@@ -57,5 +87,8 @@
     "title": "Casos de estudio iniciales listos.",
     "body": "Cada proyecto ya tiene una página propia con contexto, stack, decisiones y aprendizajes. Iré profundizando esos writeups a medida que los proyectos evolucionen.",
     "cta": "Hablemos"
-  }
+  },
+  "openCta": "Visitar sitio",
+  "catalogLabel": "3 proyectos · Web, móvil y herramientas",
+  "engineeringHeading": "La ingeniería detrás de CourtRank"
 }

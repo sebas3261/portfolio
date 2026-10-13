@@ -5,8 +5,8 @@
   "ogDescription": "Reach out to talk about software engineering, backend systems, web applications, and product development.",
   "ogImageAlt": "Sebastian Sanchez — Contact",
   "eyebrow": "Contact",
-  "heading": "Let's build something worth maintaining.",
-  "intro": "If you have a product to build, an idea to shape, or a system that needs more order, send me the context and we can figure out the next move.",
+  "heading": "It starts with a conversation.",
+  "intro": "An idea, an opportunity, or a software problem. Tell me what you have in mind, and let’s find the next step.",
   "emailLabel": "Email",
   "email": "hello@sebas3261.com",
   "availabilityLabel": "Availability",
@@ -21,14 +21,56 @@
   ],
   "processLabel": "How I usually start",
   "process": [
-    { "title": "Context", "body": "What exists, what hurts, and what needs to happen." },
-    { "title": "Judgment", "body": "Define scope, risks, and the most reasonable path." },
-    { "title": "Execution", "body": "Build, validate, adjust, and leave something maintainable." }
+    {
+      "title": "Context",
+      "body": "What exists, what hurts, and what needs to happen."
+    },
+    {
+      "title": "Judgment",
+      "body": "Define scope, risks, and the most reasonable path."
+    },
+    {
+      "title": "Execution",
+      "body": "Build, validate, adjust, and leave something maintainable."
+    }
   ],
-  "linksLabel": "Elsewhere",
+  "linksLabel": "Get to know my work",
   "links": {
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
-  "cta": "Email me"
+  "cta": "Email me",
+  "personal": {
+    "label": "Talk to me directly",
+    "title": "Sebastian Sanchez",
+    "body": "For professional opportunities, technical collaboration, or a conversation about one of my products.",
+    "cta": "Send me an email"
+  },
+  "company": {
+    "label": "Have a project for your business?",
+    "title": "VAUL Software",
+    "body": "My software development company. For websites, applications, and custom solutions, let’s talk about what your business needs.",
+    "email": "contact@vaulsoftware.com",
+    "cta": "Talk to VAUL"
+  },
+  "brief": {
+    "eyebrow": "Getting started",
+    "title": "You don’t need to have it all figured out.",
+    "intro": "A short message with a little context is enough. These details help me understand what you need:",
+    "items": [
+      {
+        "title": "What you have in mind",
+        "body": "The idea, problem, or opportunity you want to explore."
+      },
+      {
+        "title": "Where you are now",
+        "body": "Whether you are starting out, have a product, or want to improve something existing."
+      },
+      {
+        "title": "What you want to happen next",
+        "body": "The help you need and, if you have them, a timeline or references."
+      }
+    ]
+  },
+  "location": "Based in Colombia · Working remotely"
 }

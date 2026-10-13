@@ -5,35 +5,45 @@
   "ogDescription": "Ingeniero de software enfocado en sistemas escalables, arquitectura limpia e ingeniería de producto cuidadosa.",
   "ogImageAlt": "Sebastian Sanchez — Sobre mí",
   "eyebrow": "Sobre mí",
-  "heading": "Construyendo software con pensamiento de sistemas.",
-  "intro": "Soy Sebastian Sanchez Sandoval, ingeniero de software y estudiante de último semestre de Ingeniería Informática en Colombia. Trabajo entre backend, web y mobile, enfocado en productos reales, sistemas confiables y software fácil de evolucionar.",
+  "heading": "Ingeniero de software. Creador de productos.",
+  "intro": "Soy Sebastian Sanchez Sandoval, ingeniero de software y fundador de VAUL Software. Desde Colombia, desarrollo productos propios y soluciones para negocios, conectando backend, web y aplicaciones móviles.",
   "photoAlt": "Retrato de Sebastian Sanchez",
   "profileLabel": "Perfil",
   "profileNote": "Backend, web y mobile. Mentalidad de producto por costumbre.",
   "quickFacts": [
-    { "label": "Ubicación", "value": "Colombia" },
-    { "label": "Enfoque", "value": "Java, web y mobile" },
-    { "label": "Disponibilidad", "value": "Remoto" }
+    {
+      "label": "Ubicación",
+      "value": "Colombia"
+    },
+    {
+      "label": "Enfoque",
+      "value": "Java, web y mobile"
+    },
+    {
+      "label": "Disponibilidad",
+      "value": "Remoto"
+    }
   ],
-  "bio": "Me gusta construir productos que pasan de idea a uso real: APIs, aplicaciones web, experiencias móviles y herramientas para developers.",
+  "bio": "Me interesa el recorrido completo: entender una necesidad, convertirla en software y seguir mejorándolo cuando llega a las personas.",
   "story": {
-    "title": "La versión menos acartonada",
+    "title": "Lo que me mueve",
     "paragraphs": [
-      "CourtRank es el ejemplo más claro: una plataforma para clubes de pádel con web en producción y app iOS publicada en App Store.",
-      "Mi zona favorita está entre ingeniería y producto: entender el problema, hablar claro de tradeoffs y construir algo que pueda evolucionar."
+      "Con CourtRank he trabajado ese ciclo de punta a punta: modelado de datos, APIs, interfaces web y móviles, despliegue e iteración. Tener una app iOS publicada y una web en producción ha hecho que las decisiones técnicas tengan consecuencias concretas.",
+      "PlayZone VIP representa otra parte de mi trabajo: escuchar a un cliente y traducir sus necesidades en una web clara, adaptable a móviles y publicada. MVNEX me da espacio para explorar C++, herramientas de terminal y la experiencia de los desarrolladores.",
+      "Me gusta moverme entre estas tres perspectivas: quien usa el producto, quien necesita que el negocio funcione y quien tendrá que mantener el código. Ese cruce orienta las decisiones que tomo."
     ]
   },
   "now": {
     "title": "Ahora mismo",
     "items": [
       "Terminando mi carrera de Ingeniería Informática en la Universidad de La Sabana.",
-      "Construyendo CourtRank y MVNEX.",
+      "Desarrollando VAUL Software, CourtRank y MVNEX.",
       "Preparándome para la certificación AWS Certified Solutions Architect – Associate.",
       "Abierto a proyectos freelance, colaboración y oportunidades remotas."
     ]
   },
   "focus": {
-    "title": "En qué me enfoco",
+    "title": "Del sistema a la experiencia.",
     "items": [
       {
         "title": "Sistemas backend",
@@ -58,19 +68,46 @@
     "categories": [
       {
         "name": "Backend",
-        "items": ["Java 17", "Spring Boot", "Node.js", "PostgreSQL", "REST APIs", "Maven", "Flyway"]
+        "items": [
+          "Java 17",
+          "Spring Boot",
+          "Node.js",
+          "PostgreSQL",
+          "REST APIs",
+          "Maven",
+          "Flyway"
+        ]
       },
       {
         "name": "Frontend",
-        "items": ["JavaScript", "TypeScript", "React", "Next.js", "Astro", "Tailwind CSS"]
+        "items": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "Astro",
+          "Tailwind CSS"
+        ]
       },
       {
         "name": "Mobile",
-        "items": ["React Native", "Expo"]
+        "items": [
+          "React Native",
+          "Expo"
+        ]
       },
       {
         "name": "Infraestructura",
-        "items": ["AWS", "EC2", "RDS", "IAM", "VPC", "Docker", "GitHub Actions", "Nginx"]
+        "items": [
+          "AWS",
+          "EC2",
+          "RDS",
+          "IAM",
+          "VPC",
+          "Docker",
+          "GitHub Actions",
+          "Nginx"
+        ]
       }
     ]
   },
@@ -93,10 +130,36 @@
   },
   "outsideCode": {
     "title": "También soy",
-    "items": ["Español nativo", "Inglés B2", "Curioso por defecto", "Deportista casual", "Un poco obsesivo con los detalles"]
+    "items": [
+      "Español nativo",
+      "Inglés B2",
+      "Curioso por defecto",
+      "Deportista casual",
+      "Un poco obsesivo con los detalles"
+    ],
+    "intro": "También hay vida fuera del código. El deporte, la curiosidad y los detalles forman parte de cómo miro los problemas."
   },
   "cta": {
     "projects": "Ver mis proyectos",
     "contact": "Escribeme"
-  }
+  },
+  "company": {
+    "eyebrow": "La empresa que estoy construyendo",
+    "title": "VAUL Software",
+    "body": "Fundé VAUL Software para reunir mis productos propios y el desarrollo de soluciones para clientes. Es donde conecto lo que aprendo construyendo software con necesidades concretas de negocios.",
+    "cta": "Conocer VAUL Software",
+    "projects": [
+      {
+        "name": "CourtRank",
+        "body": "Producto propio para clubes de pádel.",
+        "slug": "courtrank"
+      },
+      {
+        "name": "PlayZone VIP",
+        "body": "Desarrollo web para un cliente.",
+        "slug": "playzone-vip"
+      }
+    ]
+  },
+  "photoLabel": "Fotografía ilustrativa"
 }

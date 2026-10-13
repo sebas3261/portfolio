@@ -4,6 +4,9 @@ import en from "../../messages/en/projects.json";
 import es from "../../messages/es/projects.json";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavBar from "../../components/NavBar.astro";
+import ProjectVisual from "../../components/ProjectVisual.astro";
+import homeEn from "../../messages/en/index.json";
+import homeEs from "../../messages/es/index.json";
 
 export function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
@@ -11,179 +14,85 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang === "es" ? "es" : "en";
 const messages = lang === "es" ? es : en;
+const home = (lang === "es" ? homeEs : homeEn).projectsPreview;
+const projects = [
+  { ...home.items[0], description: messages.featured.description, stack: messages.featured.stack, status: lang === "es" ? "En producción · iOS publicado" : "Live · iOS published", githubUrl: undefined },
+  ...messages.projects.items.map(project => ({ ...home.items.find(item => item.slug === project.slug)!, ...project, githubUrl: "githubUrl" in project ? project.githubUrl : undefined })),
+];
+const logos: Record<string, string> = {
+  courtrank: "/images/courtrank.png",
+  "playzone-vip": "/images/projects/playzone-logo.webp",
+  mvnex: "/images/projects/mvnex-logo.svg",
+};
 ---
 
 <BaseLayout lang={lang} messages={messages}>
   <NavBar lang={lang} />
 
-  <main class="bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
-
-    <!-- Header -->
-    <section class="bg-zinc-50 px-6 pb-16 pt-28 dark:bg-zinc-900/40 sm:pb-20 sm:pt-40">
-      <div class="mx-auto max-w-7xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-500 dark:text-sky-400">
-          {messages.eyebrow}
-        </p>
-        <h1 class="mt-5 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-          {messages.heading}
-        </h1>
-        <span class="mt-6 block h-1 w-24 bg-gradient-to-r from-sky-400 via-violet-400 to-emerald-400"></span>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-500 dark:text-zinc-400">
-          {messages.intro}
-        </p>
-        <div class="mt-12 grid gap-8 sm:grid-cols-3">
-          {messages.stats.map((stat, index) => {
-            const accents = ["border-sky-400", "border-violet-400", "border-emerald-400"];
-            return (
-              <div class={`border-t pt-5 ${accents[index]}`}>
-                <p class="text-2xl font-semibold tracking-tight">{stat.value}</p>
-                <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{stat.label}</p>
-              </div>
-            );
-          })}
+  <main class="min-h-screen bg-white px-6 pt-28 pb-20 text-zinc-950 dark:bg-zinc-950 dark:text-white sm:pt-36">
+    <div class="mx-auto max-w-7xl">
+      <header class="border-b border-zinc-200 pb-8 dark:border-zinc-800">
+        <div class="flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-500 dark:text-indigo-300">{messages.eyebrow}</p>
+            <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">{messages.heading}</h1>
+          </div>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400">{messages.catalogLabel}</p>
         </div>
-      </div>
-    </section>
-
-    <section class="border-t border-zinc-200 bg-white px-6 py-16 dark:border-zinc-800 dark:bg-zinc-950 sm:py-24">
-      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-        <p class="border-l-2 border-sky-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
-          {messages.featured.label}
-        </p>
-        <article>
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">{messages.featured.type}</p>
-          <a href={`/${lang}/projects/${messages.featured.slug}/`} class="group inline-block">
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400 sm:text-5xl">{messages.featured.name}</h2>
-          </a>
-          <p class="mt-6 max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            {messages.featured.description}
-          </p>
-          <div class="mt-8 flex flex-wrap gap-2">
-            {messages.featured.stack.map((tech) => (
-              <span class="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm text-zinc-600 transition-colors hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-sky-900 dark:hover:bg-sky-950/30 dark:hover:text-sky-300">
-                {tech}
-              </span>
-            ))}
-          </div>
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            {messages.featured.highlights.map((highlight, index) => {
-              const accents = ["border-sky-400", "border-violet-400", "border-emerald-400"];
-              return (
-                <p class={`border-t pt-4 text-sm leading-6 text-zinc-500 dark:text-zinc-400 ${accents[index]}`}>
-                  {highlight}
-                </p>
-              );
-            })}
-          </div>
-          <div class="mt-10 flex flex-wrap gap-3">
-            {messages.featured.links.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-              >
-                {link.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            ))}
-            <a
-              href={`/${lang}/projects/${messages.featured.slug}/`}
-              class="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
-            >
-              {messages.caseStudyCta}
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="border-t border-zinc-200 bg-zinc-100 px-6 py-16 dark:border-zinc-800 dark:bg-zinc-900/40 sm:py-20">
-      <div class="mx-auto max-w-7xl">
-        <p class="border-l-2 border-violet-400 pl-4 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
-          {messages.projects.label}
-        </p>
-        <div class="mt-10 divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
-          {messages.projects.items.map((project, index) => (
-            <article class="grid gap-6 py-8 lg:grid-cols-[7rem_1fr_auto] lg:items-start">
-              <p class="text-4xl font-semibold leading-none tracking-tight text-zinc-200 dark:text-zinc-800 sm:text-5xl">
-                0{index + 1}
-              </p>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-widest text-zinc-400">{project.type}</p>
-                <a href={`/${lang}/projects/${project.slug}/`} class="group inline-block">
-                  <h2 class="mt-2 text-2xl font-semibold tracking-tight transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:text-3xl">{project.name}</h2>
-                </a>
-                <p class="mt-5 max-w-3xl leading-7 text-zinc-600 dark:text-zinc-400">{project.description}</p>
-                <div class="mt-6 flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
-                    <span class="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div class="flex flex-col items-start gap-4 lg:items-end">
-                <span class="inline-flex rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-                  {project.status}
-                </span>
-                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 lg:justify-end">
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
-                    >
-                      Open
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center gap-1 text-sm font-semibold text-zinc-500 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                    >
-                      GitHub
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  )}
-                </div>
-                <a
-                  href={`/${lang}/projects/${project.slug}/`}
-                  class="inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 transition-colors hover:text-violet-600 dark:text-white dark:hover:text-violet-400"
-                >
-                  {messages.caseStudyCta}
-                  <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </article>
+        <p class="mt-5 max-w-2xl text-base leading-7 text-zinc-500 dark:text-zinc-400">{messages.intro}</p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          {messages.stats.map((stat, index) => (
+            <div class:list={["border-t pt-4", ["border-sky-400/60", "border-indigo-400/60", "border-emerald-400/60"][index]]}>
+              <p class="text-xl font-semibold tracking-tight">{stat.value}</p>
+              <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{stat.label}</p>
+            </div>
           ))}
         </div>
-      </div>
-    </section>
-
-    <!-- Empty state / coming soon -->
-    <section class="border-t border-zinc-200 bg-white px-6 py-16 dark:border-zinc-800 dark:bg-zinc-950 sm:py-20">
-      <div class="mx-auto max-w-5xl">
-        <div class="border-l border-zinc-300 py-6 pl-8 dark:border-zinc-700">
-          <h2 class="text-xl font-semibold">{messages.caseStudies.title}</h2>
-          <p class="mt-3 max-w-xl leading-7 text-zinc-500 dark:text-zinc-400">
-            {messages.caseStudies.body}
-          </p>
-          <a
-            href={`/${lang}/contact/`}
-            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950 transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
-          >
-            {messages.caseStudies.cta}
-            <span aria-hidden="true">→</span>
-          </a>
+      </header>
+      <section id="gallery" aria-label={messages.eyebrow} class="scroll-mt-20 mt-10 space-y-12">
+        {projects.map(project => (
+          <article class="grid gap-7 border-b border-zinc-200 pb-12 dark:border-zinc-800 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-start lg:gap-12">
+            <a href={`/${lang}/projects/${project.slug}/`} class="block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-400" aria-label={`${messages.caseStudyCta}: ${project.name}`}>
+              <ProjectVisual slug={project.slug} name={project.name} lang={lang} compact={true} />
+            </a>
+            <div class="flex flex-col">
+            <div class="flex items-center gap-3">
+              <img src={logos[project.slug]} alt="" width="40" height="40" class:list={["size-10 rounded-lg object-contain", project.slug === "mvnex" && "bg-zinc-950 p-1.5"]} />
+              <h2 class="text-2xl font-semibold tracking-tight"><a href={`/${lang}/projects/${project.slug}/`} class="hover:text-indigo-500 dark:hover:text-indigo-300">{project.name}</a></h2>
+            </div>
+            <p class="mt-3 w-fit rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-600 dark:bg-zinc-900 dark:text-zinc-300">{project.status}</p>
+            <p class="mt-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-400">{project.type}</p>
+            <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{project.description}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.stack.map(tech => <span class="rounded-full border border-zinc-200 px-2.5 py-1 text-[11px] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">{tech}</span>)}
+            </div>
+            <dl class="mt-5 space-y-3 border-t border-zinc-200 pt-4 text-sm leading-6 dark:border-zinc-800">
+              <div><dt class="font-medium">{home.roleLabel}</dt><dd class="text-zinc-500 dark:text-zinc-400">{project.role}</dd></div>
+              <div><dt class="font-medium">{home.outcomeLabel}</dt><dd class="text-zinc-500 dark:text-zinc-400">{project.outcome}</dd></div>
+            </dl>
+            {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="mt-4 text-xs font-medium text-zinc-500 hover:text-indigo-500">GitHub ↗</a>}
+            <div class="mt-auto flex items-center justify-between gap-4 pt-6">
+              <a href={`/${lang}/projects/${project.slug}/`} class="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-300">{messages.caseStudyCta} <span aria-hidden="true">→</span></a>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-500 hover:text-zinc-950 dark:hover:text-white">{messages.openCta} <span aria-hidden="true">↗</span></a>
+            </div>
+            </div>
+          </article>
+        ))}
+      </section>
+      <section class="mt-16 rounded-2xl border border-indigo-200 bg-indigo-50/50 p-6 dark:border-indigo-400/15 dark:bg-indigo-400/5 sm:p-8" aria-labelledby="engineering-heading">
+        <div class="flex flex-wrap items-center gap-4">
+          <img src="/images/courtrank.png" alt="" width="40" height="40" class="size-10 object-contain" />
+          <h2 id="engineering-heading" class="text-xl font-semibold tracking-tight sm:text-2xl">{messages.engineeringHeading}</h2>
         </div>
-      </div>
-    </section>
-
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          {messages.featured.highlights.map((highlight, index) => <div class="border-t border-indigo-200 pt-4 dark:border-indigo-400/20"><span class="text-xs font-semibold text-indigo-500 dark:text-indigo-300">0{index + 1}</span><p class="mt-2 text-sm leading-7 text-zinc-600 dark:text-zinc-400">{highlight}</p></div>)}
+        </div>
+        <a href={`/${lang}/projects/courtrank/`} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold">{messages.caseStudyCta}<span aria-hidden="true">→</span></a>
+      </section>
+      <section class="mt-14 flex flex-col justify-between gap-6 border-t border-zinc-200 pt-8 dark:border-zinc-800 sm:flex-row sm:items-center">
+        <div><h2 class="text-xl font-semibold">{messages.caseStudies.title}</h2><p class="mt-2 max-w-2xl text-sm leading-6 text-zinc-500 dark:text-zinc-400">{messages.caseStudies.body}</p></div>
+        <a href={`/${lang}/contact/`} class="shrink-0 text-sm font-semibold">{messages.caseStudies.cta} →</a>
+      </section>
+    </div>
   </main>
 </BaseLayout>
