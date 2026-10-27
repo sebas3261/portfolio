@@ -1,0 +1,31 @@
+name: Notify search engines of content changes
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 */6 * * *'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/cache/restore@v4
+        with:
+          path: .indexnow-state.json
+          key: indexnow-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: indexnow-v1-
+      - run: node scripts/indexnow.mjs
+      - uses: actions/cache/save@v4
+        with:
+          path: .indexnow-state.json
+          key: indexnow-v1-${{ github.run_id }}-${{ github.run_attempt }}
