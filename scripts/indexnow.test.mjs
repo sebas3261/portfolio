@@ -35,8 +35,12 @@ test('submits new and changed content once and preserves state on failures', asy
     await assert.rejects(run(config), /429/);
     assert.equal(await readFile(config.stateFile, 'utf8'), saved);
     submissionStatus = 202;
-    await assert.rejects(run(config), /validation pending/);
-    assert.equal(await readFile(config.stateFile, 'utf8'), saved);
+    await run(config);
+    assert.notEqual(await readFile(config.stateFile, 'utf8'), saved);
+    const count = submissions.length;
+    await run(config);
+    assert.equal(submissions.length, count);
+    text = 'Another update';
     submissionStatus = 200;
     await run(config);
     assert.notEqual(await readFile(config.stateFile, 'utf8'), saved);

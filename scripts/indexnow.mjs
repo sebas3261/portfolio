@@ -79,9 +79,7 @@ export async function run({ origin, key, sitemaps, stateFile = '.indexnow-state.
       signal: AbortSignal.timeout(30000),
     });
     if (![200, 202].includes(response.status)) throw new Error(`IndexNow rejected submission: ${response.status}`);
-    // A 202 still needs ownership verification. Retry next run instead of recording success.
-    if (response.status === 202) throw new Error('IndexNow received URLs; key validation pending. Next run will retry.');
-    console.log(`IndexNow accepted ${changed.length} URLs.`);
+    console.log(`IndexNow received ${changed.length} URLs.${response.status === 202 ? ' Ownership validation pending (202).' : ' Accepted (200).'}`);
   }
   // Keep missing URLs in state: an incomplete Notion response must not imply deletions.
   await writeFile(stateFile, JSON.stringify({ ...previous, ...current }, null, 2) + '\n');
