@@ -72,8 +72,27 @@ function externalUrl(block: any): string | undefined {
 }
 
 function youtubeEmbed(url: string): string | undefined {
-  const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
-  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : undefined;
+  try {
+    const parsed = new URL(url);
+    if (!["https:", "http:"].includes(parsed.protocol)) return undefined;
+
+    const host = parsed.hostname.toLowerCase();
+    const segments = parsed.pathname.split("/").filter(Boolean);
+    let id: string | null | undefined;
+
+    if (host === "youtu.be") {
+      id = segments[0];
+    } else if (["youtube.com", "www.youtube.com", "m.youtube.com", "youtube-nocookie.com", "www.youtube-nocookie.com"].includes(host)) {
+      if (segments[0] === "watch") id = parsed.searchParams.get("v");
+      else if (["embed", "shorts", "live"].includes(segments[0])) id = segments[1];
+    }
+
+    return id && /^[A-Za-z0-9_-]{11}$/.test(id)
+      ? `https://www.youtube-nocookie.com/embed/${id}`
+      : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 const renderedBlocks = await Promise.all(
@@ -150,9 +169,13 @@ const renderedBlocks = await Promise.all(
     const embed = url ? youtubeEmbed(url) : undefined;
 
     if (embed) {
+      const isShort = new URL(url!).pathname.startsWith("/shorts/");
       return (
         <figure class="my-10">
-          <div class="aspect-video overflow-hidden rounded-sm bg-zinc-950 shadow-2xl shadow-zinc-950/10 dark:shadow-black/30">
+          <div class:list={[
+            "overflow-hidden bg-zinc-950 shadow-xl shadow-zinc-950/10 dark:shadow-black/30",
+            isShort ? "mx-auto aspect-[9/16] w-full max-w-[340px] rounded-2xl" : "aspect-video rounded-sm",
+          ]}>
             <iframe
               src={embed}
               title="YouTube video"
