@@ -130,8 +130,11 @@ const renderedBlocks = await Promise.all(
         "notion-columns",
         { "notion-columns--video-left": videoColumn === 0, "notion-columns--video-right": videoColumn === 1 },
       ]} style={`--notion-column-count: ${columns.length}`}>
-        {columns.map((column: any) => (
-          <div class="notion-column">
+        {(videoColumn === 1 ? [columns[1], columns[0]] : columns).map((column: any) => (
+          <div class:list={["notion-column", {
+            "notion-column--video": videoColumn === 1 && column === columns[1],
+            "notion-column--flow": videoColumn === 1 && column === columns[0],
+          }]}>
             <Astro.self blocks={column.children ?? []} />
           </div>
         ))}
@@ -244,6 +247,10 @@ const renderedBlocks = await Promise.all(
     margin-bottom: 0;
   }
 
+  .notion-columns--video-right > .notion-column--video {
+    order: 2;
+  }
+
   @media (min-width: 768px) {
     .notion-columns {
       grid-template-columns: repeat(var(--notion-column-count), minmax(0, 1fr));
@@ -251,7 +258,17 @@ const renderedBlocks = await Promise.all(
     }
 
     .notion-columns--video-right {
-      grid-template-columns: minmax(0, 1fr) 15rem;
+      display: flow-root;
+    }
+
+    .notion-columns--video-right > .notion-column--video {
+      float: right;
+      width: 15rem;
+      margin: 0 0 1.5rem 3rem;
+    }
+
+    .notion-columns--video-right > .notion-column--flow {
+      display: contents;
     }
 
     .notion-columns--video-left {
