@@ -117,8 +117,19 @@ const renderedBlocks = await Promise.all(
 
   if (block.type === "column_list") {
     const columns = (block.children ?? []).filter((child: any) => child.type === "column");
+    const videoColumn = columns.length === 2 ? columns.findIndex((column: any) => {
+      const content = (column.children ?? []).filter((child: any) =>
+        child.type !== "paragraph" || (child.paragraph?.rich_text ?? []).some((part: any) => part.plain_text?.trim())
+      );
+      if (content.length !== 1 || !["video", "embed", "bookmark"].includes(content[0].type)) return false;
+      const url = externalUrl(content[0]);
+      return url && youtubeEmbed(url) && new URL(url).pathname.startsWith("/shorts/");
+    }) : -1;
     return columns.length > 0 ? (
-      <div class="notion-columns" style={`--notion-column-count: ${columns.length}`}>
+      <div class:list={[
+        "notion-columns",
+        { "notion-columns--video-left": videoColumn === 0, "notion-columns--video-right": videoColumn === 1 },
+      ]} style={`--notion-column-count: ${columns.length}`}>
         {columns.map((column: any) => (
           <div class="notion-column">
             <Astro.self blocks={column.children ?? []} />
@@ -236,19 +247,15 @@ const renderedBlocks = await Promise.all(
   @media (min-width: 768px) {
     .notion-columns {
       grid-template-columns: repeat(var(--notion-column-count), minmax(0, 1fr));
-      gap: 2.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .blog-content:has(> .notion-columns) {
-      max-width: 64rem;
+      gap: 3rem;
     }
 
-    .blog-content:has(> .notion-columns) > :not(.notion-columns) {
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
+    .notion-columns--video-right {
+      grid-template-columns: minmax(0, 1fr) 15rem;
+    }
+
+    .notion-columns--video-left {
+      grid-template-columns: 15rem minmax(0, 1fr);
     }
   }
 </style>
