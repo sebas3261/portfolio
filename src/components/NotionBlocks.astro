@@ -115,6 +115,19 @@ const renderedBlocks = await Promise.all(
   const data = block[block.type] ?? {};
   const text = richText(data.rich_text);
 
+  if (block.type === "column_list") {
+    const columns = (block.children ?? []).filter((child: any) => child.type === "column");
+    return columns.length > 0 ? (
+      <div class="notion-columns" style={`--notion-column-count: ${columns.length}`}>
+        {columns.map((column: any) => (
+          <div class="notion-column">
+            <Astro.self blocks={column.children ?? []} />
+          </div>
+        ))}
+      </div>
+    ) : null;
+  }
+
   if (block.type === "paragraph" && text.length === 0) {
     return <div class="h-6"></div>;
   }
@@ -194,3 +207,48 @@ const renderedBlocks = await Promise.all(
 
   return null;
 })}
+
+<style is:global>
+  .notion-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .notion-column {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .notion-column > * + * {
+    margin-top: 1.5rem;
+  }
+
+  .blog-content .notion-column > :first-child {
+    margin-top: 0;
+  }
+
+  .notion-column > figure:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .notion-columns {
+      grid-template-columns: repeat(var(--notion-column-count), minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .blog-content:has(> .notion-columns) {
+      max-width: 64rem;
+    }
+
+    .blog-content:has(> .notion-columns) > :not(.notion-columns) {
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

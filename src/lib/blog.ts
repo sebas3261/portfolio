@@ -113,6 +113,13 @@ async function getNotionBlocks(pageId: string): Promise<NotionBlock[]> {
     cursor = response.has_more ? (response.next_cursor ?? undefined) : undefined;
   } while (cursor);
 
+  // Columns contain their content in nested blocks, fetched separately by Notion.
+  for (const block of blocks) {
+    if (block.has_children && ["column_list", "column"].includes(block.type)) {
+      block.children = await getNotionBlocks(block.id);
+    }
+  }
+
   return blocks;
 }
 
