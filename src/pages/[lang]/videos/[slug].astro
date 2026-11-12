@@ -1,0 +1,9 @@
+---
+import ContentArticle from "../../../components/ContentArticle.astro";
+import { getBlogPost } from "../../../lib/blog";
+export const prerender = false;
+const lang = Astro.params.lang === "es" ? "es" : "en";
+const post = await getBlogPost(lang, Astro.params.slug ?? "", "videos");
+if (!post) return Astro.redirect(`/${lang}/404/`);
+---
+<ContentArticle section="videos" post={post} />

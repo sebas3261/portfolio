@@ -11,6 +11,9 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   adapter: vercel(),
+  markdown: {
+    shikiConfig: { theme: "github-dark-default" },
+  },
 
   integrations: [
     mdx(),

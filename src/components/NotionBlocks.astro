@@ -1,5 +1,7 @@
 ---
 import { codeToHtml } from "shiki";
+import CodePlayground from "./CodePlayground";
+import { playgroundFromBlock } from "../lib/playground";
 
 interface Props {
   blocks: Record<string, any>[];
@@ -114,6 +116,9 @@ const renderedBlocks = await Promise.all(
 {renderedBlocks.map((block) => {
   const data = block[block.type] ?? {};
   const text = richText(data.rich_text);
+  const playground = playgroundFromBlock(block);
+  if (playground) return <CodePlayground client:load config={playground} lang={Astro.params.lang === "es" ? "es" : "en"} />;
+  if (block.type === "toggle") return <details><summary>{text.map(part => part.text).join("")}</summary><Astro.self blocks={block.children ?? []} /></details>;
 
   if (block.type === "column_list") {
     const columns = (block.children ?? []).filter((child: any) => child.type === "column");

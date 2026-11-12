@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'; worker-src blob:; connect-src 'none'; img-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<script>
+// This document is embedded with sandbox="allow-scripts" (no same-origin access).
+// Each run gets a fresh worker and a hard timeout, including asynchronous code.
+let active;
+let timer;
+window.addEventListener('message', event => {
+  if (event.source !== parent) return;
+  if (event.data?.type === 'ping') { parent.postMessage({ type: 'playground-ready' }, '*'); return; }
+  if (event.data?.type !== 'run') return;
+  active?.terminate();
+  clearTimeout(timer);
+  const { id, code, functionName, cases } = event.data;
+  if (!/^[A-Za-z_$][\w$]*$/.test(functionName) || !Array.isArray(cases)) return;
+  const workerSource = `
+    const send = self.postMessage.bind(self);
+    const serialize = value => {
+      try { return JSON.stringify(value, (_, item) => typeof item === 'bigint' ? String(item) + 'n' : item) ?? String(value); }
+      catch { return String(value); }
+    };
+    self.onmessage = async ({data}) => {
+      const logs = [];
+      console.log = console.info = console.warn = console.error = (...args) => {
+        if (logs.length < 50) logs.push(args.map(serialize).join(' ').slice(0, 2000));
+      };
+      try {
+        const fn = new Function(data.code + '\\n; return typeof ' + data.functionName + ' === "function" ? ' + data.functionName + ' : null;')();
+        if (!fn) throw new Error('Function not found: ' + data.functionName);
+        const results = [];
+        for (const test of data.cases) {
+          try {
+            const start = performance.now();
+            const value = await fn(...test.args);
+            results.push({ label: test.label, output: serialize(value).slice(0, 12000), duration: Math.round((performance.now() - start) * 100) / 100,
+              passed: Object.hasOwn(test, 'expected') ? serialize(value) === serialize(test.expected) : null });
+          } catch (error) {
+            results.push({ label: test.label, error: String(error?.message ?? error).slice(0, 2000) });
+          }
+        }
+        send({ results, logs });
+      } catch (error) { send({ error: String(error?.message ?? error).slice(0, 2000), logs }); }
+    };
+  `;
+  const blob = URL.createObjectURL(new Blob([workerSource], { type: 'text/javascript' }));
+  const worker = active = new Worker(blob);
+  URL.revokeObjectURL(blob);
+  const finish = result => {
+    clearTimeout(timer);
+    worker.terminate();
+    if (active === worker) active = undefined;
+    parent.postMessage({ type: 'playground-result', id, ...result }, '*');
+  };
+  worker.onmessage = event => finish(event.data);
+  worker.onerror = () => finish({ error: 'Execution failed.' });
+  timer = setTimeout(() => finish({ timeout: true }), 2000);
+  worker.postMessage({ code, functionName, cases });
+});
+</script>

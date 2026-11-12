@@ -6,7 +6,7 @@ import footerEs from "../messages/es/footer.json";
 import Footer from "../components/Footer.astro";
 import PostHog from "../components/PostHog.astro";
 
-const { lang, messages, noindex = false } = Astro.props;
+const { lang, messages, noindex = false, showFooter = true } = Astro.props;
 const navMessages = lang === "es" ? navbarEs : navbarEn;
 const footerMessages = lang === "es" ? footerEs : footerEn;
 
@@ -137,7 +137,7 @@ const personSchema = {
   </head>
   <body>
     <slot />
-    <Footer lang={lang} navLinks={navMessages.links} messages={footerMessages} />
+    {showFooter && <Footer lang={lang} navLinks={navMessages.links} messages={footerMessages} />}
     <script is:inline>
       (function () {
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

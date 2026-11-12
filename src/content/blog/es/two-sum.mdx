@@ -1,0 +1,183 @@
+---
+title: "Two Sum: un problema sencillo con una solución más inteligente"
+description: "Two Sum es uno de los primeros problemas que encontrarás en LeetCode. Parece sencillo, pero hay varias formas de resolverlo. Vamos a entender cómo funciona, por qué usar un hash map marca la diferencia y cómo podemos pasar de O(n²) a O(n)."
+date: "2026-11-11"
+lang: "es"
+slug: "two-sum-leetcode-hash-map-explained"
+tags: ["Algorithms", "Data Structures", "Hash Map", "LeetCode", "Problem Solving"]
+section: "videos"
+draft: false
+---
+
+import { twoSumPlayground } from "../../../lib/examples/two-sum";
+import CodePlayground from "../../../components/CodePlayground";
+import YouTube from "../../../components/YouTube.astro";
+
+Two Sum es probablemente uno de los problemas más reconocibles de LeetCode. Suele ser uno de los primeros desafíos que resuelven quienes empiezan a practicar algoritmos.
+
+Y con razón. El problema en sí es sencillo, pero introduce un concepto importante: **encontrar una solución no siempre es lo mismo que encontrar una solución eficiente.**
+
+Veamos dos enfoques diferentes y descubramos cómo una estructura de datos sencilla puede marcar una gran diferencia.
+
+<div class="my-12 grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_260px]">
+<div>
+
+## Entender el problema
+
+LeetCode #1, Two Sum, nos da un arreglo de números enteros llamado `nums` y un número entero llamado `target`.
+
+Nuestro objetivo es encontrar los índices de dos elementos distintos cuyos valores sumen el objetivo.
+
+Por ejemplo:
+
+```java
+int[] nums = {2, 7, 11, 15};
+int target = 9;
+```
+
+El resultado esperado es:
+
+```java
+[0, 1]
+```
+
+¿Por qué? Porque `nums[0] + nums[1]` es igual a `9`.
+
+Hay dos reglas importantes: no podemos usar el mismo elemento dos veces y se garantiza que existe exactamente una solución válida.
+
+Parece bastante sencillo. Entonces, ¿cómo lo abordamos?
+
+</div>
+<div class="not-prose">
+<YouTube id="CpehTcbqd90" title="Two Sum: explicación en video" short />
+</div>
+</div>
+
+## El primer enfoque: fuerza bruta
+
+La solución más obvia es comparar cada número con todos los demás hasta encontrar un par que sume el objetivo.
+
+Podemos hacerlo con dos bucles anidados:
+
+```java
+public int[] twoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target) {
+                return new int[] {i, j};
+            }
+        }
+    }
+    return new int[] {};
+}
+```
+
+Esto funciona perfectamente.
+
+El problema es que, a medida que crece el arreglo, la cantidad de comparaciones aumenta mucho más rápido.
+
+Para un arreglo de `n` elementos, la complejidad temporal en el peor de los casos es **O(n²)**.
+
+Solo usamos una cantidad constante de memoria adicional, así que la complejidad espacial es **O(1)**.
+
+¿Podemos hacerlo mejor?
+
+## Un enfoque mejor: usar un mapa hash
+
+En lugar de revisar cada par posible, podemos llevar un registro de los números que ya encontramos.
+
+Esta es la idea.
+
+Si el número actual es `2` y el objetivo es `9`, no necesitamos buscar todas las combinaciones posibles. Ya sabemos exactamente qué estamos buscando:
+
+`9 - 2 = 7`
+
+A ese número faltante lo llamamos **complemento**.
+
+Podemos usar un mapa hash para guardar cada número junto con su índice. A medida que recorremos el arreglo, comprobamos si el complemento ya está en el mapa.
+
+En Java, podemos usar `HashMap` (con `import java.util.*;`):
+
+```java
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> seen = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (seen.containsKey(complement)) {
+            return new int[] {seen.get(complement), i};
+        }
+        seen.put(nums[i], i);
+    }
+    return new int[] {};
+}
+```
+
+Observa que comprobamos si existe el complemento **antes** de guardar el número actual.
+
+Ese detalle importa porque no podemos usar el mismo elemento dos veces.
+
+## Recorramos un ejemplo
+
+Tomemos la entrada original:
+
+```java
+int[] nums = {2, 7, 11, 15};
+int target = 9;
+```
+
+**Primera iteración**
+
+El número actual es `2`.
+
+Calculamos su complemento:
+
+`9 - 2 = 7`
+
+El mapa está vacío, así que guardamos `2` con su índice `0`.
+
+**Segunda iteración**
+
+El número actual es `7`.
+
+Su complemento es:
+
+`9 - 7 = 2`
+
+Revisamos el mapa y encontramos que `2` ya está allí, en el índice `0`.
+
+Devolvemos `[0, 1]`.
+
+Y eso es todo. Encontramos la respuesta sin comparar todos los pares posibles.
+
+## ¿Por qué es más rápido?
+
+La diferencia principal está en cómo buscamos los números.
+
+Con fuerza bruta, recorremos el arreglo una y otra vez para encontrar un par que coincida.
+
+Con un mapa hash, podemos comprobar si un número existe en **O(1) en promedio**.
+
+Eso significa que solo necesitamos recorrer el arreglo una vez.
+
+| Enfoque | Complejidad temporal | Complejidad espacial |
+| --- | --- | --- |
+| Fuerza bruta | O(n²) | O(1) |
+| Mapa hash | O(n) en promedio | O(n) |
+
+Estamos usando algo más de memoria a cambio de un mejor tiempo de ejecución.
+
+Este es un patrón común en el diseño de algoritmos: a veces, usar más espacio nos permite evitar cálculos innecesarios.
+
+## Reflexiones finales
+
+Lo que me gusta de Two Sum es que demuestra cuánto puede afectar a un algoritmo la estructura de datos que elegimos.
+
+La solución de fuerza bruta no está mal. Resuelve el problema y puede ser perfectamente razonable para entradas pequeñas.
+
+Pero al reconocer que estamos buscando repetidamente un valor específico, podemos reemplazar esas búsquedas por consultas en un mapa hash y reducir la complejidad temporal promedio de O(n²) a O(n).
+
+Esa es la lección importante: **antes de intentar acelerar el código, entiende qué trabajo repite el algoritmo y si puedes evitarlo.**
+
+A veces, la mayor optimización no consiste en usar un algoritmo complicado, sino en elegir la estructura de datos adecuada.
+
+<CodePlayground client:load lang="es" config={twoSumPlayground} />

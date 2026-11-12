@@ -28,11 +28,14 @@ function urlEntry(path: string, lastmod?: Date): string {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = await getBlogPosts();
+  const [blogPosts, videoPosts] = await Promise.all([getBlogPosts(), getBlogPosts("videos")]);
+  const posts = [...blogPosts, ...videoPosts];
   const entries = [
     urlEntry("/en/blog/"),
     urlEntry("/es/blog/"),
-    ...posts.map((post) => urlEntry(`/${post.lang}/blog/${post.slug}/`, post.date)),
+    urlEntry("/en/videos/"),
+    urlEntry("/es/videos/"),
+    ...posts.map((post) => urlEntry(`/${post.lang}/${post.section}/${post.slug}/`, post.date)),
   ];
 
   const body = [

@@ -2,14 +2,15 @@
 interface Props {
   id: string;
   title: string;
+  short?: boolean;
 }
 
-const { id, title } = Astro.props;
+const { id, title, short = false } = Astro.props;
 const src = `https://www.youtube-nocookie.com/embed/${id}`;
 ---
 
 <figure class="my-10">
-  <div class="aspect-video overflow-hidden rounded-sm bg-zinc-950 shadow-2xl shadow-zinc-950/10 dark:shadow-black/30">
+  <div class:list={["overflow-hidden bg-zinc-950 shadow-2xl shadow-zinc-950/10 dark:shadow-black/30", short ? "mx-auto aspect-[9/16] w-full max-w-[340px] rounded-2xl" : "aspect-video rounded-sm"]}>
     <iframe
       src={src}
       title={title}

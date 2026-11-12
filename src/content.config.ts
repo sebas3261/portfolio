@@ -13,6 +13,7 @@ const blog = defineCollection({
     },
   }),
   schema: z.object({
+    section: z.enum(["blog", "videos"]).default("blog"),
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),

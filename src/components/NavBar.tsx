@@ -26,6 +26,7 @@ interface Props {
       projects: string;
       about: string;
       blog: string;
+      videos: string;
     };
     cta: string;
   };
@@ -135,6 +136,7 @@ export default function NavBar({ lang, currentPath, localizedPaths, messages, va
     { href: `/${lang}/projects/`, label: messages.links.projects },
     { href: `/${lang}/about/`, label: messages.links.about },
     { href: `/${lang}/blog/`, label: messages.links.blog },
+    { href: `/${lang}/videos/`, label: messages.links.videos },
   ];
   const englishHref = getLocalizedPath(currentPath, "en", localizedPaths);
   const spanishHref = getLocalizedPath(currentPath, "es", localizedPaths);
@@ -181,7 +183,7 @@ export default function NavBar({ lang, currentPath, localizedPaths, messages, va
           <nav
             aria-label={messages.mainNavigationLabel}
             onMouseLeave={() => setSuppressNavHover(false)}
-            className={`absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 text-sm font-medium md:flex ${overDarkHero ? "text-zinc-200" : "text-zinc-600 dark:text-zinc-300"}`}
+            className={`absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-5 text-sm font-medium lg:gap-8 md:flex ${overDarkHero ? "text-zinc-200" : "text-zinc-600 dark:text-zinc-300"}`}
           >
           {navLinks.map(({ href, label }) => (
               <a

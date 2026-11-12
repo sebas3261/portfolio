@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' https://cjrtnc.leaningtech.com; connect-src https://cjrtnc.leaningtech.com; worker-src blob:; frame-src https://cjrtnc.leaningtech.com; style-src 'unsafe-inline'; img-src data:; base-uri 'none'">
+<body><script>
+const source=/* WORKER_SOURCE */;
+const url=URL.createObjectURL(new Blob([source],{type:'text/javascript'}));
+const worker=new Worker(url);
+URL.revokeObjectURL(url);
+let requestId;
+worker.onmessage=event=>parent.postMessage(event.data,'*');
+worker.onerror=event=>parent.postMessage({type:'playground-java-result',id:requestId,error:event.message},'*');
+window.addEventListener('message',event=>{
+ if(event.source!==parent)return;
+ if(event.data?.type==='ping'){parent.postMessage({type:'playground-ready'},'*');return;}
+ if(event.data?.type!=='run-java')return;
+ requestId=event.data.id;
+ worker.postMessage(event.data);
+});
+</script>

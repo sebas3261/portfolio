@@ -35,6 +35,7 @@ type BlogExplorerMessages = {
 
 interface Props {
   lang: "en" | "es";
+  section?: "blog" | "videos";
   posts: BlogPost[];
   messages: BlogExplorerMessages;
 }
@@ -42,7 +43,7 @@ interface Props {
 const postsPerPage = 6;
 const visibleTagLimit = 8;
 
-export default function BlogExplorer({ lang, posts, messages }: Props) {
+export default function BlogExplorer({ lang, posts, messages, section = "blog" }: Props) {
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("all");
   const [showAllTags, setShowAllTags] = useState(false);
@@ -273,7 +274,7 @@ export default function BlogExplorer({ lang, posts, messages }: Props) {
               </time>
               <div>
                 <a
-                  href={`/${lang}/blog/${post.slug}/`}
+                  href={`/${lang}/${section}/${post.slug}/`}
                   className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_13rem] xl:items-start"
                 >
                   <div>

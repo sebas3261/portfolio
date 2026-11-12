@@ -1,0 +1,79 @@
+---
+import "../../styles/global.css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ArrowUpRight, Play, Code2, BookOpen, Globe, Mail, SunMoon } from "lucide-react";
+import { YouTube, Instagram, TikTok, GitHub, LinkedIn } from "../../components/PlatformIcons";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+const lang = Astro.params.lang === "es" ? "es" : "en";
+const es = lang === "es";
+const description = es ? "Código, ideas y lo que estoy construyendo. Todos mis enlaces en un solo lugar." : "Code, ideas, and what I'm building. All my links in one place.";
+const messages = {
+  title: `${es ? "Enlaces" : "Links"} | Sebastian Sanchez`, description,
+  ogTitle: "Sebastian Sanchez · Links", ogDescription: description,
+  ogImageAlt: "Sebastian Sanchez",
+};
+const links = [
+  { title: "YouTube", detail: "@sebasdev3261", href: "https://www.youtube.com/@sebasdev3261", icon: YouTube, featured: true },
+  { title: "Instagram · Developer", detail: "@_sebas_dev", href: "https://www.instagram.com/_sebas_dev/", icon: Instagram },
+  { title: "TikTok · Developer", detail: "@_sebas_dev", href: "https://www.tiktok.com/@_sebas_dev", icon: TikTok },
+  { title: "Instagram · Personal", detail: "@sebas.3261", href: "https://www.instagram.com/sebas.3261/", icon: Instagram },
+  { title: es ? "Videos y código" : "Videos & code", detail: es ? "Explicaciones, Java y ejercicios para practicar." : "Explanations, Java, and hands-on challenges.", href: `/${lang}/videos/`, icon: Play },
+  { title: es ? "Mis proyectos" : "My projects", detail: es ? "De la idea al producto." : "From idea to product.", href: `/${lang}/projects/`, icon: Code2 },
+  { title: "Blog", detail: es ? "Ideas y aprendizajes, con un poco más de calma." : "Ideas and lessons, with room to think.", href: `/${lang}/blog/`, icon: BookOpen },
+  { title: "Portfolio", detail: es ? "Un poco más sobre mí y mi trabajo." : "More about me and my work.", href: `/${lang}/`, icon: Globe },
+];
+const socials = [
+  { name: "GitHub", href: "https://github.com/sebas3261", icon: GitHub },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/sebastian-sanchez-sandoval", icon: LinkedIn },
+  { name: "Email", href: "mailto:hello@sebas3261.com", icon: Mail },
+];
+---
+<BaseLayout lang={lang} messages={messages} showFooter={false}>
+  <main class="links-page min-h-screen bg-white px-6 text-zinc-950 dark:bg-zinc-950 dark:text-white">
+    <div class="mx-auto max-w-lg pb-8 pt-7 sm:pt-10">
+      <header class="flex items-center justify-between">
+        <a href={`/${lang}/`} aria-label={es ? "Ir al inicio" : "Go home"}>
+          <img src="/logo-dark.svg" alt="SS" width="34" height="34" class="h-8 w-auto dark:hidden" />
+          <img src="/logo.svg" alt="SS" width="34" height="34" class="hidden h-8 w-auto dark:block" />
+        </a>
+        <div class="flex items-center gap-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <a href={`/${es ? "en" : "es"}/links/`} aria-label={es ? "Switch to English" : "Cambiar a español"} class="rounded-md p-2 hover:text-indigo-500">{es ? "EN" : "ES"}</a>
+          <button id="links-theme" type="button" aria-label={es ? "Cambiar tema" : "Toggle theme"} class="cursor-pointer rounded-full border border-zinc-200 p-2.5 transition-colors hover:border-indigo-400 dark:border-zinc-800"><SunMoon size={17} /></button>
+        </div>
+      </header>
+      <section class="pb-9 pt-10 text-center sm:pt-12">
+        <img src="/images/about/sebastian.jpg" alt="Sebastian Sanchez" width="88" height="88" class="mx-auto size-22 rounded-full border-4 border-white object-cover object-[50%_85%] shadow-sm ring-1 ring-zinc-200 dark:border-zinc-950 dark:ring-zinc-800" />
+        <p class="mt-5 text-[10px] font-semibold uppercase tracking-[0.24em] text-indigo-500 dark:text-indigo-300">{es ? "Ingeniero de software" : "Software engineer"}</p>
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight">Sebastian Sanchez<span class="text-indigo-500">.</span></h1>
+        <p class="mx-auto mt-3 max-w-xs text-sm leading-6 text-zinc-500 dark:text-zinc-400">{es ? "Código, ideas y lo que estoy construyendo." : "Code, ideas, and what I'm building."}</p>
+      </section>
+      <nav aria-label={es ? "Mis enlaces" : "My links"} class="space-y-3">
+        {links.map(({ title, detail, href, icon: Icon, featured }) => (
+          <a href={href} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noopener noreferrer" : undefined} class:list={["link-card group flex items-center gap-4 rounded-2xl border p-5 transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500", featured ? "border-zinc-950 bg-zinc-950 text-white dark:border-white dark:bg-white dark:text-zinc-950" : "border-zinc-200 bg-zinc-50/60 hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-600"]}>
+            <span class:list={["flex size-10 shrink-0 items-center justify-center rounded-xl", featured ? "bg-white/10 dark:bg-zinc-950/5" : "bg-white text-indigo-500 dark:bg-zinc-800/70 dark:text-indigo-300"]}><Icon size={20} strokeWidth={1.6} /></span>
+            <span class="min-w-0 flex-1"><span class="block text-sm font-semibold">{title}</span><span class:list={["mt-1 block text-xs leading-5", featured ? "text-zinc-400 dark:text-zinc-500" : "text-zinc-500 dark:text-zinc-400"]}>{detail}</span></span>
+            <ArrowUpRight size={17} className="shrink-0 opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        ))}
+      </nav>
+      <nav aria-label={es ? "Redes y contacto" : "Socials & contact"} class="mt-8 flex justify-center gap-3">
+        {socials.map(({name, href, icon: Icon}) => <a href={href} aria-label={name} title={name} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noopener noreferrer" : undefined} class="rounded-full p-3 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-950 focus-visible:outline-indigo-500 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white"><Icon size={20} strokeWidth={1.6} /></a>)}
+      </nav>
+      <footer class="mt-7 text-center text-[10px] tracking-wide text-zinc-400 dark:text-zinc-500">{es ? "Hecho con intención, desde Colombia." : "Made with intention, from Colombia."}</footer>
+    </div>
+  </main>
+</BaseLayout>
+<script>
+  document.querySelector('#links-theme')?.addEventListener('click', () => {
+    const dark = document.documentElement.classList.toggle('dark');
+    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
+  });
+</script>
+<style>
+  .links-page { background-image: radial-gradient(ellipse at 50% 0%, rgb(99 102 241 / 0.06), transparent 55%); }
+  @media (prefers-reduced-motion: reduce) { .link-card { transition: none; } .link-card:hover { transform: none; } }
+</style>

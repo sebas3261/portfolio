@@ -1,0 +1,42 @@
+{
+  "title": "Videos | Sebastian Sanchez",
+  "description": "Videos and technical explanations of LeetCode, algorithms, and programming.",
+  "ogTitle": "Videos | Sebastian Sanchez",
+  "ogDescription": "Videos and technical explanations of LeetCode, algorithms, and programming.",
+  "ogImageAlt": "Sebastian Sanchez — Videos",
+  "eyebrow": "Videos",
+  "heading": "From video to code.",
+  "intro": "Shorts to understand the idea. Technical explanations to explore the solution, code, and complexity.",
+  "readCta": "Read note",
+  "publishedLabel": "Published",
+  "explorer": {
+    "searchPlaceholder": "Search videos…",
+    "filterAll": "All",
+    "moreFilters": "More filters",
+    "sortLabel": "Sort videos",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
+    "resultsLabel": "Showing {start}-{end} of {total} videos",
+    "emptyTitle": "No videos matched those filters.",
+    "emptyBody": "Try another search or return to all videos.",
+    "clearFilters": "Clear filters",
+    "previous": "Previous",
+    "next": "Next",
+    "pageLabel": "Page",
+    "readCta": "Watch and explore",
+    "filterTitle": "Explore videos",
+    "topicsLabel": "Topics",
+    "topicSearchPlaceholder": "Find a topic…",
+    "fewerFilters": "Show fewer",
+    "noTopics": "No matching topics."
+  },
+  "emptyState": {
+    "title": "The next videos are in the works.",
+    "body": "Find each video alongside its technical explanation and code here.",
+    "topics": [
+      "LeetCode",
+      "Algorithms",
+      "Data structures"
+    ]
+  }
+}

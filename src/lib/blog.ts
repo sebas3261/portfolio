@@ -3,6 +3,8 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 type Lang = "en" | "es";
 
+export type ContentSection = "blog" | "videos";
+
 type BlogSource = "mdx" | "notion";
 
 type NotionBlock = Record<string, any>;
@@ -10,6 +12,7 @@ type NotionQueryResponse = Awaited<ReturnType<Client["dataSources"]["query"]>>;
 
 export interface BlogPostSummary {
   id: string;
+  section: ContentSection;
   source: BlogSource;
   lang: Lang;
   slug: string;
@@ -36,11 +39,14 @@ export interface NotionBlogPost extends BlogPostSummary {
 export type BlogPost = MdxBlogPost | NotionBlogPost;
 
 const notionToken = import.meta.env.NOTION_TOKEN;
-const notionDatabaseId = import.meta.env.NOTION_BLOG_DATABASE_ID;
+const notionDatabaseIds = {
+  blog: import.meta.env.NOTION_BLOG_DATABASE_ID,
+  videos: import.meta.env.NOTION_VIDEOS_DATABASE_ID ?? "3d2dec1e5a7582639ca501c520366416",
+};
 const notionCacheMs = 30_000;
 
 const notion = notionToken ? new Client({ auth: notionToken }) : null;
-let cachedNotionPosts: { expiresAt: number; posts: NotionBlogPost[] } | null = null;
+const cachedNotionPosts = new Map<ContentSection, { expiresAt: number; posts: NotionBlogPost[] }>();
 
 function plainText(value: any[] | undefined): string {
   return value?.map((item) => item.plain_text ?? "").join("").trim() ?? "";
@@ -115,7 +121,7 @@ async function getNotionBlocks(pageId: string): Promise<NotionBlock[]> {
 
   // Columns contain their content in nested blocks, fetched separately by Notion.
   for (const block of blocks) {
-    if (block.has_children && ["column_list", "column"].includes(block.type)) {
+    if (block.has_children && ["column_list", "column", "toggle"].includes(block.type)) {
       block.children = await getNotionBlocks(block.id);
     }
   }
@@ -123,7 +129,8 @@ async function getNotionBlocks(pageId: string): Promise<NotionBlock[]> {
   return blocks;
 }
 
-async function queryNotionPosts(startCursor?: string): Promise<NotionQueryResponse> {
+async function queryNotionPosts(section: ContentSection, startCursor?: string): Promise<NotionQueryResponse> {
+  const notionDatabaseId = notionDatabaseIds[section];
   if (!notion || !notionDatabaseId) {
     throw new Error("Missing Notion configuration.");
   }
@@ -158,18 +165,17 @@ async function queryNotionPosts(startCursor?: string): Promise<NotionQueryRespon
   }
 }
 
-async function getNotionPosts(): Promise<NotionBlogPost[]> {
-  if (!notion || !notionDatabaseId) return [];
-  if (cachedNotionPosts && cachedNotionPosts.expiresAt > Date.now()) {
-    return cachedNotionPosts.posts;
-  }
+async function getNotionPosts(section: ContentSection): Promise<NotionBlogPost[]> {
+  if (!notion || !notionDatabaseIds[section]) return [];
+  const cached = cachedNotionPosts.get(section);
+  if (cached && cached.expiresAt > Date.now()) return cached.posts;
 
   const posts: NotionBlogPost[] = [];
   let cursor: string | undefined;
 
   try {
     do {
-      const response = await queryNotionPosts(cursor);
+      const response = await queryNotionPosts(section, cursor);
 
       for (const page of response.results as any[]) {
         const properties = page.properties;
@@ -181,6 +187,7 @@ async function getNotionPosts(): Promise<NotionBlogPost[]> {
 
         posts.push({
           id: `notion:${page.id}`,
+          section,
           source: "notion",
           notionPageId: page.id,
           lang,
@@ -199,14 +206,14 @@ async function getNotionPosts(): Promise<NotionBlogPost[]> {
       cursor = response.has_more ? (response.next_cursor ?? undefined) : undefined;
     } while (cursor);
   } catch (error) {
-    console.warn("Notion blog source failed. Falling back to local MDX posts.", error);
+    console.warn(`Notion ${section} source failed. Falling back to local MDX posts.`, error);
     return [];
   }
 
-  cachedNotionPosts = {
+  cachedNotionPosts.set(section, {
     expiresAt: Date.now() + notionCacheMs,
     posts,
-  };
+  });
 
   return posts;
 }
@@ -216,6 +223,7 @@ async function getMdxPosts(): Promise<MdxBlogPost[]> {
 
   return posts.map((entry) => ({
     id: `mdx:${entry.id}`,
+    section: entry.data.section,
     source: "mdx",
     entry,
     lang: entry.data.lang,
@@ -230,17 +238,17 @@ async function getMdxPosts(): Promise<MdxBlogPost[]> {
   }));
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  const [notionPosts, mdxPosts] = await Promise.all([getNotionPosts(), getMdxPosts()]);
-  const posts = notionPosts.length > 0 ? notionPosts : mdxPosts;
+export async function getBlogPosts(section: ContentSection = "blog"): Promise<BlogPost[]> {
+  const [notionPosts, mdxPosts] = await Promise.all([getNotionPosts(section), getMdxPosts()]);
+  const posts = notionPosts.length > 0 ? notionPosts : mdxPosts.filter(post => post.section === section);
 
   return posts
     .filter((post) => !post.draft)
     .sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
-export async function getBlogPost(lang: Lang, slug: string): Promise<BlogPost | undefined> {
-  const post = (await getBlogPosts()).find((post) => post.lang === lang && post.slug === slug);
+export async function getBlogPost(lang: Lang, slug: string, section: ContentSection = "blog"): Promise<BlogPost | undefined> {
+  const post = (await getBlogPosts(section)).find((post) => post.lang === lang && post.slug === slug);
 
   if (post?.source === "notion" && post.blocks.length === 0) {
     post.blocks = await getNotionBlocks(post.notionPageId);
