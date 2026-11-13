@@ -19,7 +19,11 @@ export default defineConfig({
     mdx(),
     react(),
     sitemap({
-      filter: (page) => !/\/404\/?$/.test(new URL(page).pathname),
+      // Only canonical localized pages belong in the sitemap, not redirect aliases.
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return /^\/(en|es)\//.test(path) && !/\/404\/?$/.test(path);
+      },
     }),
   ],
 
